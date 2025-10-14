@@ -1,0 +1,12 @@
+import pytest
+from solution import Solution
+
+@pytest.mark.parametrize("{{ parameters }}, expected", [
+    # Add test cases here as a tuple of (parameter1, parameter2, expected)
+    # Adjust for the number of parameters you have
+    # e.g. for twoSum, ([1, 2, 3, 4], 3, [0, 1])
+])
+def test_{{ underscored_slug }}({{ parameters }}, expected):
+    # Write your test assertions here
+    # e.g. for twoSum, assert sorted(solution.twoSum(nums, target)) == sorted(expected)
+    solution = Solution()

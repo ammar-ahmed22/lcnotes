@@ -1,0 +1,3 @@
+- **Intuition**: To find a valid answer for a given number, we just need to check if it's complement is in the array (i.e. target - curr)
+- **Implementation**: Use a hash map to store numbers with indices, for each number, check if complement = target - curr is in the map, return
+- **Edge-Cases**: Make sure to check the indices are not the same to ensure not using the same number (map[complement] != i)

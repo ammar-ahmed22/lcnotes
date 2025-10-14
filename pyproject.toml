@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lcnotes"
+version = "0.1.0"
+dependencies = ["typer", "pytest"]
+
+[project.scripts]
+lc = "lc.__main__:main"
+
+[tool.setuptools.packages.find]
+# Only include the 'lc' package and its subpackages; exclude other top-level dirs like 'cli'
+include = ["lc*", "cli*", "core*"]
+exclude = ["tests*", "venv*", "docs*"]
