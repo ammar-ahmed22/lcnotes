@@ -32,8 +32,14 @@ class Problem:
     def publish(self):
         self.published = True
 
+    def unpublish(self):
+        self.notes = ""
+        self.tags = []
+        self.published = False
+
     def to_dict(self) -> dict:
         return {
+            "id": self.id,
             "title": self.title,
             "difficulty": self.difficulty,
             "tags": self.tags,
@@ -80,6 +86,13 @@ class Problems:
             del self.problems[id]
             return True
         return False
+    
+    def unpublished_problems(self) -> List[Problem]:
+        return [Problem.from_dict(self.problems[problem]) for problem in self.problems if not self.problems[problem]["published"]]
+    
+    def published_problems(self) -> List[Problem]:
+        return [Problem.from_dict(self.problems[problem]) for problem in self.problems if self.problems[problem]["published"]]
+
 
 
 

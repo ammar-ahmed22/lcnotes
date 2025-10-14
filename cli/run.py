@@ -8,7 +8,7 @@ def main(slug = typer.Argument("", help="Leetcode problem slug (search if not pr
     """
     problems = Problems()
     ids = problems.list_ids()
-    if not slug or any(id.startswith(slug) for id in ids):
+    if not slug or any(id != slug and id.startswith(slug) for id in ids):
         partial = slug if slug else ""
         slug = utils.autocomplete("Select a problem to run: ", problems.list_ids(), default=partial)
 

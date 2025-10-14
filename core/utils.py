@@ -47,3 +47,9 @@ def autocomplete(prompt: str, options: List[str], default: str = "") -> str:
         choices=options,
         default=default,
     ).execute()
+
+def confirm(prompt: str, default: bool = False) -> bool:
+    return inquirer.confirm(message=prompt, default=default).execute()
+
+def prompt(prompt: str, default: str = "") -> str:
+    return inquirer.text(message=prompt, default=default).execute()

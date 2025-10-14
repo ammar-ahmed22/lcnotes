@@ -1,6 +1,7 @@
 import typer
 from core import utils, commands
 from core.problems import Problems
+from core.readme import README
 
 
 def main(slug = typer.Argument("", help="Leetcode problem slug (search if not provided)")) -> None:
@@ -9,9 +10,9 @@ def main(slug = typer.Argument("", help="Leetcode problem slug (search if not pr
     """
     problems = Problems()
     ids = problems.list_ids()
-    if not slug or any(id.startswith(slug) for id in ids):
+    if not slug or any(id != slug and id.startswith(slug) for id in ids):
         partial = slug if slug else ""
-        slug = utils.autocomplete("Select a problem to remove: ", problems.list_ids(), default=partial)
+        slug = utils.autocomplete("Select a problem to remove: ", ids, default=partial)
 
     if not problems.has_problem(slug):
         typer.echo(f"Problem '{slug}' not found.")
@@ -20,6 +21,9 @@ def main(slug = typer.Argument("", help="Leetcode problem slug (search if not pr
     try:
         problems.remove_problem(slug)
         commands.rimraf(slug)
+        readme = README()
+        content = readme.generate(problems)
+        utils.write_file("README.md", content)
         problems.save()
         typer.echo(f"Problem '{slug}' removed successfully.")
     except Exception as e:

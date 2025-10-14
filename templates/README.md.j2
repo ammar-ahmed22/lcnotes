@@ -1,0 +1,12 @@
+<div align="center">
+    <h1>lcnotes</h1>
+    <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
+</div>
+
+## Problems Solved
+| Problem | Notes | Difficulty | Solution |
+| :-----: | ----- | :--------: | :------: |
+{% for problem in problems -%}
+| [{{ problem.title }}](https://leetcode.com/problems/{{ problem.id }}) | {{ problem.notes }} | ![Static Badge](https://img.shields.io/badge/{{ problem.difficulty }}-{{ colors[problem.difficulty] }}?style=flat) | [solution](./{{ problem.id }}/solution.py)
+{% endfor -%}
+
