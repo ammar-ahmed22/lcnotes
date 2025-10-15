@@ -1,3 +1,3 @@
-- **Intuition**: Since each answer is unique, every number will map to exactly one frequency, we can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time
+- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time
 - **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result
 - **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed
