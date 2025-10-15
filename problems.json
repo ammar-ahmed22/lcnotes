@@ -68,5 +68,16 @@
         ],
         "notes": "- **Intuition**: Use `prefix` and `suffix` arrays to calculate answer at each index. `prefix` is the product of all elements before `i` and `suffix` is the product of all elements after `i`.\n- **Implementation**: Initialize `prefix` with `1` (before `i = 0` is just 1), iterate from `1 to n`, `prefix[i] = nums[i - 1] * prefix[i - 1]`. Initialize `suffix` with `suffix[-1] = 1` (after the end of the array, just 1 left), iterate backwards `n-2 to 0`, `suffix[i] = nums[i + 1] * suffix[i + 1]`. Answer is `ans[i] = prefix[i] * suffix[i]`\n",
         "published": true
+    },
+    "valid-sudoku": {
+        "id": "valid-sudoku",
+        "title": "36. Valid Sudoku",
+        "directory": "36-valid-sudoku",
+        "difficulty": "Medium",
+        "tags": [
+            "matrix"
+        ],
+        "notes": "- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially\n- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox\n- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`\n",
+        "published": true
     }
 }

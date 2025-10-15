@@ -1,0 +1,3 @@
+- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially
+- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox
+- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`
