@@ -103,5 +103,17 @@
         ],
         "notes": "- **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed\n- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.\n- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics\n",
         "published": true
+    },
+    "two-sum-ii-input-array-is-sorted": {
+        "id": "two-sum-ii-input-array-is-sorted",
+        "title": "167. Two Sum II - Input Array Is Sorted",
+        "directory": "167-two-sum-ii-input-array-is-sorted",
+        "difficulty": "Medium",
+        "tags": [
+            "two-pointers",
+            "binary-search"
+        ],
+        "notes": "- **Intuition**: Since array is sorted, we only need to look for our complment (`target - curr`) in the values to the right of the current (also sorted, binary search)\n- **Implementation**: For each number, calculate the complement, conduct binary search on the elements to the right of it, if not found keep going, if found return\n\n",
+        "published": true
     }
 }
