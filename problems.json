@@ -10,5 +10,16 @@
         ],
         "notes": "- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array\n- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return\n- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)\n",
         "published": true
+    },
+    "contains-duplicate": {
+        "id": "contains-duplicate",
+        "title": "217. Contains Duplicate",
+        "directory": "217-contains-duplicate",
+        "difficulty": "Easy",
+        "tags": [
+            "hashmap"
+        ],
+        "notes": "- **Intuition**: Need to check if a given number exists in the array\n- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)\n",
+        "published": true
     }
 }
