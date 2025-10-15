@@ -8,6 +8,21 @@
     </p>
 </div>
 
+## Table of Contents
+- [Problems Solved](#problems-solved)
+- [Overview](#overview)
+  * [How It Works](#how-it-works)
+  * [Per-problem layout](#per-problem-layout)
+- [Commands](#commands)
+  * [add](#add)
+  * [run](#run)
+  * [test](#test)
+  * [remove](#remove)
+  * [publish](#publish)
+  * [unpublish](#unpublish)
+  * [generate-readme](#generate-readme)
+- [Notes](#notes)
+
 ## Problems Solved
 | Problem | Notes | Difficulty | Solution |
 | :-----: | ----- | :--------: | :------: |
@@ -21,3 +36,105 @@
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | - **Intuition**: Need to check if a given number exists in the array<br />- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | - **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.<br />- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)
 | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome) | - **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed<br />- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.<br />- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./125-valid-palindrome/solution.py)
+---
+
+## Overview
+lcnotes is a personal CLI that helps me manage LeetCode problems locally. It can:
+- Create a structured workspace for a problem (scraped metadata, starter code, docs, tests)
+- Run or test solutions
+- Track problems in a local problems.json
+- Curate a README of published problems with notes and tags
+
+### How it works (high level)
+- Scraping: Uses Playwright to fetch title, difficulty, statement HTML, and Python starter code from LeetCode.
+- Storage: problems.json tracks id, title, directory, difficulty, tags, notes, published.
+- Templating: Jinja2 templates render docs and the top-level README.
+- UX: Interactive fuzzy prompts for selecting problems; spinners for progress; consistent error handling.
+
+### Per-problem layout
+```text path=null start=null
+<number>-<slug>/
+  docs.md        # scraped problem statement (Markdown)
+  notes.md       # personal notes; used when publishing
+  solution.py    # starter code scaffold
+  tests.py       # pytest tests scaffold
+```
+
+## Commands
+Below are the CLI commands and what they do. If a slug is omitted or ambiguous, a fuzzy prompt lets me pick.
+
+### add
+Create a new workspace from a LeetCode slug.
+- Fetch metadata (with spinner and retry), e.g. title, difficulty, statement, starter code
+- Create the directory and files (docs.md, notes.md, solution.py, tests.py)
+- Populate files from templates
+- Add a base entry to problems.json
+
+Usage:
+```bash path=null start=null
+lc add <problem-slug>
+```
+
+### run
+Run solution.py for a problem (no tests; just executes the script).
+
+Usage:
+```bash path=null start=null
+lc run [partial-slug]
+```
+- If not found or ambiguous, prompts to select a problem
+- Executes: python3 <dir>/solution.py and prints stdout; exits non-zero on error
+
+### test
+Run pytest tests for a problem.
+
+Usage:
+```bash path=null start=null
+lc test [partial-slug]
+```
+- Runs: python3 -m pytest <dir>/tests.py
+- Prints results; exits non-zero if tests fail or errors occur
+
+### remove
+Remove a problem and its workspace.
+
+Usage:
+```bash path=null start=null
+lc remove [partial-slug]
+```
+- Deletes the problem directory and removes it from problems.json
+- Regenerates README to reflect the change
+
+### publish
+Mark a problem as published and update README. Prompts to add tags and pulls notes from notes.md.
+
+Usage:
+```bash path=null start=null
+lc publish <slug>
+# or publish all unpublished
+lc publish --all
+```
+- Sets published=true, attaches notes and tags, updates README and problems.json
+
+### unpublish
+Unpublish a problem (clears notes and tags, removes from README listing).
+
+Usage:
+```bash path=null start=null
+lc unpublish <slug>
+```
+- Sets published=false, clears notes/tags, updates README and problems.json
+
+### generate-readme
+Regenerate the top-level README from current published problems.
+
+Usage:
+```bash path=null start=null
+lc generate-readme
+```
+
+## Notes
+- The README shows only published problems and sorts them by difficulty.
+- Fuzzy selection uses InquirerPy; spinners use yaspin.
+- The scraper opens LeetCode in headless Chromium and extracts the Python3 starter.
+- Tags and notes are stored in problems.json and rendered into the README when published.
