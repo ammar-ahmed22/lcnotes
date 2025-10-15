@@ -79,5 +79,17 @@
         ],
         "notes": "- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially\n- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox\n- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`\n",
         "published": true
+    },
+    "longest-consecutive-sequence": {
+        "id": "longest-consecutive-sequence",
+        "title": "128. Longest Consecutive Sequence",
+        "directory": "128-longest-consecutive-sequence",
+        "difficulty": "Medium",
+        "tags": [
+            "hashmap",
+            "math"
+        ],
+        "notes": "- **Intuition**: The start of a sequence is when there IS a number exactly 1 greater than it in the array and NOT a number exactly 1 less than it. When a sequence start is found, iterate looking for the next values, keeping track of the max length\n- **Implementation**: Use hashmap to store all numbers for `O(1)` lookup, iterate and look for sequence start, iterate building the sequence and keep track of max\n- **Edge-cases**: In case of duplicates, we don't process the same sequence start multiple times. Initialize hashmap with all `False` values, when processing a sequence start, mark it as `True` to signify this sequence start is already processed and don't process that sequence start again\n",
+        "published": true
     }
 }
