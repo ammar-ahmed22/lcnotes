@@ -6,8 +6,12 @@ class Scraper:
         self.__playright__ = playwright
 
     def __create_page(self) -> Page:
-        browser = self.__playright__.chromium.launch(headless=False)
-        page = browser.new_page()
+        browser = self.__playright__.chromium.launch(headless=True, channel="chrome", args=["--disable-blink-features=AutomationControlled", "--no-sandbox"])
+        ctx = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+            locale="en-US",
+        )
+        page = ctx.new_page()
         return page
 
     def __open_problem_page(self, page: Page, slug: str) -> None:
