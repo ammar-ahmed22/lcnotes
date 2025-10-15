@@ -6,6 +6,8 @@ class ProblemMetadata:
     def __init__(self, id: str, title: str, difficulty: str, content: str, problem_starter: str):
         self.id = id
         self.title = title
+        self.problem_number = title.split(".")[0]
+        self.directory = f"{self.problem_number}-{self.id}"
         self.difficulty = difficulty
         self.content = content
         self.problem_starter = problem_starter

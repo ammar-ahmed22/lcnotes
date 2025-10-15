@@ -48,7 +48,7 @@ def __publish_problem(problems: Problems, id: str):
     
 
     # Extract notes
-    notes = utils.read_file(f"./{id}/notes.md")
+    notes = utils.read_file(f"./{problem.directory}/notes.md")
 
     add_tags = utils.confirm("Would you like to add tags to this problem?", default=True)
 

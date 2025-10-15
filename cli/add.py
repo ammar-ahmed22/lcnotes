@@ -4,7 +4,7 @@ from core import commands, templates
 from core.problem_metadata import ProblemMetadata
 from core.problems import Problems, Problem
 from core.scraper import Scraper
-from core.utils import spinner
+from core.utils import spinner, retry
 
 
 def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> None:
@@ -17,9 +17,10 @@ def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> 
         typer.echo(f"Error: Problem with slug '{slug}' already exists.")
         raise typer.Exit(code=1)
 
-    # Step 2: Fetch problem details via scraper
-    with spinner(f"Fetch problem details for '{slug}' from LeetCode"):
-        metadata = __get_metadata(slug)
+    # Step 2: Fetch problem details via scraper with retries
+    with retry(3) as attempt:
+        with spinner(f"Fetch problem details for '{slug}' from LeetCode [Attempt {attempt}/3]"):
+            metadata = __get_metadata(slug)
 
     # Step 3: Create directory structure and files
     with spinner(f"Create files for '{metadata.id}'"):
@@ -39,28 +40,28 @@ def __get_metadata(slug: str) -> ProblemMetadata:
         return scraper.extract_metadata(slug)
 
 def __create_problem_files(metadata: ProblemMetadata):
-    commands.mkdir(metadata.id)
-    commands.touch(f"{metadata.id}/docs.md")
-    commands.touch(f"{metadata.id}/notes.md")
-    commands.touch(f"{metadata.id}/solution.py")
-    commands.touch(f"{metadata.id}/tests.py")
+    commands.mkdir(metadata.directory)
+    commands.touch(f"{metadata.directory}/docs.md")
+    commands.touch(f"{metadata.directory}/notes.md")
+    commands.touch(f"{metadata.directory}/solution.py")
+    commands.touch(f"{metadata.directory}/tests.py")
 
 def __populate_files(metadata: ProblemMetadata):
-    templates.render_to_file("docs.md.j2", f"{metadata.id}/docs.md", title=metadata.title, content=metadata.content_markdown())
-    templates.render_to_file("solution.py.j2", f"{metadata.id}/solution.py", problem_starter=metadata.problem_starter)
+    templates.render_to_file("docs.md.j2", f"{metadata.directory}/docs.md", title=metadata.title, content=metadata.content_markdown())
+    templates.render_to_file("solution.py.j2", f"{metadata.directory}/solution.py", problem_starter=metadata.problem_starter)
     parameter_names = metadata.parameter_names()
     if parameter_names:
         parameters_string = ", ".join(parameter_names)
     else:
         parameters_string = "COULD NOT PARSE PARMETERS, UPDATE MANUALLY"
-    templates.render_to_file("tests.py.j2", f"{metadata.id}/tests.py", 
+    templates.render_to_file("tests.py.j2", f"{metadata.directory}/tests.py", 
         parameters=parameters_string,
         underscored_slug=metadata.id.replace("-", "_")
     )
-    templates.render_to_file("notes.md.j2", f"{metadata.id}/notes.md")
+    templates.render_to_file("notes.md.j2", f"{metadata.directory}/notes.md")
 
 def __save_to_json(problems: Problems, metadata: ProblemMetadata):
-    problem = Problem.base(metadata.id, metadata.title, metadata.difficulty)
+    problem = Problem.base(metadata.id, metadata.title, metadata.directory, metadata.difficulty)
     problems.set_problem(problem)
     problems.save()
 

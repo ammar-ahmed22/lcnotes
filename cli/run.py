@@ -16,7 +16,10 @@ def main(slug = typer.Argument("", help="Leetcode problem slug (search if not pr
         typer.echo(f"Problem '{slug}' not found.")
         return
 
-    code, stdout, stderr = commands.run(f"python3 {slug}/solution.py")
+    problem = problems.get_problem(slug)
+    assert problem is not None
+
+    code, stdout, stderr = commands.run(f"python3 {problem.directory}/solution.py")
     if code == 0:
         typer.echo(f"Problem '{slug}' ran successfully.")
         typer.echo(stdout)

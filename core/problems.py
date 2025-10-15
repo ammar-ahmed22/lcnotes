@@ -3,9 +3,10 @@ from .utils import read_file, write_file
 import json
 
 class Problem:
-    def __init__(self, id: str, title: str, difficulty: str, tags: List[str], notes: str, published: bool):
+    def __init__(self, id: str, title: str, directory: str, difficulty: str, tags: List[str], notes: str, published: bool):
         self.id = id
         self.title = title
+        self.directory = directory
         self.difficulty = difficulty
         self.tags = tags
         self.notes = notes
@@ -19,6 +20,7 @@ class Problem:
         return cls(
             id=problem["id"],
             title=problem["title"],
+            directory=problem["directory"],
             difficulty=problem["difficulty"],
             tags=problem["tags"],
             notes=problem["notes"],
@@ -26,8 +28,8 @@ class Problem:
         )
 
     @classmethod
-    def base(cls, id: str, title: str, difficulty: str):
-        return cls(id, title, difficulty, [], "", False)
+    def base(cls, id: str, title: str, directory: str, difficulty: str):
+        return cls(id, title, directory, difficulty, [], "", False)
 
     def publish(self):
         self.published = True
@@ -41,6 +43,7 @@ class Problem:
         return {
             "id": self.id,
             "title": self.title,
+            "directory": self.directory,
             "difficulty": self.difficulty,
             "tags": self.tags,
             "notes": self.notes,

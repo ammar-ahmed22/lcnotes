@@ -6,7 +6,7 @@ class Scraper:
         self.__playright__ = playwright
 
     def __create_page(self) -> Page:
-        browser = self.__playright__.chromium.launch(headless=True)
+        browser = self.__playright__.chromium.launch(headless=False)
         page = browser.new_page()
         return page
 

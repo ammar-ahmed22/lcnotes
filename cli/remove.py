@@ -18,9 +18,12 @@ def main(slug = typer.Argument("", help="Leetcode problem slug (search if not pr
         typer.echo(f"Problem '{slug}' not found.")
         return
 
+    problem = problems.get_problem(slug)
+    assert problem is not None
+
     try:
         problems.remove_problem(slug)
-        commands.rimraf(slug)
+        commands.rimraf(problem.directory)
         readme = README()
         content = readme.generate(problems)
         utils.write_file("README.md", content)
