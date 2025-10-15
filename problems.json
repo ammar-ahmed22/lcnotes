@@ -45,5 +45,17 @@
         ],
         "notes": "- **Intuition**: Every \"group\" of anagrams will have the same frequency table (26 value array)\n- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result\n- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string\n",
         "published": true
+    },
+    "top-k-frequent-elements": {
+        "id": "top-k-frequent-elements",
+        "title": "347. Top K Frequent Elements",
+        "directory": "347-top-k-frequent-elements",
+        "difficulty": "Medium",
+        "tags": [
+            "hashmap",
+            "frequency"
+        ],
+        "notes": "- **Intuition**: Since each answer is unique, every number will map to exactly one frequency, we can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time\n- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result\n- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed\n",
+        "published": true
     }
 }
