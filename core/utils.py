@@ -1,5 +1,7 @@
 from contextlib import contextmanager
-from InquirerPy import inquirer
+from InquirerPy.prompts.fuzzy import FuzzyPrompt
+from InquirerPy.prompts.confirm import ConfirmPrompt
+from InquirerPy.prompts.input import InputPrompt
 from typing import List
 from yaspin import yaspin
 import typer
@@ -42,14 +44,14 @@ def spinner(text: str):
 
 def autocomplete(prompt: str, options: List[str], default: str = "") -> str:
     """Prompt the user with an autocomplete input."""
-    return inquirer.fuzzy(
+    return FuzzyPrompt(
         message=prompt,
         choices=options,
         default=default,
     ).execute()
 
 def confirm(prompt: str, default: bool = False) -> bool:
-    return inquirer.confirm(message=prompt, default=default).execute()
+    return ConfirmPrompt(message=prompt, default=default).execute()
 
 def prompt(prompt: str, default: str = "") -> str:
-    return inquirer.text(message=prompt, default=default).execute()
+    return InputPrompt(message=prompt, default=default).execute()
