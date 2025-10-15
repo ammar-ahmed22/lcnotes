@@ -1,0 +1,3 @@
+- **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed
+- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.
+- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics
