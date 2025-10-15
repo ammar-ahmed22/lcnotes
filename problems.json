@@ -4,8 +4,11 @@
         "title": "1. Two Sum",
         "directory": "1-two-sum",
         "difficulty": "Easy",
-        "tags": [],
-        "notes": "",
-        "published": false
+        "tags": [
+            "hashmap",
+            "math"
+        ],
+        "notes": "- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array\n- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return\n- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)\n",
+        "published": true
     }
 }

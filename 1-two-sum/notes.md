@@ -1,3 +1,3 @@
-- **Intuition**:
-- **Implementation**:
-- **Edge-cases**:
+- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array
+- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return
+- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)

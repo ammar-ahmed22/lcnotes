@@ -7,6 +7,6 @@
 | Problem | Notes | Difficulty | Solution |
 | :-----: | ----- | :--------: | :------: |
 {% for problem in problems -%}
-| [{{ problem.title }}](https://leetcode.com/problems/{{ problem.id }}) | {{ problem.notes }} | ![Static Badge](https://img.shields.io/badge/{{ problem.difficulty }}-{{ colors[problem.difficulty] }}?style=flat) | [solution](./{{ problem.id }}/solution.py)
+| [{{ problem.title }}](https://leetcode.com/problems/{{ problem.id }}) | {{ problem.notes }} | ![Static Badge](https://img.shields.io/badge/{{ problem.difficulty }}-{{ colors[problem.difficulty] }}?style=flat) | [solution](./{{ problem.directory }}/solution.py)
 {% endfor -%}
 
