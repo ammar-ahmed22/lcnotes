@@ -33,5 +33,17 @@
         ],
         "notes": "- **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.\n- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False\n",
         "published": true
+    },
+    "group-anagrams": {
+        "id": "group-anagrams",
+        "title": "49. Group Anagrams",
+        "directory": "49-group-anagrams",
+        "difficulty": "Medium",
+        "tags": [
+            "hashmap",
+            "frequency"
+        ],
+        "notes": "- **Intuition**: Every \"group\" of anagrams will have the same frequency table (26 value array)\n- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result\n- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string\n",
+        "published": true
     }
 }
