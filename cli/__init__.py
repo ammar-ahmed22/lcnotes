@@ -1,5 +1,5 @@
 import typer
-from . import add, run, remove, test, publish, unpublish
+from . import add, run, remove, test, publish, unpublish, generate_readme
 
 app = typer.Typer(help="Leetcode problem management CLI too.")
 
@@ -9,3 +9,4 @@ app.command(name="remove", help="Remove a Leetcode problem by slug or via search
 app.command(name="test", help="Test a Leetcode problem by slug or via search")(test.main)
 app.command(name="publish", help="Publish a Leetcode problem by slug or via search")(publish.main)
 app.command(name="unpublish", help="Unpublish a Leetcode problem by slug or via search")(unpublish.main)
+app.command(name="generate-readme", help="Generate the README.md based on the current problems.json")(generate_readme.main)

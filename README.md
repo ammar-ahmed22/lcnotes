@@ -1,6 +1,11 @@
 <div align="center">
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
+    <p>
+      <img src="https://img.shields.io/badge/3-easy-green" />
+      <img src="https://img.shields.io/badge/4-medium-yellow" />
+      <img src="https://img.shields.io/badge/0-hard-red" />
+    </p>
 </div>
 
 ## Problems Solved
