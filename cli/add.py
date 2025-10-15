@@ -4,7 +4,7 @@ from core import commands, templates
 from core.problem_metadata import ProblemMetadata
 from core.problems import Problems, Problem
 from core.scraper import Scraper
-from core.utils import spinner, retry
+from core.utils import spinner
 
 
 def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> None:
@@ -18,10 +18,19 @@ def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> 
         raise typer.Exit(code=1)
 
     # Step 2: Fetch problem details via scraper with retries
-    with retry(3) as attempt:
-        with spinner(f"Fetch problem details for '{slug}' from LeetCode [Attempt {attempt}/3]"):
-            metadata = __get_metadata(slug)
+    metadata = None
+    for attempt in range(1, 4):
+        try:
+            with spinner(f"Fetch problem details for '{slug}' from LeetCode [Attempt {attempt}/3]"):
+                metadata = __get_metadata(slug)
+            break
+        except BaseException as e:
+            if attempt >= 3:
+                typer.echo(f"Error: Maximum attempts reached: {e}")
+                raise typer.Exit(code=1)
+            typer.echo(f"Warning: Attempt {attempt} failed. Retrying...")
 
+    assert metadata is not None
     # Step 3: Create directory structure and files
     with spinner(f"Create files for '{metadata.id}'"):
         __create_problem_files(metadata)

@@ -43,27 +43,6 @@ def spinner(text: str):
             raise typer.Exit(code=1)
 
 
-@contextmanager
-def retry(max_attempts: int):
-    """A context manager for retrying a block of code up to max_attempts times.
-
-    Usage:
-        with retry(3) as attempt:
-            print(f"Attempt {attempt}")
-            do_work()
-    """
-    attempt = 1
-    while True:
-        try:
-            yield attempt
-            break
-        except Exception as e:
-            if attempt >= max_attempts:
-                typer.echo(f"Error: Maximum attempts reached: {e}")
-                raise typer.Exit(code=1)
-            attempt += 1
-            typer.echo(f"Warning: Attempt {attempt - 1} failed: {e}. Retrying...")
-
 def autocomplete(prompt: str, options: List[str], default: str = "") -> str:
     """Prompt the user with an autocomplete input."""
     return FuzzyPrompt(
