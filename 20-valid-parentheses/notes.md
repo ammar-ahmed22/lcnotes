@@ -1,0 +1,3 @@
+- **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.
+- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.
+- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.

@@ -2,7 +2,7 @@
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
-      <img src="https://img.shields.io/badge/4-easy-green" />
+      <img src="https://img.shields.io/badge/5-easy-green" />
       <img src="https://img.shields.io/badge/8-medium-yellow" />
       <img src="https://img.shields.io/badge/0-hard-red" />
     </p>
@@ -38,6 +38,7 @@
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | - **Intuition**: Need to check if a given number exists in the array<br />- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | - **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.<br />- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)
 | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome) | - **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed<br />- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.<br />- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./125-valid-palindrome/solution.py)
+| [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses) | - **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.<br />- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.<br />- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./20-valid-parentheses/solution.py)
 ---
 
 ## Overview
