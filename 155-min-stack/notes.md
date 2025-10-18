@@ -1,0 +1,2 @@
+- **Intuition**: Use two stacks, one to track the min values and one for the actual stack
+- **Implementation**: Initialize two stacks. `getMin` gets the top of the min stack if it has elements, otherwise top of main stack. `top` gets the top of the main stack always. `push` will always push to main stack, checks if the number is less than or equal to the min or if the stack is empty and pushes to the min stack, `pop` will check if the current top is equal to the min, pop from min stack, always pop from main stack after.

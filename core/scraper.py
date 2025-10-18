@@ -61,7 +61,7 @@ class Scraper:
         button = page.locator(f'div:text-is("{language}")')
         button.click()
 
-    def extract_metadata(self, slug: str) -> ProblemMetadata:
+    def extract_metadata(self, slug: str, snippet_start: str = "class Solution:") -> ProblemMetadata:
         page = self.__create_page()
         self.__open_problem_page(page, slug)
         self.__close_leet_popup(page)
@@ -69,7 +69,7 @@ class Scraper:
         description_html = self.__extract_description(page)
         difficulty = self.__extract_difficulty(page)
         title = self.__extract_title(page, slug)
-        problem_starter = self.__extract_problem_starter(page, "Python3", "class Solution:")
+        problem_starter = self.__extract_problem_starter(page, "Python3", snippet_start)
         if problem_starter is None:
             raise ValueError("Could not extract problem starter code.")
 

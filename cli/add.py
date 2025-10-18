@@ -7,7 +7,7 @@ from core.scraper import Scraper
 from core.utils import spinner
 
 
-def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> None:
+def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)"), code_starter = typer.Option("class Solution:", "-s", "--starter", help="Provide what the code snippet should start with when scraping from Leetcode (defaults to 'class Solution:', useful for class based questions)")) -> None:
     """
     Create a new problem from slug
     """
@@ -22,7 +22,7 @@ def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> 
     for attempt in range(1, 4):
         try:
             with spinner(f"Fetch problem details for '{slug}' from LeetCode [Attempt {attempt}/3]"):
-                metadata = __get_metadata(slug)
+                metadata = __get_metadata(slug, code_starter)
             break
         except BaseException as e:
             if attempt >= 3:
@@ -43,10 +43,10 @@ def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)")) -> 
     with spinner(f"Add problem to JSON for '{metadata.id}'"):
         __save_to_json(problems, metadata)
 
-def __get_metadata(slug: str) -> ProblemMetadata:
+def __get_metadata(slug: str, code_starter: str) -> ProblemMetadata:
     with sync_playwright() as playwright:
         scraper = Scraper(playwright)
-        return scraper.extract_metadata(slug)
+        return scraper.extract_metadata(slug, code_starter)
 
 def __create_problem_files(metadata: ProblemMetadata):
     commands.mkdir(metadata.directory)
