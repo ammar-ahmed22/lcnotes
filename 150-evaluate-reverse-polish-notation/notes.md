@@ -1,0 +1,3 @@
+- **Intuition**: In RPN, every operator operates on the last two elements while ensuring the results of all operations are continously updated.
+- **Implementation**: Use a stack, whenever a number is seen, add to stack. When an operator seen, pop the last 2 and operate on them, push the result back to the stack and keep going. Return top of stack at the end.
+- **Edge-cases**: In Python, integer division (`a // b`) does not truncate to zero, use `int(b / a)`. Remember order for division and subtraction matter, its `b - a` and `int(b / a)`.
