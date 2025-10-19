@@ -1,0 +1,2 @@
+- **Intuition**: Store the temperature until a greater temperature is found.
+- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.

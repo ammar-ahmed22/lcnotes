@@ -183,7 +183,18 @@
             "stack",
             "recursion"
         ],
-        "notes": "- **Intuition**:\n- **Implementation**:\n- **Edge-cases**:",
+        "notes": "- **Intuition**: Recursively generate by going down the different possible paths to make a well-formed parentheses set. Open and closed must both equal n for it to be well-formed\n- **Implementation**: Recursive function that takes open, closed, n, stack and result. Base case `open == close == n`, form the string from the stack and add to result. Otherwise, check if `open < n`, add open to stack, recurse with new count, pop from stack after to go down other path. Check if `closed < open` (other path), add close to stack, recurse with new count, pop from stack.\n",
+        "published": true
+    },
+    "daily-temperatures": {
+        "id": "daily-temperatures",
+        "title": "739. Daily Temperatures",
+        "directory": "739-daily-temperatures",
+        "difficulty": "Medium",
+        "tags": [
+            "stack"
+        ],
+        "notes": "- **Intuition**: Store the temperature until a greater temperature is found.\n- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.\n",
         "published": true
     }
 }
