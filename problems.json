@@ -196,5 +196,17 @@
         ],
         "notes": "- **Intuition**: Store the temperature until a greater temperature is found.\n- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.\n",
         "published": true
+    },
+    "car-fleet": {
+        "id": "car-fleet",
+        "title": "853. Car Fleet",
+        "directory": "853-car-fleet",
+        "difficulty": "Medium",
+        "tags": [
+            "stack",
+            "math"
+        ],
+        "notes": "- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting\n- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.\n",
+        "published": true
     }
 }
