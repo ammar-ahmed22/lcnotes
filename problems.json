@@ -220,5 +220,16 @@
         ],
         "notes": "- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.\n- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.\n- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.\n",
         "published": true
+    },
+    "binary-search": {
+        "id": "binary-search",
+        "title": "704. Binary Search",
+        "directory": "704-binary-search",
+        "difficulty": "Easy",
+        "tags": [
+            "binary-search"
+        ],
+        "notes": "- **Intuition**: Cut the search area in half each time.\n- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).\n- **Edge-cases**: Iterating while left less than or EQUAL to right.\n",
+        "published": true
     }
 }
