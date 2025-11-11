@@ -208,5 +208,17 @@
         ],
         "notes": "- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting\n- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.\n",
         "published": true
+    },
+    "largest-rectangle-in-histogram": {
+        "id": "largest-rectangle-in-histogram",
+        "title": "84. Largest Rectangle in Histogram",
+        "directory": "84-largest-rectangle-in-histogram",
+        "difficulty": "Hard",
+        "tags": [
+            "stack",
+            "math"
+        ],
+        "notes": "- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.\n- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.\n- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.\n",
+        "published": true
     }
 }

@@ -1,0 +1,3 @@
+- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.
+- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.
+- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.
