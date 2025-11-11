@@ -1,0 +1,3 @@
+- **Intuition**: Nested binary search. Find the row, then find the value.
+- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.
+- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.

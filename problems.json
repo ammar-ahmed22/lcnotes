@@ -231,5 +231,17 @@
         ],
         "notes": "- **Intuition**: Cut the search area in half each time.\n- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).\n- **Edge-cases**: Iterating while left less than or EQUAL to right.\n",
         "published": true
+    },
+    "search-a-2d-matrix": {
+        "id": "search-a-2d-matrix",
+        "title": "74. Search a 2D Matrix",
+        "directory": "74-search-a-2d-matrix",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-search",
+            "matrix"
+        ],
+        "notes": "- **Intuition**: Nested binary search. Find the row, then find the value.\n- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.\n- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.\n",
+        "published": true
     }
 }
