@@ -2,7 +2,7 @@
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
-      <img src="https://img.shields.io/badge/6-easy-green" />
+      <img src="https://img.shields.io/badge/7-easy-green" />
       <img src="https://img.shields.io/badge/17-medium-yellow" />
       <img src="https://img.shields.io/badge/1-hard-red" />
     </p>
@@ -50,6 +50,7 @@
 | [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome) | - **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed<br />- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.<br />- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./125-valid-palindrome/solution.py)
 | [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses) | - **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.<br />- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.<br />- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./20-valid-parentheses/solution.py)
 | [704. Binary Search](https://leetcode.com/problems/binary-search) | - **Intuition**: Cut the search area in half each time.<br />- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).<br />- **Edge-cases**: Iterating while left less than or EQUAL to right.<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./704-binary-search/solution.py)
+| [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock) | - **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.<br />- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. <br />- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). <br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./121-best-time-to-buy-and-sell-stock/solution.py)
 ---
 
 ## Overview

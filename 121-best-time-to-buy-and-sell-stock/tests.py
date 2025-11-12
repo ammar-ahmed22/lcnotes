@@ -1,0 +1,12 @@
+import pytest
+from solution import Solution
+
+@pytest.mark.parametrize("prices, expected", [
+    ([7,1,5,3,6,4], 5),
+    ([7,6,4,3,1], 0)
+])
+def test_best_time_to_buy_and_sell_stock(prices, expected):
+    # Write your test assertions here
+    # e.g. for twoSum, assert sorted(solution.twoSum(nums, target)) == sorted(expected)
+    solution = Solution()
+    assert solution.maxProfit(prices) == expected

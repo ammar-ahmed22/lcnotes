@@ -277,5 +277,16 @@
         ],
         "notes": "- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which \"side\" of the array to search in.\n- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.\n- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.\n",
         "published": true
+    },
+    "best-time-to-buy-and-sell-stock": {
+        "id": "best-time-to-buy-and-sell-stock",
+        "title": "121. Best Time to Buy and Sell Stock",
+        "directory": "121-best-time-to-buy-and-sell-stock",
+        "difficulty": "Easy",
+        "tags": [
+            "sliding-window"
+        ],
+        "notes": "- **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.\n- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. \n- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). \n",
+        "published": true
     }
 }
