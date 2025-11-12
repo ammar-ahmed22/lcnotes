@@ -243,5 +243,17 @@
         ],
         "notes": "- **Intuition**: Nested binary search. Find the row, then find the value.\n- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.\n- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.\n",
         "published": true
+    },
+    "koko-eating-bananas": {
+        "id": "koko-eating-bananas",
+        "title": "875. Koko Eating Bananas",
+        "directory": "875-koko-eating-bananas",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-search",
+            "math"
+        ],
+        "notes": "- **Intuition**: The max eating speed will be the max value in the piles.\n- **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.\n- **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.\n",
+        "published": true
     }
 }
