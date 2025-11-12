@@ -1,0 +1,3 @@
+- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which "side" of the array to search in.
+- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.
+- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.
