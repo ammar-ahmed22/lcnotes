@@ -255,5 +255,16 @@
         ],
         "notes": "- **Intuition**: The max eating speed will be the max value in the piles.\n- **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.\n- **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.\n",
         "published": true
+    },
+    "find-minimum-in-rotated-sorted-array": {
+        "id": "find-minimum-in-rotated-sorted-array",
+        "title": "153. Find Minimum in Rotated Sorted Array",
+        "directory": "153-find-minimum-in-rotated-sorted-array",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-search"
+        ],
+        "notes": "- **Intuition**: The number before and after the min will be greater than it.\n- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.\n- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.\n",
+        "published": true
     }
 }

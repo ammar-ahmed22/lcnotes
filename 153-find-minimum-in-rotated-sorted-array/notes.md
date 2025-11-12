@@ -1,0 +1,3 @@
+- **Intuition**: The number before and after the min will be greater than it.
+- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.
+- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.
