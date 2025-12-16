@@ -1,0 +1,3 @@
+- **Intuition**: Slide a window by removing from the left when a character is seen again on the right
+- **Implementation**: Use a set. Iterate with the right pointer, initialize a left pointer. If the right character is in the set, remove from the left side, increment left. Add the right character to set after the check. Keep track of max length after the check.
+- **Edge-cases**: Window size will be `r - l + 1`

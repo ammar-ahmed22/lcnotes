@@ -288,5 +288,16 @@
         ],
         "notes": "- **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.\n- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. \n- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). \n",
         "published": true
+    },
+    "longest-substring-without-repeating-characters": {
+        "id": "longest-substring-without-repeating-characters",
+        "title": "3. Longest Substring Without Repeating Characters",
+        "directory": "3-longest-substring-without-repeating-characters",
+        "difficulty": "Medium",
+        "tags": [
+            "sliding-window"
+        ],
+        "notes": "- **Intuition**: Slide a window by removing from the left when a character is seen again on the right\n- **Implementation**: Use a set. Iterate with the right pointer, initialize a left pointer. If the right character is in the set, remove from the left side, increment left. Add the right character to set after the check. Keep track of max length after the check.\n- **Edge-cases**: Window size will be `r - l + 1`\n",
+        "published": true
     }
 }
