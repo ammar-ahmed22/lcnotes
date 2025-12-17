@@ -76,6 +76,16 @@ lcnotes is a personal CLI that helps me manage LeetCode problems locally. It can
   tests.py       # pytest tests scaffold
 ```
 
+## Installation
+Set up a virtual environment (recommended), activate it, upgrade pip, and install lcnotes in editable mode so code changes in this repo are picked up immediately.
+
+```bash path=null start=null
+python3 -m venv venv
+source venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+```
+
 ## Commands
 Below are the CLI commands and what they do. If a slug is omitted or ambiguous, a fuzzy prompt lets me pick.
 
