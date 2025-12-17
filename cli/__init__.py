@@ -1,7 +1,7 @@
 import typer
 from . import add, run, remove, test, publish, unpublish, generate_readme
 
-app = typer.Typer(help="Leetcode problem management CLI too.")
+app = typer.Typer(help="Leetcode problem management CLI tool.")
 
 app.command(name="add", help="Create a new Leetcode problem testing and documentation environment")(add.main)
 app.command(name="run", help="Run tests for a Leetcode problem")(run.main)

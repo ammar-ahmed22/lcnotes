@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Optional
 from .utils import read_file, write_file
 import json
+from datetime import datetime as dt, timezone
 
 class Problem:
-    def __init__(self, id: str, title: str, directory: str, difficulty: str, tags: List[str], notes: str, published: bool):
+    def __init__(self, id: str, title: str, directory: str, difficulty: str, tags: List[str], notes: str, published: bool, datetime: Optional[str] = None):
         self.id = id
         self.title = title
         self.directory = directory
@@ -11,10 +12,11 @@ class Problem:
         self.tags = tags
         self.notes = notes
         self.published = published
+        self.datetime = datetime
 
     @classmethod
     def from_dict(cls, problem: dict):
-        if not all(k in problem for k in ("id", "title", "difficulty", "tags", "notes", "published")):
+        if not all(k in problem for k in ("id", "title", "difficulty", "tags", "notes", "published", "datetime")):
             raise ValueError(f"problem: '{problem}' is invalid!")
 
         return cls(
@@ -24,15 +26,17 @@ class Problem:
             difficulty=problem["difficulty"],
             tags=problem["tags"],
             notes=problem["notes"],
-            published=problem["published"]
+            published=problem["published"],
+            datetime=problem["datetime"]
         )
 
     @classmethod
     def base(cls, id: str, title: str, directory: str, difficulty: str):
-        return cls(id, title, directory, difficulty, [], "", False)
+        return cls(id, title, directory, difficulty, [], "", False, None)
 
     def publish(self):
         self.published = True
+        self.datetime = dt.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
 
     def unpublish(self):
         self.notes = ""
@@ -47,7 +51,8 @@ class Problem:
             "difficulty": self.difficulty,
             "tags": self.tags,
             "notes": self.notes,
-            "published": self.published
+            "published": self.published,
+            "datetime": self.datetime
         }
 
 class Problems:
@@ -95,7 +100,6 @@ class Problems:
     
     def published_problems(self) -> List[Problem]:
         return [Problem.from_dict(self.problems[problem]) for problem in self.problems if self.problems[problem]["published"]]
-
 
 
 
