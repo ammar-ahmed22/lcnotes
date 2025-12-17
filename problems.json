@@ -9,7 +9,8 @@
             "math"
         ],
         "notes": "- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array\n- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return\n- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "contains-duplicate": {
         "id": "contains-duplicate",
@@ -20,7 +21,8 @@
             "hashmap"
         ],
         "notes": "- **Intuition**: Need to check if a given number exists in the array\n- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "valid-anagram": {
         "id": "valid-anagram",
@@ -32,7 +34,8 @@
             "frequency"
         ],
         "notes": "- **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.\n- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "group-anagrams": {
         "id": "group-anagrams",
@@ -44,7 +47,8 @@
             "frequency"
         ],
         "notes": "- **Intuition**: Every \"group\" of anagrams will have the same frequency table (26 value array)\n- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result\n- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "top-k-frequent-elements": {
         "id": "top-k-frequent-elements",
@@ -56,7 +60,8 @@
             "frequency"
         ],
         "notes": "- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time\n- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result\n- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "product-of-array-except-self": {
         "id": "product-of-array-except-self",
@@ -67,7 +72,8 @@
             "math"
         ],
         "notes": "- **Intuition**: Use `prefix` and `suffix` arrays to calculate answer at each index. `prefix` is the product of all elements before `i` and `suffix` is the product of all elements after `i`.\n- **Implementation**: Initialize `prefix` with `1` (before `i = 0` is just 1), iterate from `1 to n`, `prefix[i] = nums[i - 1] * prefix[i - 1]`. Initialize `suffix` with `suffix[-1] = 1` (after the end of the array, just 1 left), iterate backwards `n-2 to 0`, `suffix[i] = nums[i + 1] * suffix[i + 1]`. Answer is `ans[i] = prefix[i] * suffix[i]`\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "valid-sudoku": {
         "id": "valid-sudoku",
@@ -78,7 +84,8 @@
             "matrix"
         ],
         "notes": "- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially\n- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox\n- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "longest-consecutive-sequence": {
         "id": "longest-consecutive-sequence",
@@ -90,7 +97,8 @@
             "math"
         ],
         "notes": "- **Intuition**: The start of a sequence is when there IS a number exactly 1 greater than it in the array and NOT a number exactly 1 less than it. When a sequence start is found, iterate looking for the next values, keeping track of the max length\n- **Implementation**: Use hashmap to store all numbers for `O(1)` lookup, iterate and look for sequence start, iterate building the sequence and keep track of max\n- **Edge-cases**: In case of duplicates, we don't process the same sequence start multiple times. Initialize hashmap with all `False` values, when processing a sequence start, mark it as `True` to signify this sequence start is already processed and don't process that sequence start again\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "valid-palindrome": {
         "id": "valid-palindrome",
@@ -102,7 +110,8 @@
             "strings"
         ],
         "notes": "- **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed\n- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.\n- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "two-sum-ii-input-array-is-sorted": {
         "id": "two-sum-ii-input-array-is-sorted",
@@ -114,7 +123,8 @@
             "binary-search"
         ],
         "notes": "- **Intuition**: Since array is sorted, we only need to look for our complment (`target - curr`) in the values to the right of the current (also sorted, binary search)\n- **Implementation**: For each number, calculate the complement, conduct binary search on the elements to the right of it, if not found keep going, if found return\n\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "3sum": {
         "id": "3sum",
@@ -126,7 +136,8 @@
             "two-pointers"
         ],
         "notes": "- **Intuition**: Use a similar approach to [Two Sum II - Input Array Sorted](../167-two-sum-ii-input-array-is-sorted/solution.py), sort the input, look for when left and right of the right side of the array add up to the current number\n- **Implementation**: Sort the input `O(n log n)`, for each number, binary search on the right side of the array, if `l + r = curr`, triplet found, add to result, move right if `l + r` is too big, otherwise move left\n- **Edge-cases**: Ensure that we keep going even after finding a triplet because there could be more with the same `curr`. Also ensure that we move past duplicates for `curr` because it will be the same result, i.e. if we have [-1, -1, -1, 0, 1], we want to start processing at the last -1. Same thing when we find an answer, we want to move left and right until they are at the next non-duplicate\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "container-with-most-water": {
         "id": "container-with-most-water",
@@ -138,7 +149,8 @@
             "math"
         ],
         "notes": "- **Intuition**: We want to maximize height and width. Start with max width and always reduce the width towards the larger height.\n- **Implementation**: Left and right pointers at the end of the array. Keep track of max area using min of left and right as height. Move right or left pointer towards the larger one. i.e. if left > right, move right. if right > left, move left.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "valid-parentheses": {
         "id": "valid-parentheses",
@@ -149,7 +161,8 @@
             "stack"
         ],
         "notes": "- **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.\n- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.\n- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "min-stack": {
         "id": "min-stack",
@@ -160,7 +173,8 @@
             "stack"
         ],
         "notes": "- **Intuition**: Use two stacks, one to track the min values and one for the actual stack\n- **Implementation**: Initialize two stacks. `getMin` gets the top of the min stack if it has elements, otherwise top of main stack. `top` gets the top of the main stack always. `push` will always push to main stack, checks if the number is less than or equal to the min or if the stack is empty and pushes to the min stack, `pop` will check if the current top is equal to the min, pop from min stack, always pop from main stack after.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "evaluate-reverse-polish-notation": {
         "id": "evaluate-reverse-polish-notation",
@@ -172,7 +186,8 @@
             "math"
         ],
         "notes": "- **Intuition**: In RPN, every operator operates on the last two elements while ensuring the results of all operations are continously updated.\n- **Implementation**: Use a stack, whenever a number is seen, add to stack. When an operator seen, pop the last 2 and operate on them, push the result back to the stack and keep going. Return top of stack at the end.\n- **Edge-cases**: In Python, integer division (`a // b`) does not truncate to zero, use `int(b / a)`. Remember order for division and subtraction matter, its `b - a` and `int(b / a)`.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "generate-parentheses": {
         "id": "generate-parentheses",
@@ -184,7 +199,8 @@
             "recursion"
         ],
         "notes": "- **Intuition**: Recursively generate by going down the different possible paths to make a well-formed parentheses set. Open and closed must both equal n for it to be well-formed\n- **Implementation**: Recursive function that takes open, closed, n, stack and result. Base case `open == close == n`, form the string from the stack and add to result. Otherwise, check if `open < n`, add open to stack, recurse with new count, pop from stack after to go down other path. Check if `closed < open` (other path), add close to stack, recurse with new count, pop from stack.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "daily-temperatures": {
         "id": "daily-temperatures",
@@ -195,7 +211,8 @@
             "stack"
         ],
         "notes": "- **Intuition**: Store the temperature until a greater temperature is found.\n- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "car-fleet": {
         "id": "car-fleet",
@@ -207,7 +224,8 @@
             "math"
         ],
         "notes": "- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting\n- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "largest-rectangle-in-histogram": {
         "id": "largest-rectangle-in-histogram",
@@ -219,7 +237,8 @@
             "math"
         ],
         "notes": "- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.\n- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.\n- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "binary-search": {
         "id": "binary-search",
@@ -230,7 +249,8 @@
             "binary-search"
         ],
         "notes": "- **Intuition**: Cut the search area in half each time.\n- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).\n- **Edge-cases**: Iterating while left less than or EQUAL to right.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "search-a-2d-matrix": {
         "id": "search-a-2d-matrix",
@@ -242,7 +262,8 @@
             "matrix"
         ],
         "notes": "- **Intuition**: Nested binary search. Find the row, then find the value.\n- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.\n- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "koko-eating-bananas": {
         "id": "koko-eating-bananas",
@@ -254,7 +275,8 @@
             "math"
         ],
         "notes": "- **Intuition**: The max eating speed will be the max value in the piles.\n- **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.\n- **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "find-minimum-in-rotated-sorted-array": {
         "id": "find-minimum-in-rotated-sorted-array",
@@ -265,7 +287,8 @@
             "binary-search"
         ],
         "notes": "- **Intuition**: The number before and after the min will be greater than it.\n- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.\n- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "search-in-rotated-sorted-array": {
         "id": "search-in-rotated-sorted-array",
@@ -276,7 +299,8 @@
             "binary-search"
         ],
         "notes": "- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which \"side\" of the array to search in.\n- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.\n- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "best-time-to-buy-and-sell-stock": {
         "id": "best-time-to-buy-and-sell-stock",
@@ -287,7 +311,8 @@
             "sliding-window"
         ],
         "notes": "- **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.\n- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. \n- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). \n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     },
     "longest-substring-without-repeating-characters": {
         "id": "longest-substring-without-repeating-characters",
@@ -298,6 +323,7 @@
             "sliding-window"
         ],
         "notes": "- **Intuition**: Slide a window by removing from the left when a character is seen again on the right\n- **Implementation**: Use a set. Iterate with the right pointer, initialize a left pointer. If the right character is in the set, remove from the left side, increment left. Add the right character to set after the check. Keep track of max length after the check.\n- **Edge-cases**: Window size will be `r - l + 1`\n",
-        "published": true
+        "published": true,
+        "datetime": "2025-12-17T05:26:00Z"
     }
 }
