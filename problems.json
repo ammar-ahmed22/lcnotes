@@ -385,5 +385,17 @@
         "notes": "- **Intuition**: Iterate the lists together, smaller ones going in first.\n- **Implementation**: Pointers for `list1`, `l1` and `list2`, `l2`. Create a dummy node for the result, set the `curr` pointer to the dummy. Iterate while `l1` and `l2` are not `None`. If `l1` value is less than `l2` val, set `curr.next` to a new node with that value. Update the curr pointer and the `l1` pointer. Else, set `curr.next` to a new node with that value. Update the curr pointer and the `l2` pointer. After the first iteration completes, one of `l1` or `l2` might still be not fully complete. Iterate through both of them the same way as above to finish it off. Return `dummy.next`.\n- **Complexity**: Time `O(m + n)` where `m` is length of `list1` and `n` is the length of `list2`, Space `O(1)` \n",
         "published": true,
         "datetime": "2025-12-22T22:55:29Z"
+    },
+    "linked-list-cycle": {
+        "id": "linked-list-cycle",
+        "title": "141. Linked List Cycle",
+        "directory": "141-linked-list-cycle",
+        "difficulty": "Easy",
+        "tags": [
+            "linked-list"
+        ],
+        "notes": "- **Intuition**: With fast and slow pointers, if there is a cycle they will eventually meet up.\n- **Implementation**: `slow` and `fast` pointers initialized to head. Iterate while `fast` and `fast.next` is not `None`. Update `slow` with `slow.next` and update `fast` with `fast.next.next`. After updating, if `fast == slow`, cycle found, early return `True`. Otherwise, if iteration completes (no cycle), return `False`.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2025-12-22T23:31:36Z"
     }
 }

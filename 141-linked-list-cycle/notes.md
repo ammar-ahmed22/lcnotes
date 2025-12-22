@@ -1,0 +1,3 @@
+- **Intuition**: With fast and slow pointers, if there is a cycle they will eventually meet up.
+- **Implementation**: `slow` and `fast` pointers initialized to head. Iterate while `fast` and `fast.next` is not `None`. Update `slow` with `slow.next` and update `fast` with `fast.next.next`. After updating, if `fast == slow`, cycle found, early return `True`. Otherwise, if iteration completes (no cycle), return `False`.
+- **Complexity**: Time `O(n)`, Space `O(1)`
