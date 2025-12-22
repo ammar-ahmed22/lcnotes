@@ -337,5 +337,17 @@
         "notes": "- **Intuition**: Only 26 characters possible. In each window, the number of operations to make them all the same is the max frequency of the window minus the window length. Reduce the window until this condition is satisfied.\n- **Implementation**: Create a frequency array (26 value array). Iterate with `r` pointer. Increment the character at `r` in the frequency array. Update the max frequency with the frequency value of the value at `r` (new value added). If the number of operations (`windowLen - maxFreq`) is greater than `k`, increment l (reduce window size) and decrement the frequency value.\n- **Edge-cases**: Window size is calculated with `r - l + 1`.\n",
         "published": true,
         "datetime": "2025-12-22T07:07:30Z"
+    },
+    "permutation-in-string": {
+        "id": "permutation-in-string",
+        "title": "567. Permutation in String",
+        "directory": "567-permutation-in-string",
+        "difficulty": "Medium",
+        "tags": [
+            "sliding-window"
+        ],
+        "notes": "- **Intuition**: Only 26 characters possible. Slide window of `len(s1)` across `s2` and check if the frequencies match up.\n- **Implementation**: Can use a single frequency map. Populate frequency map with characters from `s1`. Decrement frequency map with characters from `s2` up to `len(s1)` (first window). Initialize `r` to length of `s1` (first window already computed). Iterate while `r` is less than `len(s2)`. Check if frequency map is all zeros, early return. Increment value at left from frequency map (leaving window), decrement value at right from frequency map (entering window). Increment both l and r (they are already spaced at the correct window length).\n- **Edge-cases**: Early return at the start if `len(s1) > len(s2)`. Ensure to do a check at the end for the frequency map being zeros.\n",
+        "published": true,
+        "datetime": "2025-12-22T07:35:28Z"
     }
 }
