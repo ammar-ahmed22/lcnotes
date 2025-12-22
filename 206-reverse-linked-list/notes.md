@@ -1,0 +1,4 @@
+- **Intuition**: Iterate through reversing the links.
+- **Implementation**: `curr` pointer (initialized to `head`) and `prev` pointer (initialized to `None`). Iterate while `curr` is not `None`. Save `curr.next` into a temporary var because it will be needed. Set `curr.next` to `prev`. Set `prev` to `curr` and set `curr` to `temp`.
+- **Edge-cases**: Go through the ordering of how everything is set conceptually.
+- **Complexity**: Time `O(n)`, Space `O(1)`
