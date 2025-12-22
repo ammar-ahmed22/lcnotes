@@ -373,5 +373,17 @@
         "notes": "- **Intuition**: Iterate through reversing the links.\n- **Implementation**: `curr` pointer (initialized to `head`) and `prev` pointer (initialized to `None`). Iterate while `curr` is not `None`. Save `curr.next` into a temporary var because it will be needed. Set `curr.next` to `prev`. Set `prev` to `curr` and set `curr` to `temp`.\n- **Edge-cases**: Go through the ordering of how everything is set conceptually.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
         "datetime": "2025-12-22T22:43:29Z"
+    },
+    "merge-two-sorted-lists": {
+        "id": "merge-two-sorted-lists",
+        "title": "21. Merge Two Sorted Lists",
+        "directory": "21-merge-two-sorted-lists",
+        "difficulty": "Easy",
+        "tags": [
+            "linked-list"
+        ],
+        "notes": "- **Intuition**: Iterate the lists together, smaller ones going in first.\n- **Implementation**: Pointers for `list1`, `l1` and `list2`, `l2`. Create a dummy node for the result, set the `curr` pointer to the dummy. Iterate while `l1` and `l2` are not `None`. If `l1` value is less than `l2` val, set `curr.next` to a new node with that value. Update the curr pointer and the `l1` pointer. Else, set `curr.next` to a new node with that value. Update the curr pointer and the `l2` pointer. After the first iteration completes, one of `l1` or `l2` might still be not fully complete. Iterate through both of them the same way as above to finish it off. Return `dummy.next`.\n- **Complexity**: Time `O(m + n)` where `m` is length of `list1` and `n` is the length of `list2`, Space `O(1)` \n",
+        "published": true,
+        "datetime": "2025-12-22T22:55:29Z"
     }
 }
