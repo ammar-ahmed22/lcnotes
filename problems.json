@@ -349,5 +349,17 @@
         "notes": "- **Intuition**: Only 26 characters possible. Slide window of `len(s1)` across `s2` and check if the frequencies match up.\n- **Implementation**: Can use a single frequency map. Populate frequency map with characters from `s1`. Decrement frequency map with characters from `s2` up to `len(s1)` (first window). Initialize `r` to length of `s1` (first window already computed). Iterate while `r` is less than `len(s2)`. Check if frequency map is all zeros, early return. Increment value at left from frequency map (leaving window), decrement value at right from frequency map (entering window). Increment both l and r (they are already spaced at the correct window length).\n- **Edge-cases**: Early return at the start if `len(s1) > len(s2)`. Ensure to do a check at the end for the frequency map being zeros.\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
         "published": true,
         "datetime": "2025-12-22T09:22:58Z"
+    },
+    "minimum-window-substring": {
+        "id": "minimum-window-substring",
+        "title": "76. Minimum Window Substring",
+        "directory": "76-minimum-window-substring",
+        "difficulty": "Hard",
+        "tags": [
+            "sliding-window"
+        ],
+        "notes": "- **Intuition**: Frequency map created with chars of `t`, substring will be valid if when substracting frequencies from the same map are all less than or equal to zero.\n- **Implementation**: Create a frequency map of all characters in `t`. The minimum window size will be of length `t`, start `r` there. Process the first window first by iteration from `0` to `r` and subtracting from the map if the character exists. Iterate while `r` is less than `s`. Check if the current substring is valid by checking if the map has all `<= 0`. If it is valid, update the minimum string if needed. Always reduce the window when valid by incrementing `l` and updating the map. Only increment `r` when it's invalid or the length of the window has reached the minimum length (`len(t)`).\n- **Edge-cases**: When incrementing `r`, the frequency map should be updated AFTER. When incrementing `l`, frequency map should be updated BEFORE. Aeeswer is initialized to `\"\"` so check for that as well (see solution).\n- **Complexity**: Time `O(m)` (sliding window across `s`), Space `O(n)` (hashmap for `t`), where `m` is the length of `s` and `n` is the length of `t`.\n",
+        "published": true,
+        "datetime": "2025-12-22T09:58:11Z"
     }
 }
