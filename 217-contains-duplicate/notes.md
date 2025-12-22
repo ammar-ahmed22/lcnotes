@@ -1,2 +1,3 @@
 - **Intuition**: Need to check if a given number exists in the array
 - **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)
+- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)

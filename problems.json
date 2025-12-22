@@ -8,9 +8,9 @@
             "hashmap",
             "math"
         ],
-        "notes": "- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array\n- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return\n- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)\n",
+        "notes": "- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array\n- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return\n- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:18:55Z"
     },
     "contains-duplicate": {
         "id": "contains-duplicate",
@@ -20,9 +20,9 @@
         "tags": [
             "hashmap"
         ],
-        "notes": "- **Intuition**: Need to check if a given number exists in the array\n- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)\n",
+        "notes": "- **Intuition**: Need to check if a given number exists in the array\n- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:19:02Z"
     },
     "valid-anagram": {
         "id": "valid-anagram",
@@ -33,9 +33,9 @@
             "hashmap",
             "frequency"
         ],
-        "notes": "- **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.\n- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False\n",
+        "notes": "- **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.\n- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:19:12Z"
     },
     "group-anagrams": {
         "id": "group-anagrams",
@@ -46,9 +46,9 @@
             "hashmap",
             "frequency"
         ],
-        "notes": "- **Intuition**: Every \"group\" of anagrams will have the same frequency table (26 value array)\n- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result\n- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string\n",
+        "notes": "- **Intuition**: Every \"group\" of anagrams will have the same frequency table (26 value array)\n- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result\n- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:19:22Z"
     },
     "top-k-frequent-elements": {
         "id": "top-k-frequent-elements",
@@ -59,9 +59,9 @@
             "hashmap",
             "frequency"
         ],
-        "notes": "- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time\n- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result\n- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed\n",
+        "notes": "- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time\n- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result\n- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed\n- **Complexity**: Time `O(n)`, Space `O(n)` (freq map)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:19:31Z"
     },
     "product-of-array-except-self": {
         "id": "product-of-array-except-self",
@@ -71,9 +71,9 @@
         "tags": [
             "math"
         ],
-        "notes": "- **Intuition**: Use `prefix` and `suffix` arrays to calculate answer at each index. `prefix` is the product of all elements before `i` and `suffix` is the product of all elements after `i`.\n- **Implementation**: Initialize `prefix` with `1` (before `i = 0` is just 1), iterate from `1 to n`, `prefix[i] = nums[i - 1] * prefix[i - 1]`. Initialize `suffix` with `suffix[-1] = 1` (after the end of the array, just 1 left), iterate backwards `n-2 to 0`, `suffix[i] = nums[i + 1] * suffix[i + 1]`. Answer is `ans[i] = prefix[i] * suffix[i]`\n",
+        "notes": "- **Intuition**: Use `prefix` and `suffix` arrays to calculate answer at each index. `prefix` is the product of all elements before `i` and `suffix` is the product of all elements after `i`.\n- **Implementation**: Initialize `prefix` with `1` (before `i = 0` is just 1), iterate from `1 to n`, `prefix[i] = nums[i - 1] * prefix[i - 1]`. Initialize `suffix` with `suffix[-1] = 1` (after the end of the array, just 1 left), iterate backwards `n-2 to 0`, `suffix[i] = nums[i + 1] * suffix[i + 1]`. Answer is `ans[i] = prefix[i] * suffix[i]`\n- **Complexity**: Time `O(n)`, Space `O(n)` (prefix and suffix arrays)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:19:39Z"
     },
     "valid-sudoku": {
         "id": "valid-sudoku",
@@ -83,9 +83,9 @@
         "tags": [
             "matrix"
         ],
-        "notes": "- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially\n- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox\n- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`\n",
+        "notes": "- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially\n- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox\n- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`\n- **Complexity**: Time `O(n^2)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:19:52Z"
     },
     "longest-consecutive-sequence": {
         "id": "longest-consecutive-sequence",
@@ -96,9 +96,9 @@
             "hashmap",
             "math"
         ],
-        "notes": "- **Intuition**: The start of a sequence is when there IS a number exactly 1 greater than it in the array and NOT a number exactly 1 less than it. When a sequence start is found, iterate looking for the next values, keeping track of the max length\n- **Implementation**: Use hashmap to store all numbers for `O(1)` lookup, iterate and look for sequence start, iterate building the sequence and keep track of max\n- **Edge-cases**: In case of duplicates, we don't process the same sequence start multiple times. Initialize hashmap with all `False` values, when processing a sequence start, mark it as `True` to signify this sequence start is already processed and don't process that sequence start again\n",
+        "notes": "- **Intuition**: The start of a sequence is when there IS a number exactly 1 greater than it in the array and NOT a number exactly 1 less than it. When a sequence start is found, iterate looking for the next values, keeping track of the max length\n- **Implementation**: Use hashmap to store all numbers for `O(1)` lookup, iterate and look for sequence start, iterate building the sequence and keep track of max\n- **Edge-cases**: In case of duplicates, we don't process the same sequence start multiple times. Initialize hashmap with all `False` values, when processing a sequence start, mark it as `True` to signify this sequence start is already processed and don't process that sequence start again\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:01Z"
     },
     "valid-palindrome": {
         "id": "valid-palindrome",
@@ -107,11 +107,11 @@
         "difficulty": "Easy",
         "tags": [
             "two-pointers",
-            "strings"
+            "string"
         ],
-        "notes": "- **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed\n- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.\n- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics\n",
+        "notes": "- **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed\n- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.\n- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:13Z"
     },
     "two-sum-ii-input-array-is-sorted": {
         "id": "two-sum-ii-input-array-is-sorted",
@@ -122,9 +122,9 @@
             "two-pointers",
             "binary-search"
         ],
-        "notes": "- **Intuition**: Since array is sorted, we only need to look for our complment (`target - curr`) in the values to the right of the current (also sorted, binary search)\n- **Implementation**: For each number, calculate the complement, conduct binary search on the elements to the right of it, if not found keep going, if found return\n\n",
+        "notes": "- **Intuition**: Since array is sorted, we only need to look for our complment (`target - curr`) in the values to the right of the current (also sorted, binary search)\n- **Implementation**: For each number, calculate the complement, conduct binary search on the elements to the right of it, if not found keep going, if found return\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:24Z"
     },
     "3sum": {
         "id": "3sum",
@@ -135,9 +135,9 @@
             "binary-search",
             "two-pointers"
         ],
-        "notes": "- **Intuition**: Use a similar approach to [Two Sum II - Input Array Sorted](../167-two-sum-ii-input-array-is-sorted/solution.py), sort the input, look for when left and right of the right side of the array add up to the current number\n- **Implementation**: Sort the input `O(n log n)`, for each number, binary search on the right side of the array, if `l + r = curr`, triplet found, add to result, move right if `l + r` is too big, otherwise move left\n- **Edge-cases**: Ensure that we keep going even after finding a triplet because there could be more with the same `curr`. Also ensure that we move past duplicates for `curr` because it will be the same result, i.e. if we have [-1, -1, -1, 0, 1], we want to start processing at the last -1. Same thing when we find an answer, we want to move left and right until they are at the next non-duplicate\n",
+        "notes": "- **Intuition**: Use a similar approach to [Two Sum II - Input Array Sorted](../167-two-sum-ii-input-array-is-sorted/solution.py), sort the input, look for when left and right of the right side of the array add up to the current number\n- **Implementation**: Sort the input `O(n log n)`, for each number, binary search on the right side of the array, if `l + r = curr`, triplet found, add to result, move right if `l + r` is too big, otherwise move left\n- **Edge-cases**: Ensure that we keep going even after finding a triplet because there could be more with the same `curr`. Also ensure that we move past duplicates for `curr` because it will be the same result, i.e. if we have [-1, -1, -1, 0, 1], we want to start processing at the last -1. Same thing when we find an answer, we want to move left and right until they are at the next non-duplicate\n- **Complexity**: Time `O(n^2 log n)` (sorting, nested loop), Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:38Z"
     },
     "container-with-most-water": {
         "id": "container-with-most-water",
@@ -148,9 +148,9 @@
             "two-pointers",
             "math"
         ],
-        "notes": "- **Intuition**: We want to maximize height and width. Start with max width and always reduce the width towards the larger height.\n- **Implementation**: Left and right pointers at the end of the array. Keep track of max area using min of left and right as height. Move right or left pointer towards the larger one. i.e. if left > right, move right. if right > left, move left.\n",
+        "notes": "- **Intuition**: We want to maximize height and width. Start with max width and always reduce the width towards the larger height.\n- **Implementation**: Left and right pointers at the end of the array. Keep track of max area using min of left and right as height. Move right or left pointer towards the larger one. i.e. if left > right, move right. if right > left, move left.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:47Z"
     },
     "valid-parentheses": {
         "id": "valid-parentheses",
@@ -160,9 +160,9 @@
         "tags": [
             "stack"
         ],
-        "notes": "- **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.\n- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.\n- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.\n",
+        "notes": "- **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.\n- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.\n- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:52Z"
     },
     "min-stack": {
         "id": "min-stack",
@@ -172,9 +172,9 @@
         "tags": [
             "stack"
         ],
-        "notes": "- **Intuition**: Use two stacks, one to track the min values and one for the actual stack\n- **Implementation**: Initialize two stacks. `getMin` gets the top of the min stack if it has elements, otherwise top of main stack. `top` gets the top of the main stack always. `push` will always push to main stack, checks if the number is less than or equal to the min or if the stack is empty and pushes to the min stack, `pop` will check if the current top is equal to the min, pop from min stack, always pop from main stack after.\n",
+        "notes": "- **Intuition**: Use two stacks, one to track the min values and one for the actual stack\n- **Implementation**: Initialize two stacks. `getMin` gets the top of the min stack if it has elements, otherwise top of main stack. `top` gets the top of the main stack always. `push` will always push to main stack, checks if the number is less than or equal to the min or if the stack is empty and pushes to the min stack, `pop` will check if the current top is equal to the min, pop from min stack, always pop from main stack after.\n- **Complexity**: Time `O(1)` for `getMin`, Space `O(n)` (stack)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:20:59Z"
     },
     "evaluate-reverse-polish-notation": {
         "id": "evaluate-reverse-polish-notation",
@@ -185,9 +185,9 @@
             "stack",
             "math"
         ],
-        "notes": "- **Intuition**: In RPN, every operator operates on the last two elements while ensuring the results of all operations are continously updated.\n- **Implementation**: Use a stack, whenever a number is seen, add to stack. When an operator seen, pop the last 2 and operate on them, push the result back to the stack and keep going. Return top of stack at the end.\n- **Edge-cases**: In Python, integer division (`a // b`) does not truncate to zero, use `int(b / a)`. Remember order for division and subtraction matter, its `b - a` and `int(b / a)`.\n",
+        "notes": "- **Intuition**: In RPN, every operator operates on the last two elements while ensuring the results of all operations are continously updated.\n- **Implementation**: Use a stack, whenever a number is seen, add to stack. When an operator seen, pop the last 2 and operate on them, push the result back to the stack and keep going. Return top of stack at the end.\n- **Edge-cases**: In Python, integer division (`a // b`) does not truncate to zero, use `int(b / a)`. Remember order for division and subtraction matter, its `b - a` and `int(b / a)`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:21:09Z"
     },
     "generate-parentheses": {
         "id": "generate-parentheses",
@@ -198,9 +198,9 @@
             "stack",
             "recursion"
         ],
-        "notes": "- **Intuition**: Recursively generate by going down the different possible paths to make a well-formed parentheses set. Open and closed must both equal n for it to be well-formed\n- **Implementation**: Recursive function that takes open, closed, n, stack and result. Base case `open == close == n`, form the string from the stack and add to result. Otherwise, check if `open < n`, add open to stack, recurse with new count, pop from stack after to go down other path. Check if `closed < open` (other path), add close to stack, recurse with new count, pop from stack.\n",
+        "notes": "- **Intuition**: Recursively generate by going down the different possible paths to make a well-formed parentheses set. Open and closed must both equal n for it to be well-formed\n- **Implementation**: Recursive function that takes open, closed, n, stack and result. Base case `open == close == n`, form the string from the stack and add to result. Otherwise, check if `open < n`, add open to stack, recurse with new count, pop from stack after to go down other path. Check if `closed < open` (other path), add close to stack, recurse with new count, pop from stack.\n- **Complexity**: Time is complex, something to do with the n-th Catalan number: `O(1 / (n + 1) * 2nCn * n)`, Space `O(n)` (call stack)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:21:18Z"
     },
     "daily-temperatures": {
         "id": "daily-temperatures",
@@ -210,9 +210,9 @@
         "tags": [
             "stack"
         ],
-        "notes": "- **Intuition**: Store the temperature until a greater temperature is found.\n- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.\n",
+        "notes": "- **Intuition**: Store the temperature until a greater temperature is found.\n- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:21:24Z"
     },
     "car-fleet": {
         "id": "car-fleet",
@@ -223,9 +223,9 @@
             "stack",
             "math"
         ],
-        "notes": "- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting\n- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.\n",
+        "notes": "- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting\n- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.\n- **Complexity**: Time `O(n log n)` (sorting), Space `O(n)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:21:32Z"
     },
     "largest-rectangle-in-histogram": {
         "id": "largest-rectangle-in-histogram",
@@ -236,9 +236,9 @@
             "stack",
             "math"
         ],
-        "notes": "- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.\n- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.\n- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.\n",
+        "notes": "- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.\n- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.\n- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:21:38Z"
     },
     "binary-search": {
         "id": "binary-search",
@@ -248,9 +248,9 @@
         "tags": [
             "binary-search"
         ],
-        "notes": "- **Intuition**: Cut the search area in half each time.\n- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).\n- **Edge-cases**: Iterating while left less than or EQUAL to right.\n",
+        "notes": "- **Intuition**: Cut the search area in half each time.\n- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).\n- **Edge-cases**: Iterating while left less than or EQUAL to right.\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:21:50Z"
     },
     "search-a-2d-matrix": {
         "id": "search-a-2d-matrix",
@@ -261,9 +261,9 @@
             "binary-search",
             "matrix"
         ],
-        "notes": "- **Intuition**: Nested binary search. Find the row, then find the value.\n- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.\n- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.\n",
+        "notes": "- **Intuition**: Nested binary search. Find the row, then find the value.\n- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.\n- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.\n- **Complexity**: Time `O(log n * log m)` (binary search on rows, then cols), Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:22:00Z"
     },
     "koko-eating-bananas": {
         "id": "koko-eating-bananas",
@@ -274,9 +274,9 @@
             "binary-search",
             "math"
         ],
-        "notes": "- **Intuition**: The max eating speed will be the max value in the piles.\n- **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.\n- **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.\n",
+        "notes": "- **Intuition**: The max eating speed will be the max value in the piles.\n- **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.\n- **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:22:08Z"
     },
     "find-minimum-in-rotated-sorted-array": {
         "id": "find-minimum-in-rotated-sorted-array",
@@ -286,9 +286,9 @@
         "tags": [
             "binary-search"
         ],
-        "notes": "- **Intuition**: The number before and after the min will be greater than it.\n- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.\n- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.\n",
+        "notes": "- **Intuition**: The number before and after the min will be greater than it.\n- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.\n- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:22:15Z"
     },
     "search-in-rotated-sorted-array": {
         "id": "search-in-rotated-sorted-array",
@@ -298,9 +298,9 @@
         "tags": [
             "binary-search"
         ],
-        "notes": "- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which \"side\" of the array to search in.\n- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.\n- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.\n",
+        "notes": "- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which \"side\" of the array to search in.\n- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.\n- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.\n- **Complexity**: Time `O(log n)` (binary search), Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:22:23Z"
     },
     "best-time-to-buy-and-sell-stock": {
         "id": "best-time-to-buy-and-sell-stock",
@@ -310,9 +310,9 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.\n- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. \n- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). \n",
+        "notes": "- **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.\n- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. \n- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). \n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:22:31Z"
     },
     "longest-substring-without-repeating-characters": {
         "id": "longest-substring-without-repeating-characters",
@@ -322,9 +322,9 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Slide a window by removing from the left when a character is seen again on the right\n- **Implementation**: Use a set. Iterate with the right pointer, initialize a left pointer. If the right character is in the set, remove from the left side, increment left. Add the right character to set after the check. Keep track of max length after the check.\n- **Edge-cases**: Window size will be `r - l + 1`\n",
+        "notes": "- **Intuition**: Slide a window by removing from the left when a character is seen again on the right\n- **Implementation**: Use a set. Iterate with the right pointer, initialize a left pointer. If the right character is in the set, remove from the left side, increment left. Add the right character to set after the check. Keep track of max length after the check.\n- **Edge-cases**: Window size will be `r - l + 1`\n- **Complexity**: Time `O(n)`, Space `O(n)` (set)\n",
         "published": true,
-        "datetime": "2025-12-17T05:26:00Z"
+        "datetime": "2025-12-22T09:22:40Z"
     },
     "longest-repeating-character-replacement": {
         "id": "longest-repeating-character-replacement",
@@ -334,9 +334,9 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Only 26 characters possible. In each window, the number of operations to make them all the same is the max frequency of the window minus the window length. Reduce the window until this condition is satisfied.\n- **Implementation**: Create a frequency array (26 value array). Iterate with `r` pointer. Increment the character at `r` in the frequency array. Update the max frequency with the frequency value of the value at `r` (new value added). If the number of operations (`windowLen - maxFreq`) is greater than `k`, increment l (reduce window size) and decrement the frequency value.\n- **Edge-cases**: Window size is calculated with `r - l + 1`.\n",
+        "notes": "- **Intuition**: Only 26 characters possible. In each window, the number of operations to make them all the same is the max frequency of the window minus the window length. Reduce the window until this condition is satisfied.\n- **Implementation**: Create a frequency array (26 value array). Iterate with `r` pointer. Increment the character at `r` in the frequency array. Update the max frequency with the frequency value of the value at `r` (new value added). If the number of operations (`windowLen - maxFreq`) is greater than `k`, increment l (reduce window size) and decrement the frequency value.\n- **Edge-cases**: Window size is calculated with `r - l + 1`.\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
         "published": true,
-        "datetime": "2025-12-22T07:07:30Z"
+        "datetime": "2025-12-22T09:22:51Z"
     },
     "permutation-in-string": {
         "id": "permutation-in-string",
@@ -346,8 +346,8 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Only 26 characters possible. Slide window of `len(s1)` across `s2` and check if the frequencies match up.\n- **Implementation**: Can use a single frequency map. Populate frequency map with characters from `s1`. Decrement frequency map with characters from `s2` up to `len(s1)` (first window). Initialize `r` to length of `s1` (first window already computed). Iterate while `r` is less than `len(s2)`. Check if frequency map is all zeros, early return. Increment value at left from frequency map (leaving window), decrement value at right from frequency map (entering window). Increment both l and r (they are already spaced at the correct window length).\n- **Edge-cases**: Early return at the start if `len(s1) > len(s2)`. Ensure to do a check at the end for the frequency map being zeros.\n",
+        "notes": "- **Intuition**: Only 26 characters possible. Slide window of `len(s1)` across `s2` and check if the frequencies match up.\n- **Implementation**: Can use a single frequency map. Populate frequency map with characters from `s1`. Decrement frequency map with characters from `s2` up to `len(s1)` (first window). Initialize `r` to length of `s1` (first window already computed). Iterate while `r` is less than `len(s2)`. Check if frequency map is all zeros, early return. Increment value at left from frequency map (leaving window), decrement value at right from frequency map (entering window). Increment both l and r (they are already spaced at the correct window length).\n- **Edge-cases**: Early return at the start if `len(s1) > len(s2)`. Ensure to do a check at the end for the frequency map being zeros.\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
         "published": true,
-        "datetime": "2025-12-22T07:35:28Z"
+        "datetime": "2025-12-22T09:22:58Z"
     }
 }

@@ -1,3 +1,4 @@
 - **Intuition**: Only 26 characters possible. Slide window of `len(s1)` across `s2` and check if the frequencies match up.
 - **Implementation**: Can use a single frequency map. Populate frequency map with characters from `s1`. Decrement frequency map with characters from `s2` up to `len(s1)` (first window). Initialize `r` to length of `s1` (first window already computed). Iterate while `r` is less than `len(s2)`. Check if frequency map is all zeros, early return. Increment value at left from frequency map (leaving window), decrement value at right from frequency map (entering window). Increment both l and r (they are already spaced at the correct window length).
 - **Edge-cases**: Early return at the start if `len(s1) > len(s2)`. Ensure to do a check at the end for the frequency map being zeros.
+- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)

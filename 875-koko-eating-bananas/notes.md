@@ -1,3 +1,4 @@
 - **Intuition**: The max eating speed will be the max value in the piles.
 - **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.
 - **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.
+- **Complexity**: Time `O(log n)`, Space `O(1)`

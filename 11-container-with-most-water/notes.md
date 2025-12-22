@@ -1,2 +1,3 @@
 - **Intuition**: We want to maximize height and width. Start with max width and always reduce the width towards the larger height.
 - **Implementation**: Left and right pointers at the end of the array. Keep track of max area using min of left and right as height. Move right or left pointer towards the larger one. i.e. if left > right, move right. if right > left, move left.
+- **Complexity**: Time `O(n)`, Space `O(1)`

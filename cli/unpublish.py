@@ -6,6 +6,7 @@ from core.readme import README
 
 def main(
     slug: str = typer.Argument(None, help="Leetcode problem slug (search through published problems if not provided)"),
+    all: bool = typer.Option(False, help="Unpublish all published problems")
 ) -> None:
     """
     Publish problems to README and mark as published
@@ -16,6 +17,13 @@ def main(
     
     if len(ids) == 0:
         typer.echo("No published problems found.")
+        return
+
+    if all:
+        for id in ids:
+            typer.echo(f"Unpublishing '{id}'")
+            __unpublish_problem(problems, id)
+            typer.echo(f"Successfully unpublished '{id}'")
         return
 
     if not slug or any(id != slug and id.startswith(slug) for id in ids):

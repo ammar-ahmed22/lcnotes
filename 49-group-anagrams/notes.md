@@ -1,3 +1,4 @@
 - **Intuition**: Every "group" of anagrams will have the same frequency table (26 value array)
 - **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result
 - **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string
+- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)

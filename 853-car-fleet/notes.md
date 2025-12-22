@@ -1,2 +1,3 @@
 - **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting
 - **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.
+- **Complexity**: Time `O(n log n)` (sorting), Space `O(n)`

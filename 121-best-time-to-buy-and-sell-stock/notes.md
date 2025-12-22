@@ -1,3 +1,4 @@
 - **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.
 - **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. 
 - **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). 
+- **Complexity**: Time `O(n)`, Space `O(1)`

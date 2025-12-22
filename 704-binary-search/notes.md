@@ -1,3 +1,4 @@
 - **Intuition**: Cut the search area in half each time.
 - **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).
 - **Edge-cases**: Iterating while left less than or EQUAL to right.
+- **Complexity**: Time `O(log n)`, Space `O(1)`
