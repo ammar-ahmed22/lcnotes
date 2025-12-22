@@ -12,5 +12,5 @@ lc = "lc.__main__:main"
 
 [tool.setuptools.packages.find]
 # Only include the 'lc' package and its subpackages; exclude other top-level dirs like 'cli'
-include = ["lc*", "cli*", "core*"]
+include = ["lc*", "cli*", "core*", "lcutils*"]
 exclude = ["tests*", "venv*", "docs*"]
