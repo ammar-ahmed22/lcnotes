@@ -1,0 +1,3 @@
+- **Intuition**: Use BFS and swap (can also use DFS)
+- **Implementation**: Early return if root is None. Initialize a queue with `root`. Iterate while `q` is not empty. Pop node from the left, swap right and left. If node has left, push to queue, if node has right push to queue. Return `root`
+- **Complexity**: Time `O(n)`, Space `O(n)` queue.
