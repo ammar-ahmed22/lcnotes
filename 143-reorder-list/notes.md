@@ -1,0 +1,3 @@
+- **Intuition**: Reverse the second half of the list and merge the two together. 
+- **Implementation**: Find the midpoint with slow and fast pointers, fast starting at `head.next`. Reverse the second half by starting at `slow.next`. Break the link in the original list by setting `slow.next` to `None`. Merge the two lists together by creating two pointers, `first` and `second`. Iterate while `second` is not `None`. Save the next values of first and second in temp variables. Set `first.next` to `second`. Set `second.next` to `temp1`, Increment by setting first to `temp1`, second to `temp2`.
+- **Complexity**: Time `O(n)` (3 operations sequentially, all `O(n)`), Space `O(1)`
