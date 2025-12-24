@@ -1,0 +1,4 @@
+- **Intuition**: Treat like linked list with indices as values, array values as next pointers. Duplicate causes cycle, need to find start of cycle (will not always be at the end).
+- **Implementation**: First, we need to move a pointer into the cycle by using fast and slow pointers. When they are equal, slow pointer will be inside the cycle. Break the iteration. After this intialize a new pointer at the start, continue iterating slow and the new pointer until they meet, now slow will be at the start of the cycle (duplicate).
+- **Edge-cases**: Remember the second iteration, slow and fast only finds if a cycle exists not the start of it.
+- **Complexity**: Time `O(n)`, Space `O(1)`

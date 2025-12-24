@@ -473,5 +473,18 @@
         "notes": "- **Intuition**: Add like on paper with carrying over logic.\n- **Implementation**: Create a dummy node for the result. Intialize two pointers for each list, `p1` and `p2`. Initialize a pointe for the dummy, `curr`. Initialize `carry` value to zero. Iterate while `p1` and `p2` are not`None`. Calculate the total with `p1.val + p2.val + carry`. The new node's value is set to this `tot` and the carry is set to zero. If the total is greater than or equal to 10 (i.e. we have to carry), update the value to `tot % 10` and the `carry` to `tot // 10`. After the main iteration, there may still be residual values in `p1` OR `p2` repeat the same logic for both lists individually. At the end, carry may still have value, if it does create a final node with the carry value. \n- **Edge-cases**: Rememver to handle the case of the `carry` still have a value at the end of all iterations.\n- **Complexity**: Time `O(n)`, Space `O(1)` (result does not count)\n",
         "published": true,
         "datetime": "2025-12-24T07:52:29Z"
+    },
+    "find-the-duplicate-number": {
+        "id": "find-the-duplicate-number",
+        "title": "287. Find the Duplicate Number",
+        "directory": "287-find-the-duplicate-number",
+        "difficulty": "Medium",
+        "tags": [
+            "linked-list",
+            "array"
+        ],
+        "notes": "- **Intuition**: Treat like linked list with indices as values, array values as next pointers. Duplicate causes cycle, need to find start of cycle (will not always be at the end).\n- **Implementation**: First, we need to move a pointer into the cycle by using fast and slow pointers. When they are equal, slow pointer will be inside the cycle. Break the iteration. After this intialize a new pointer at the start, continue iterating slow and the new pointer until they meet, now slow will be at the start of the cycle (duplicate).\n- **Edge-cases**: Remember the second iteration, slow and fast only finds if a cycle exists not the start of it.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2025-12-24T22:33:29Z"
     }
 }
