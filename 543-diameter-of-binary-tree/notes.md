@@ -1,0 +1,4 @@
+- **Intuition**: The maximum of the heights through any given node will be the diameter.
+- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.
+- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).
+- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)

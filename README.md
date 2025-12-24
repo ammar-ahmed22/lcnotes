@@ -2,7 +2,7 @@
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
-      <img src="https://img.shields.io/badge/12-easy-green" />
+      <img src="https://img.shields.io/badge/13-easy-green" />
       <img src="https://img.shields.io/badge/21-medium-yellow" />
       <img src="https://img.shields.io/badge/2-hard-red" />
     </p>
@@ -61,6 +61,7 @@
 | [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle) | - **Intuition**: With fast and slow pointers, if there is a cycle they will eventually meet up.<br />- **Implementation**: `slow` and `fast` pointers initialized to head. Iterate while `fast` and `fast.next` is not `None`. Update `slow` with `slow.next` and update `fast` with `fast.next.next`. After updating, if `fast == slow`, cycle found, early return `True`. Otherwise, if iteration completes (no cycle), return `False`.<br />- **Complexity**: Time `O(n)`, Space `O(1)`<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./141-linked-list-cycle/solution.py)
 | [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree) | - **Intuition**: Use BFS and swap (can also use DFS)<br />- **Implementation**: Early return if root is None. Initialize a queue with `root`. Iterate while `q` is not empty. Pop node from the left, swap right and left. If node has left, push to queue, if node has right push to queue. Return `root`<br />- **Complexity**: Time `O(n)`, Space `O(n)` queue.<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./226-invert-binary-tree/solution.py)
 | [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree) | - **Intuition**: DFS on the tree taking the max of left and right, increasing depth count each time.<br />- **Implementation**: Create a `dfs` recursive function that takes in the `root` and the `depth`. Base case, `root` is `None`, return `depth`. Otherwise, recursve with max of the `dfs` call on the left and the right with `depth + 1`.<br />- **Complexity**: Time `O(n)`, Space `O(n)` (recursive call stack)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./104-maximum-depth-of-binary-tree/solution.py)
+| [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree) | - **Intuition**: The maximum of the heights through any given node will be the diameter.<br />- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.<br />- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).<br />- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./543-diameter-of-binary-tree/solution.py)
 ---
 
 ## Overview

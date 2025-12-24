@@ -435,5 +435,18 @@
         "notes": "- **Intuition**: DFS on the tree taking the max of left and right, increasing depth count each time.\n- **Implementation**: Create a `dfs` recursive function that takes in the `root` and the `depth`. Base case, `root` is `None`, return `depth`. Otherwise, recursve with max of the `dfs` call on the left and the right with `depth + 1`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (recursive call stack)\n",
         "published": true,
         "datetime": "2025-12-23T23:32:18Z"
+    },
+    "diameter-of-binary-tree": {
+        "id": "diameter-of-binary-tree",
+        "title": "543. Diameter of Binary Tree",
+        "directory": "543-diameter-of-binary-tree",
+        "difficulty": "Easy",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "notes": "- **Intuition**: The maximum of the heights through any given node will be the diameter.\n- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.\n- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).\n- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)\n",
+        "published": true,
+        "datetime": "2025-12-24T05:55:35Z"
     }
 }
