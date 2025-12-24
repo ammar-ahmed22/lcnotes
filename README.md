@@ -2,7 +2,7 @@
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
-      <img src="https://img.shields.io/badge/11-easy-green" />
+      <img src="https://img.shields.io/badge/12-easy-green" />
       <img src="https://img.shields.io/badge/21-medium-yellow" />
       <img src="https://img.shields.io/badge/2-hard-red" />
     </p>
@@ -60,6 +60,7 @@
 | [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists) | - **Intuition**: Iterate the lists together, smaller ones going in first.<br />- **Implementation**: Pointers for `list1`, `l1` and `list2`, `l2`. Create a dummy node for the result, set the `curr` pointer to the dummy. Iterate while `l1` and `l2` are not `None`. If `l1` value is less than `l2` val, set `curr.next` to a new node with that value. Update the curr pointer and the `l1` pointer. Else, set `curr.next` to a new node with that value. Update the curr pointer and the `l2` pointer. After the first iteration completes, one of `l1` or `l2` might still be not fully complete. Iterate through both of them the same way as above to finish it off. Return `dummy.next`.<br />- **Complexity**: Time `O(m + n)` where `m` is length of `list1` and `n` is the length of `list2`, Space `O(1)` <br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./21-merge-two-sorted-lists/solution.py)
 | [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle) | - **Intuition**: With fast and slow pointers, if there is a cycle they will eventually meet up.<br />- **Implementation**: `slow` and `fast` pointers initialized to head. Iterate while `fast` and `fast.next` is not `None`. Update `slow` with `slow.next` and update `fast` with `fast.next.next`. After updating, if `fast == slow`, cycle found, early return `True`. Otherwise, if iteration completes (no cycle), return `False`.<br />- **Complexity**: Time `O(n)`, Space `O(1)`<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./141-linked-list-cycle/solution.py)
 | [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree) | - **Intuition**: Use BFS and swap (can also use DFS)<br />- **Implementation**: Early return if root is None. Initialize a queue with `root`. Iterate while `q` is not empty. Pop node from the left, swap right and left. If node has left, push to queue, if node has right push to queue. Return `root`<br />- **Complexity**: Time `O(n)`, Space `O(n)` queue.<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./226-invert-binary-tree/solution.py)
+| [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree) | - **Intuition**: DFS on the tree taking the max of left and right, increasing depth count each time.<br />- **Implementation**: Create a `dfs` recursive function that takes in the `root` and the `depth`. Base case, `root` is `None`, return `depth`. Otherwise, recursve with max of the `dfs` call on the left and the right with `depth + 1`.<br />- **Complexity**: Time `O(n)`, Space `O(n)` (recursive call stack)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./104-maximum-depth-of-binary-tree/solution.py)
 ---
 
 ## Overview

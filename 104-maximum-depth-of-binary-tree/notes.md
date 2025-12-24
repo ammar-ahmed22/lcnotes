@@ -1,0 +1,3 @@
+- **Intuition**: DFS on the tree taking the max of left and right, increasing depth count each time.
+- **Implementation**: Create a `dfs` recursive function that takes in the `root` and the `depth`. Base case, `root` is `None`, return `depth`. Otherwise, recursve with max of the `dfs` call on the left and the right with `depth + 1`.
+- **Complexity**: Time `O(n)`, Space `O(n)` (recursive call stack)

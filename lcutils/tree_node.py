@@ -22,7 +22,7 @@ class TreeNode:
         return nodes[0]
     
     @classmethod
-    def create(cls, *nums: int) -> Optional["TreeNode"]:
+    def create(cls, *nums: Optional[int]) -> Optional["TreeNode"]:
         return TreeNode.from_arr(list(nums))
     
     def to_arr(self) -> List[Optional[int]]:
