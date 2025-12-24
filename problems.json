@@ -448,5 +448,17 @@
         "notes": "- **Intuition**: The maximum of the heights through any given node will be the diameter.\n- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.\n- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).\n- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)\n",
         "published": true,
         "datetime": "2025-12-24T05:55:35Z"
+    },
+    "remove-nth-node-from-end-of-list": {
+        "id": "remove-nth-node-from-end-of-list",
+        "title": "19. Remove Nth Node From End of List",
+        "directory": "19-remove-nth-node-from-end-of-list",
+        "difficulty": "Medium",
+        "tags": [
+            "linked-list"
+        ],
+        "notes": "- **Intuition**: Two pointers delayed by `n`.\n- **Implementation**: Move the right pointer `n` spaces. Create a dummy node and set the `next` value to the input list (to handle the case of having nothing in the input or just a single node). Set the left pointer to the dummy node. Iterate while `right` is not none and increment both left and right. When finished, `left` will be at the correct position. Set `left.next` to `left.next.next` (skip over one).\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2025-12-24T07:25:36Z"
     }
 }

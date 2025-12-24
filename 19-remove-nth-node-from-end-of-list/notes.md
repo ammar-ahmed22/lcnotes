@@ -1,0 +1,3 @@
+- **Intuition**: Two pointers delayed by `n`.
+- **Implementation**: Move the right pointer `n` spaces. Create a dummy node and set the `next` value to the input list (to handle the case of having nothing in the input or just a single node). Set the left pointer to the dummy node. Iterate while `right` is not none and increment both left and right. When finished, `left` will be at the correct position. Set `left.next` to `left.next.next` (skip over one).
+- **Complexity**: Time `O(n)`, Space `O(1)`
