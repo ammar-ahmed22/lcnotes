@@ -486,5 +486,18 @@
         "notes": "- **Intuition**: Treat like linked list with indices as values, array values as next pointers. Duplicate causes cycle, need to find start of cycle (will not always be at the end).\n- **Implementation**: First, we need to move a pointer into the cycle by using fast and slow pointers. When they are equal, slow pointer will be inside the cycle. Break the iteration. After this intialize a new pointer at the start, continue iterating slow and the new pointer until they meet, now slow will be at the start of the cycle (duplicate).\n- **Edge-cases**: Remember the second iteration, slow and fast only finds if a cycle exists not the start of it.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
         "datetime": "2025-12-24T22:33:29Z"
+    },
+    "trapping-rain-water": {
+        "id": "trapping-rain-water",
+        "title": "42. Trapping Rain Water",
+        "directory": "42-trapping-rain-water",
+        "difficulty": "Hard",
+        "tags": [
+            "two-pointers",
+            "math"
+        ],
+        "notes": "- **Intuition**: Water trapped at any point is bounded by smaller of the maxes on left and right.\n- **Implementation**: Two pointer approach with tracking of left and right max. Initialize two pointers on left and right. Initialize trackers for left and right max, `maxL` and `maxR`. Iterate while `l < r`. On each iteration, update `maxL` and `maxR` with appropriate values (`height[l]` and `height[r]`). If `maxL <= maxR`, the water is bounded only by the left value (already a larger value on the right). Update answer with `maxL - height[l]` and move left. Otherwise, answer is bounded by right value only (already a larger value on the left). Update answer with `maxR - height[r]` and move right.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2025-12-26T20:38:36Z"
     }
 }

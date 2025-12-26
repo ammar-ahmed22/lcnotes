@@ -1,0 +1,3 @@
+- **Intuition**: Water trapped at any point is bounded by smaller of the maxes on left and right.
+- **Implementation**: Two pointer approach with tracking of left and right max. Initialize two pointers on left and right. Initialize trackers for left and right max, `maxL` and `maxR`. Iterate while `l < r`. On each iteration, update `maxL` and `maxR` with appropriate values (`height[l]` and `height[r]`). If `maxL <= maxR`, the water is bounded only by the left value (already a larger value on the right). Update answer with `maxL - height[l]` and move left. Otherwise, answer is bounded by right value only (already a larger value on the left). Update answer with `maxR - height[r]` and move right.
+- **Complexity**: Time `O(n)`, Space `O(1)`
