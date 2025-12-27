@@ -499,5 +499,17 @@
         "notes": "- **Intuition**: Water trapped at any point is bounded by smaller of the maxes on left and right.\n- **Implementation**: Two pointer approach with tracking of left and right max. Initialize two pointers on left and right. Initialize trackers for left and right max, `maxL` and `maxR`. Iterate while `l < r`. On each iteration, update `maxL` and `maxR` with appropriate values (`height[l]` and `height[r]`). If `maxL <= maxR`, the water is bounded only by the left value (already a larger value on the right). Update answer with `maxL - height[l]` and move left. Otherwise, answer is bounded by right value only (already a larger value on the left). Update answer with `maxR - height[r]` and move right.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
         "datetime": "2025-12-26T20:38:36Z"
+    },
+    "sliding-window-maximum": {
+        "id": "sliding-window-maximum",
+        "title": "239. Sliding Window Maximum",
+        "directory": "239-sliding-window-maximum",
+        "difficulty": "Hard",
+        "tags": [
+            "sliding-window"
+        ],
+        "notes": "- **Intuition**: Track indices in queue removing from front when larger number enters window.\n- **Implementation**: Initialize deque and ans. Initialize left and right pointers to zero. Iterate while `r < len(nums)`. While queue is not empty and value at the top of the queue is less than the current value at right, pop from the top of the queue. Add right to queue. If left is greater than the index at the back of the queue (out of the window), pop from left. If `r + 1 >= k` (i.e. we have gotten to the minimum window size), add value at the back of the queue to the answer and slide window (increment `l`). Always increment `r`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (queue)\n",
+        "published": true,
+        "datetime": "2025-12-27T22:29:30Z"
     }
 }

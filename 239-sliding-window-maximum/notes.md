@@ -1,0 +1,3 @@
+- **Intuition**: Track indices in queue removing from front when larger number enters window.
+- **Implementation**: Initialize deque and ans. Initialize left and right pointers to zero. Iterate while `r < len(nums)`. While queue is not empty and value at the top of the queue is less than the current value at right, pop from the top of the queue. Add right to queue. If left is greater than the index at the back of the queue (out of the window), pop from left. If `r + 1 >= k` (i.e. we have gotten to the minimum window size), add value at the back of the queue to the answer and slide window (increment `l`). Always increment `r`.
+- **Complexity**: Time `O(n)`, Space `O(n)` (queue)
