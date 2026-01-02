@@ -2,7 +2,7 @@
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
-      <img src="https://img.shields.io/badge/13-easy-green" />
+      <img src="https://img.shields.io/badge/14-easy-green" />
       <img src="https://img.shields.io/badge/24-medium-yellow" />
       <img src="https://img.shields.io/badge/4-hard-red" />
     </p>
@@ -67,6 +67,7 @@
 | [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree) | - **Intuition**: Use BFS and swap (can also use DFS)<br />- **Implementation**: Early return if root is None. Initialize a queue with `root`. Iterate while `q` is not empty. Pop node from the left, swap right and left. If node has left, push to queue, if node has right push to queue. Return `root`<br />- **Complexity**: Time `O(n)`, Space `O(n)` queue.<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./226-invert-binary-tree/solution.py)
 | [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree) | - **Intuition**: DFS on the tree taking the max of left and right, increasing depth count each time.<br />- **Implementation**: Create a `dfs` recursive function that takes in the `root` and the `depth`. Base case, `root` is `None`, return `depth`. Otherwise, recursve with max of the `dfs` call on the left and the right with `depth + 1`.<br />- **Complexity**: Time `O(n)`, Space `O(n)` (recursive call stack)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./104-maximum-depth-of-binary-tree/solution.py)
 | [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree) | - **Intuition**: The maximum of the heights through any given node will be the diameter.<br />- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.<br />- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).<br />- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./543-diameter-of-binary-tree/solution.py)
+| [110. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree) | - **Intuition**: Calculate depth with sentinel `-1` when abs difference is greater than 1.<br />- **Implementation**: Calculate depth with DFS using recursive function. Base case, node is `None`, return `0`. Recurse on left side and save into variable, if depth is `-1`, early return `-1`. Same thing on right side. Check if absolute difference is greater than 1, return `-1`. Otherwise, return `1 + max(left, right)`. In main function, call DFS on root and check if equals `-1` (not balanced).<br />- **Complexity**: Time `O(n)`, Space `O(h)` (recursion)<br /> | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./110-balanced-binary-tree/solution.py)
 ---
 
 ## Overview

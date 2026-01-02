@@ -511,5 +511,17 @@
         "notes": "- **Intuition**: Track indices in queue removing from front when larger number enters window.\n- **Implementation**: Initialize deque and ans. Initialize left and right pointers to zero. Iterate while `r < len(nums)`. While queue is not empty and value at the top of the queue is less than the current value at right, pop from the top of the queue. Add right to queue. If left is greater than the index at the back of the queue (out of the window), pop from left. If `r + 1 >= k` (i.e. we have gotten to the minimum window size), add value at the back of the queue to the answer and slide window (increment `l`). Always increment `r`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (queue)\n",
         "published": true,
         "datetime": "2025-12-27T22:29:30Z"
+    },
+    "balanced-binary-tree": {
+        "id": "balanced-binary-tree",
+        "title": "110. Balanced Binary Tree",
+        "directory": "110-balanced-binary-tree",
+        "difficulty": "Easy",
+        "tags": [
+            "binary-tree"
+        ],
+        "notes": "- **Intuition**: Calculate depth with sentinel `-1` when abs difference is greater than 1.\n- **Implementation**: Calculate depth with DFS using recursive function. Base case, node is `None`, return `0`. Recurse on left side and save into variable, if depth is `-1`, early return `-1`. Same thing on right side. Check if absolute difference is greater than 1, return `-1`. Otherwise, return `1 + max(left, right)`. In main function, call DFS on root and check if equals `-1` (not balanced).\n- **Complexity**: Time `O(n)`, Space `O(h)` (recursion)\n",
+        "published": true,
+        "datetime": "2026-01-02T22:58:23Z"
     }
 }

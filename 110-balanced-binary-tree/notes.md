@@ -1,0 +1,3 @@
+- **Intuition**: Calculate depth with sentinel `-1` when abs difference is greater than 1.
+- **Implementation**: Calculate depth with DFS using recursive function. Base case, node is `None`, return `0`. Recurse on left side and save into variable, if depth is `-1`, early return `-1`. Same thing on right side. Check if absolute difference is greater than 1, return `-1`. Otherwise, return `1 + max(left, right)`. In main function, call DFS on root and check if equals `-1` (not balanced).
+- **Complexity**: Time `O(n)`, Space `O(h)` (recursion)

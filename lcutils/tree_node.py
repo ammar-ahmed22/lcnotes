@@ -9,14 +9,14 @@ class TreeNode:
             return None
         
         nodes = [cls(v) if v is not None else None for v in arr]
-        for i in range(len(arr)):
+        for i in range(len(nodes)):
             node = nodes[i]
             if node is None:
                 continue
             li, ri = 2 * i + 1, 2 * i + 2
-            if li < len(arr):
+            if li < len(nodes):
                 node.left = nodes[li]
-            if ri < len(arr):
+            if ri < len(nodes):
                 node.right = nodes[ri]
 
         return nodes[0]
