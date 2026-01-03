@@ -1,0 +1,3 @@
+- **Intuition**: Both sides should be the same while iterating down together.
+- **Implementation**: Recursive DFS. Base case, `p` and `q` are null, return true. Otherwise, if `p` and `q` are not null and values are the same, return checking if both `p.left` and `q.left` are the same AND `p.right` and `q.right` are the same (recursive call). Otherwise, return false.
+- **Complexity**: Time `O(n)`, Space `O(h)` (recursive)

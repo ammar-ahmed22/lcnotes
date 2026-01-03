@@ -523,5 +523,18 @@
         "notes": "- **Intuition**: Calculate depth with sentinel `-1` when abs difference is greater than 1.\n- **Implementation**: Calculate depth with DFS using recursive function. Base case, node is `None`, return `0`. Recurse on left side and save into variable, if depth is `-1`, early return `-1`. Same thing on right side. Check if absolute difference is greater than 1, return `-1`. Otherwise, return `1 + max(left, right)`. In main function, call DFS on root and check if equals `-1` (not balanced).\n- **Complexity**: Time `O(n)`, Space `O(h)` (recursion)\n",
         "published": true,
         "datetime": "2026-01-02T22:58:23Z"
+    },
+    "same-tree": {
+        "id": "same-tree",
+        "title": "100. Same Tree",
+        "directory": "100-same-tree",
+        "difficulty": "Easy",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "notes": "- **Intuition**: Both sides should be the same while iterating down together.\n- **Implementation**: Recursive DFS. Base case, `p` and `q` are null, return true. Otherwise, if `p` and `q` are not null and values are the same, return checking if both `p.left` and `q.left` are the same AND `p.right` and `q.right` are the same (recursive call). Otherwise, return false.\n- **Complexity**: Time `O(n)`, Space `O(h)` (recursive)\n",
+        "published": true,
+        "datetime": "2026-01-03T07:12:18Z"
     }
 }
