@@ -1,4 +1,5 @@
 import typer
+from typing import Optional
 from playwright.sync_api import sync_playwright
 from core import commands, templates
 from core.problem_metadata import ProblemMetadata
@@ -6,12 +7,75 @@ from core.problems import Problems, Problem
 from core.scraper import Scraper
 from core.utils import spinner
 
+VALID_DIFFICULTIES = ["Easy", "Medium", "Hard"]
 
-def main(slug = typer.Argument(help="Leetcode problem slug (e.g. two-sum)"), code_starter = typer.Option("class Solution:", "-s", "--starter", help="Provide what the code snippet should start with when scraping from Leetcode (defaults to 'class Solution:', useful for class based questions)")) -> None:
+
+def main(
+    slug: Optional[str] = typer.Argument(None, help="Leetcode problem slug (e.g. two-sum)"),
+    code_starter: str = typer.Option("class Solution:", "-s", "--starter", help="Provide what the code snippet should start with when scraping from Leetcode (defaults to 'class Solution:', useful for class based questions)"),
+    custom: bool = typer.Option(False, "--custom", help="Create a custom problem (not from LeetCode) with interactive prompts")
+) -> None:
     """
-    Create a new problem from slug
+    Create a new problem from slug or custom input
     """
+    if custom:
+        __add_custom_problem()
+    else:
+        if not slug:
+            typer.echo("Error: slug is required when not using --custom")
+            raise typer.Exit(code=1)
+        __add_leetcode_problem(slug, code_starter)
+
+
+def __add_custom_problem() -> None:
+    """Handle adding a custom problem via interactive prompts."""
     problems = Problems()
+    
+    # Prompt for problem details
+    name = typer.prompt("Problem name")
+    
+    difficulty = typer.prompt(
+        "Difficulty (Easy/Medium/Hard)",
+        default="Medium"
+    )
+    if difficulty not in VALID_DIFFICULTIES:
+        typer.echo(f"Error: Difficulty must be one of {VALID_DIFFICULTIES}")
+        raise typer.Exit(code=1)
+    
+    function_def = typer.prompt(
+        "Function definition (e.g. 'def twoSum(self, nums: List[int], target: int) -> List[int]:')"
+    )
+    
+    # Validate function definition
+    if not function_def.strip().startswith("def ") or "->" not in function_def:
+        typer.echo("Error: Function definition must start with 'def ' and include a return type annotation '->'")
+        raise typer.Exit(code=1)
+    
+    # Create metadata from custom input
+    metadata = ProblemMetadata.from_custom(name, difficulty, function_def)
+    
+    # Check for collision
+    if problems.has_problem(metadata.id):
+        typer.echo(f"Error: Problem with id '{metadata.id}' already exists.")
+        raise typer.Exit(code=1)
+    
+    # Create and populate files
+    with spinner(f"Create files for '{metadata.id}'"):
+        __create_problem_files(metadata)
+    
+    with spinner(f"Populate files for '{metadata.id}'"):
+        __populate_files(metadata)
+    
+    with spinner(f"Add problem to JSON for '{metadata.id}'"):
+        __save_to_json(problems, metadata)
+    
+    typer.echo(f"Created custom problem: {metadata.directory}/")
+
+
+def __add_leetcode_problem(slug: str, code_starter: str) -> None:
+    """Handle adding a LeetCode problem via scraping."""
+    problems = Problems()
+    
     # Step 1: Check if problem already exists in JSON
     if problems.has_problem(slug):
         typer.echo(f"Error: Problem with slug '{slug}' already exists.")
