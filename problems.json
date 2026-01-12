@@ -536,5 +536,18 @@
         "notes": "- **Intuition**: Both sides should be the same while iterating down together.\n- **Implementation**: Recursive DFS. Base case, `p` and `q` are null, return true. Otherwise, if `p` and `q` are not null and values are the same, return checking if both `p.left` and `q.left` are the same AND `p.right` and `q.right` are the same (recursive call). Otherwise, return false.\n- **Complexity**: Time `O(n)`, Space `O(h)` (recursive)\n",
         "published": true,
         "datetime": "2026-01-03T07:12:18Z"
+    },
+    "subtree-of-another-tree": {
+        "id": "subtree-of-another-tree",
+        "title": "572. Subtree of Another Tree",
+        "directory": "572-subtree-of-another-tree",
+        "difficulty": "Easy",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "notes": "- **Intuition**: Check if either left or right subtree is the same as subRoot recursively (DFS).\n- **Implementation**: Use DFS. Implement a function to check a if a two tree roots are the same using DFS (see solution). In the main function, if `subRoot` is None, early return `True`. If `root` is None, early return False. Check if `root` is the same as `subRoot` return True. Recursively call isSubtree on left and subroot OR right and subRoot. \n- **Edge-cases**: Remember the none checks on root and subRoot\n- **Complexity**: Time `O(n)` (DFS), Space `O(n)` (recursion)\n",
+        "published": true,
+        "datetime": "2026-01-12T19:01:22Z"
     }
 }

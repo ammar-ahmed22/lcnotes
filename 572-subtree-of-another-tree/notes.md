@@ -1,0 +1,4 @@
+- **Intuition**: Check if either left or right subtree is the same as subRoot recursively (DFS).
+- **Implementation**: Use DFS. Implement a function to check a if a two tree roots are the same using DFS (see solution). In the main function, if `subRoot` is None, early return `True`. If `root` is None, early return False. Check if `root` is the same as `subRoot` return True. Recursively call isSubtree on left and subroot OR right and subRoot. 
+- **Edge-cases**: Remember the none checks on root and subRoot
+- **Complexity**: Time `O(n)` (DFS), Space `O(n)` (recursion)
