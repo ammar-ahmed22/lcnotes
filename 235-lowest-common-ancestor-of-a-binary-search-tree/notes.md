@@ -1,0 +1,4 @@
+- **Intuition**: Nodes of a BST will have values strictly smaller on the left and strictly larger on the right. LCA will be the split point.
+- **Implementation**: To solve iteratively (no recursion call stack, better space), initialize curr to root. Iterate while curr is not None. Check if p and q are both greater than the current value, that means the nodes are in the right side (larger side). Else if check if p and q are both smaller than the current value, that means the nodes in the left side (smaller side). Else, we have found the divergence point, LCA, return curr.
+- **Edge-cases**: Don't need to worry about the edge cases of root, p and q being null because valid input will be defined for all of these.
+- **Complexity**: Time `O(h)` (height of tree), Spce `O(1)`

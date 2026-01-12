@@ -549,5 +549,18 @@
         "notes": "- **Intuition**: Check if either left or right subtree is the same as subRoot recursively (DFS).\n- **Implementation**: Use DFS. Implement a function to check a if a two tree roots are the same using DFS (see solution). In the main function, if `subRoot` is None, early return `True`. If `root` is None, early return False. Check if `root` is the same as `subRoot` return True. Recursively call isSubtree on left and subroot OR right and subRoot. \n- **Edge-cases**: Remember the none checks on root and subRoot\n- **Complexity**: Time `O(n)` (DFS), Space `O(n)` (recursion)\n",
         "published": true,
         "datetime": "2026-01-12T19:01:22Z"
+    },
+    "lowest-common-ancestor-of-a-binary-search-tree": {
+        "id": "lowest-common-ancestor-of-a-binary-search-tree",
+        "title": "235. Lowest Common Ancestor of a Binary Search Tree",
+        "directory": "235-lowest-common-ancestor-of-a-binary-search-tree",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "notes": "- **Intuition**: Nodes of a BST will have values strictly smaller on the left and strictly larger on the right. LCA will be the split point.\n- **Implementation**: To solve iteratively (no recursion call stack, better space), initialize curr to root. Iterate while curr is not None. Check if p and q are both greater than the current value, that means the nodes are in the right side (larger side). Else if check if p and q are both smaller than the current value, that means the nodes in the left side (smaller side). Else, we have found the divergence point, LCA, return curr.\n- **Edge-cases**: Don't need to worry about the edge cases of root, p and q being null because valid input will be defined for all of these.\n- **Complexity**: Time `O(h)` (height of tree), Spce `O(1)`\n",
+        "published": true,
+        "datetime": "2026-01-12T19:58:25Z"
     }
 }
