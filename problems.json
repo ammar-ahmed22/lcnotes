@@ -576,5 +576,18 @@
         "notes": "- **Intuition**: Tree problem with multiple trees. Compute the sum if we choose to invite or a skip a certain node.\n- **Implementation**: Start off by creating the adjacency list for the potentially disconnected trees. At the same time, create an array to mark nodes that have parents so we can only process roots for DFS. Create the DFS function in which we will compute the sum if we choose to invite a node and if we choose to skip that node. Also create dp/memoization map to ensure we only process each node once, early returning from DFS if we have already processed that node. In the DFS function, initialize the invite value for that node to be the level of that node from the `levels` array and the skip value to be 0. Iterate over the children (reports) from the adjacency list, for each child call dfs on it to get its invite and skip value. Add the skip value for the child to the invite value for the current node because if we choose to invite the current node, we have to skip its reports. For the skip value, we can take the max of the invite and skip value for the child because either works, we just want the max. Save the value in the dp/memoization map and return. After this, we iterate over all the roots (for the example cases, there is only one root but for generic cases, there could be multiple). Calculate the invite and skip values for each node and take the max of them forthe answer.\n- **Complexity**: Time `O(n)` (each node is only processed once due to the DP and DFS), Space `O(n)` (adjacency, memoization)\n",
         "published": true,
         "datetime": "2026-01-13T03:15:05Z"
+    },
+    "minimum-lock-turns": {
+        "id": "minimum-lock-turns",
+        "title": "Minimum Lock Turns",
+        "directory": "minimum-lock-turns",
+        "difficulty": "Medium",
+        "tags": [
+            "graph",
+            "bfs"
+        ],
+        "notes": "- **Intuition**: Can be treated like a graph, traverse with BFS to find shortest path.\n- **Implementation**: Write a function to compute all neighbours of given combo (8 possible neighbours, 1 up and 1 down for each number). Create a set for the blocked combos and create a queue that is initialized with the start combo and 0 (number of turns) as a tuple. Also created a visited map initialized with the start combo. Iterate while q is not empty, popleft the current combo and the number of turns. Iterate over all the neighbours of that combo, if the neighbor is already visited or in the blocked combos, continue. If the neighbour is the target, return `turns + 1` as the answer. Otherwise, add the neighbour and `turns + 1` to the queue. If queue finishes, no possible turns can get to the target, return -1.\n- **Edge-cases**: Check before BFS if start is equal to target, return 0. Also check if start is in the blocked combos, return -1 (cannot go anywhere).\n- **Complexity**: Time `O(V)` where `V` is the number of possible states (10^4), Space `O(V)`\n",
+        "published": true,
+        "datetime": "2026-01-13T05:23:25Z"
     }
 }
