@@ -614,5 +614,18 @@
         "notes": "- **Intuition**: We want to save spring use only for the largest jumps.\n- **Implementation**: Use a max heap. Iterate through pairs, calculate the difference, if less than or equal to zero, free move, continue. Otherwise, assume we will use sandbags and decrement the sandbags. Add the difference to the max heap. If the sandbags value goes below zero, we need to use springs instead if we have them, if springs equals zero here, early return the index we are currently at. This handles the case of either springs being already used or not having any springs at all. If springs are not zero, decrement the springs value and add the value at the top of the max heap back to the sandbags. Effectively, this converts the largest jump we've seen to use a spring instead of sandbags.\n- **Edge-cases**: Rememeber Python uses min heap so we just negate the values to make it into a max heap.\n- **Complexity**: Time `O(n log n)` heap push and pop is `O(log n)`, Space `O(n)` (heap)\n",
         "published": true,
         "datetime": "2026-01-13T20:11:29Z"
+    },
+    "open-the-lock": {
+        "id": "open-the-lock",
+        "title": "752. Open the Lock",
+        "directory": "752-open-the-lock",
+        "difficulty": "Medium",
+        "tags": [
+            "graph",
+            "bfs"
+        ],
+        "notes": "- **Intuition**: Can be treated like a graph with each state having 8 neighbours (turn each wheel up or down).\n- **Implementation**: Use BFS to find shortest path. Create a function to generate neighbours given a combo, should genrate 8 neighbours, turn each wheel up and down (use mod 10 to keep in bounds). Create a queue that is initialized with the start combo (`\"0000\"`) and 0 as the number of turns. Also create a map to keep track of the visited states. While the q has elements, pop left from the queue, iterate over the neighbours, if the neighbour is already visited or is in the deadends, continue. If the neighbour is equal to the target, return `turns + 1`, otherwise add the neighbour and turns + 1 to the queue and to the visited set.\n- **Complexity**: Time `O(V)` where `V` is the number of states (10^4), Space `O(V)`\n",
+        "published": true,
+        "datetime": "2026-01-13T20:51:21Z"
     }
 }
