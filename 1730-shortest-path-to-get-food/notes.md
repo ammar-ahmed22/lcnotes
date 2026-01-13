@@ -1,0 +1,3 @@
+- **Intuition**: Basic graph shortest distance problem, use BFS.
+- **Implementation**: Use BFS to find the shortest path. Start by finding the coordinate of the start position. Add to queue tuple with 0 for the path length. Also add start to visited set. Iterate while queue is not empty, pop from the queue and iterate over the neighbours, if the neighbour is already visited or is blocked, continue. Otherwise, check if the neighbour is a food and return current path length + 1. Otherwise add the neighbour to visited and the queue with path + 1. If iteration completes, return -1.
+- **Complexity**: Time `O(m * n)`, Space `O(m * n)`

@@ -639,5 +639,18 @@
         "notes": "- **Intuition**: Use ladders for the largest jumps.\n- **Implementation**: Use a max heap. Iterate over pairs and calculate difference. If difference <= 0, continue. Otherwise, assume we will use bricks and decrement the bricks by the difference. Add the difference to the max heap. If the bricks go below 0, we must use a ladder. If ladders are equal to zero here, return the current index. Otherwise, decrement ladders and add back the max value in the heap to the bricks (effectively switching the largest jump we've seen to ladders instead of bricks). If iteration completes, return the last index.\n- **Complexity**: Time `O(n log n)`, Space `O(n)` (heap)\n",
         "published": true,
         "datetime": "2026-01-13T21:03:19Z"
+    },
+    "1730-shortest-path-to-get-food": {
+        "id": "1730-shortest-path-to-get-food",
+        "title": "1730. Shortest Path To Get Food",
+        "directory": "1730-shortest-path-to-get-food",
+        "difficulty": "Medium",
+        "tags": [
+            "graph",
+            "bfs"
+        ],
+        "notes": "- **Intuition**: Basic graph shortest distance problem, use BFS.\n- **Implementation**: Use BFS to find the shortest path. Start by finding the coordinate of the start position. Add to queue tuple with 0 for the path length. Also add start to visited set. Iterate while queue is not empty, pop from the queue and iterate over the neighbours, if the neighbour is already visited or is blocked, continue. Otherwise, check if the neighbour is a food and return current path length + 1. Otherwise add the neighbour to visited and the queue with path + 1. If iteration completes, return -1.\n- **Complexity**: Time `O(m * n)`, Space `O(m * n)`\n",
+        "published": true,
+        "datetime": "2026-01-13T23:04:22Z"
     }
 }
