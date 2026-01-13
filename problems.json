@@ -602,5 +602,17 @@
         "notes": "- **Intuition**: Group cards by rank and suit and then generate sets from same rank cards and sets from same suit cards.\n- **Implementation**: Start off by grouping cards by rank and suit in hash maps. For the sets, iterate over the rank map and ignore any ranks that have fewer than 3 cards. If they have >= 3 cards, iterate from 3 to the length of the cards + 1 and genrate combinations of those cards for each iteration. 3, 4, 5, so on. add that to result. For the sets, iterate over the suit map, ignore suits that have fewer than 3 cards. Extract the cards and sort them by suit. Iterate through and generate segments of consecutive cards. If you get to a point that it no longer consecutive, check if the current segments is greater than 3 and slide window across of size 3+, adding to result. Then, reset the segments to the current value to continue. At the end, there may be one more segment left so do the same.\n- **Complexity**: Time `O(n^2)` (because of the set algo, very small n so ok), Space `O(n^2)`\n",
         "published": true,
         "datetime": "2026-01-13T07:01:53Z"
+    },
+    "skyscraper-furthest-distance": {
+        "id": "skyscraper-furthest-distance",
+        "title": "Skyscraper Furthest Distance",
+        "directory": "skyscraper-furthest-distance",
+        "difficulty": "Medium",
+        "tags": [
+            "heap"
+        ],
+        "notes": "- **Intuition**: We want to save spring use only for the largest jumps.\n- **Implementation**: Use a max heap. Iterate through pairs, calculate the difference, if less than or equal to zero, free move, continue. Otherwise, assume we will use sandbags and decrement the sandbags. Add the difference to the max heap. If the sandbags value goes below zero, we need to use springs instead if we have them, if springs equals zero here, early return the index we are currently at. This handles the case of either springs being already used or not having any springs at all. If springs are not zero, decrement the springs value and add the value at the top of the max heap back to the sandbags. Effectively, this converts the largest jump we've seen to use a spring instead of sandbags.\n- **Edge-cases**: Rememeber Python uses min heap so we just negate the values to make it into a max heap.\n- **Complexity**: Time `O(n log n)` heap push and pop is `O(log n)`, Space `O(n)` (heap)\n",
+        "published": true,
+        "datetime": "2026-01-13T20:11:29Z"
     }
 }

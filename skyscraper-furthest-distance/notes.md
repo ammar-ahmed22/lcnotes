@@ -1,0 +1,4 @@
+- **Intuition**: We want to save spring use only for the largest jumps.
+- **Implementation**: Use a max heap. Iterate through pairs, calculate the difference, if less than or equal to zero, free move, continue. Otherwise, assume we will use sandbags and decrement the sandbags. Add the difference to the max heap. If the sandbags value goes below zero, we need to use springs instead if we have them, if springs equals zero here, early return the index we are currently at. This handles the case of either springs being already used or not having any springs at all. If springs are not zero, decrement the springs value and add the value at the top of the max heap back to the sandbags. Effectively, this converts the largest jump we've seen to use a spring instead of sandbags.
+- **Edge-cases**: Rememeber Python uses min heap so we just negate the values to make it into a max heap.
+- **Complexity**: Time `O(n log n)` heap push and pop is `O(log n)`, Space `O(n)` (heap)
