@@ -589,5 +589,18 @@
         "notes": "- **Intuition**: Can be treated like a graph, traverse with BFS to find shortest path.\n- **Implementation**: Write a function to compute all neighbours of given combo (8 possible neighbours, 1 up and 1 down for each number). Create a set for the blocked combos and create a queue that is initialized with the start combo and 0 (number of turns) as a tuple. Also created a visited map initialized with the start combo. Iterate while q is not empty, popleft the current combo and the number of turns. Iterate over all the neighbours of that combo, if the neighbor is already visited or in the blocked combos, continue. If the neighbour is the target, return `turns + 1` as the answer. Otherwise, add the neighbour and `turns + 1` to the queue. If queue finishes, no possible turns can get to the target, return -1.\n- **Edge-cases**: Check before BFS if start is equal to target, return 0. Also check if start is in the blocked combos, return -1 (cannot go anywhere).\n- **Complexity**: Time `O(V)` where `V` is the number of possible states (10^4), Space `O(V)`\n",
         "published": true,
         "datetime": "2026-01-13T05:23:25Z"
+    },
+    "rummy-card-game": {
+        "id": "rummy-card-game",
+        "title": "Rummy Card Game",
+        "directory": "rummy-card-game",
+        "difficulty": "Hard",
+        "tags": [
+            "sliding-window",
+            "math"
+        ],
+        "notes": "- **Intuition**: Group cards by rank and suit and then generate sets from same rank cards and sets from same suit cards.\n- **Implementation**: Start off by grouping cards by rank and suit in hash maps. For the sets, iterate over the rank map and ignore any ranks that have fewer than 3 cards. If they have >= 3 cards, iterate from 3 to the length of the cards + 1 and genrate combinations of those cards for each iteration. 3, 4, 5, so on. add that to result. For the sets, iterate over the suit map, ignore suits that have fewer than 3 cards. Extract the cards and sort them by suit. Iterate through and generate segments of consecutive cards. If you get to a point that it no longer consecutive, check if the current segments is greater than 3 and slide window across of size 3+, adding to result. Then, reset the segments to the current value to continue. At the end, there may be one more segment left so do the same.\n- **Complexity**: Time `O(n^2)` (because of the set algo, very small n so ok), Space `O(n^2)`\n",
+        "published": true,
+        "datetime": "2026-01-13T07:01:53Z"
     }
 }
