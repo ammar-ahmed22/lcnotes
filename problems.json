@@ -627,5 +627,17 @@
         "notes": "- **Intuition**: Can be treated like a graph with each state having 8 neighbours (turn each wheel up or down).\n- **Implementation**: Use BFS to find shortest path. Create a function to generate neighbours given a combo, should genrate 8 neighbours, turn each wheel up and down (use mod 10 to keep in bounds). Create a queue that is initialized with the start combo (`\"0000\"`) and 0 as the number of turns. Also create a map to keep track of the visited states. While the q has elements, pop left from the queue, iterate over the neighbours, if the neighbour is already visited or is in the deadends, continue. If the neighbour is equal to the target, return `turns + 1`, otherwise add the neighbour and turns + 1 to the queue and to the visited set.\n- **Complexity**: Time `O(V)` where `V` is the number of states (10^4), Space `O(V)`\n",
         "published": true,
         "datetime": "2026-01-13T20:51:21Z"
+    },
+    "furthest-building-you-can-reach": {
+        "id": "furthest-building-you-can-reach",
+        "title": "1642. Furthest Building You Can Reach",
+        "directory": "1642-furthest-building-you-can-reach",
+        "difficulty": "Medium",
+        "tags": [
+            "heap"
+        ],
+        "notes": "- **Intuition**: Use ladders for the largest jumps.\n- **Implementation**: Use a max heap. Iterate over pairs and calculate difference. If difference <= 0, continue. Otherwise, assume we will use bricks and decrement the bricks by the difference. Add the difference to the max heap. If the bricks go below 0, we must use a ladder. If ladders are equal to zero here, return the current index. Otherwise, decrement ladders and add back the max value in the heap to the bricks (effectively switching the largest jump we've seen to ladders instead of bricks). If iteration completes, return the last index.\n- **Complexity**: Time `O(n log n)`, Space `O(n)` (heap)\n",
+        "published": true,
+        "datetime": "2026-01-13T21:03:19Z"
     }
 }
