@@ -652,5 +652,18 @@
         "notes": "- **Intuition**: Basic graph shortest distance problem, use BFS.\n- **Implementation**: Use BFS to find the shortest path. Start by finding the coordinate of the start position. Add to queue tuple with 0 for the path length. Also add start to visited set. Iterate while queue is not empty, pop from the queue and iterate over the neighbours, if the neighbour is already visited or is blocked, continue. Otherwise, check if the neighbour is a food and return current path length + 1. Otherwise add the neighbour to visited and the queue with path + 1. If iteration completes, return -1.\n- **Complexity**: Time `O(m * n)`, Space `O(m * n)`\n",
         "published": true,
         "datetime": "2026-01-13T23:04:22Z"
+    },
+    "infinite-taxi-driver": {
+        "id": "infinite-taxi-driver",
+        "title": "Infinite Taxi Driver",
+        "directory": "infinite-taxi-driver",
+        "difficulty": "Medium",
+        "tags": [
+            "graph",
+            "bfs"
+        ],
+        "notes": "- **Intuition**: Shortest path problem with BFS.\n- **Implementation**: Use BFS. Create a function to get neighbours of a given a coordinate alongside their string direction. No need to check for bounds because infinite grid. Add start to queue alongside empty string. Keep track of visited set of coordinates as well. Pop from queue, iterate over the neighbours, if in barriers or visited, continue. If neighbour is equal to target, return current string path + the neighbours direction. Add neighbour to visited set and to queue alongside current path + string direction. Should always find the shortest path. Can make more optimal using A* with manhattan heuristic.\n- **Complexity**: Time `O(V)` where `V` is the number of states, Space `O(V)`\n",
+        "published": true,
+        "datetime": "2026-01-14T17:50:43Z"
     }
 }

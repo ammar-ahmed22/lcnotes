@@ -1,0 +1,3 @@
+- **Intuition**: Shortest path problem with BFS.
+- **Implementation**: Use BFS. Create a function to get neighbours of a given a coordinate alongside their string direction. No need to check for bounds because infinite grid. Add start to queue alongside empty string. Keep track of visited set of coordinates as well. Pop from queue, iterate over the neighbours, if in barriers or visited, continue. If neighbour is equal to target, return current string path + the neighbours direction. Add neighbour to visited set and to queue alongside current path + string direction. Should always find the shortest path. Can make more optimal using A* with manhattan heuristic.
+- **Complexity**: Time `O(V)` where `V` is the number of states, Space `O(V)`
