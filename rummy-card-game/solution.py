@@ -8,14 +8,15 @@ class Solution:
             return (int(card[0]), card[1])
 
         # Group cards by rank and suit
+        # Space: O(n) -> all cards are stored
         by_rank = defaultdict(list)
         by_suit = defaultdict(list)
+        # Time: O(n)
         for card in cards:
             rank, suit = parseCard(card)
             by_rank[rank].append(card)
             by_suit[suit].append(card)
 
-        print(by_rank)
 
         result = []
 

@@ -4,34 +4,34 @@ from collections import defaultdict
 class Solution:
     def maxLevelPartyInvites(self, levels: List[int], reporting_chain: List[List[int]]) -> int:
         n = len(levels)
-        children = defaultdict(list)
+        reports = defaultdict(list)
         # Create adjacency list and mark parents to extract roots later
         has_parent = [False] * n
         for manager, report in reporting_chain:
-            children[manager].append(report)
+            reports[manager].append(report)
             has_parent[report] = True
 
 
-        dp: Dict[int, Tuple[int, int]] = {}
-        def dfs(u: int) -> Tuple[int, int]:
-            if u in dp:
-                return dp[u]
+        memo: Dict[int, Tuple[int, int]] = {}
+        def dfs(employee: int) -> Tuple[int, int]:
+            if employee in memo:
+                return memo[employee]
 
-            invite_u = levels[u]
-            skip_u = 0
-            for v in children[u]:
-                invite_v, skip_v = dfs(v)
-                invite_u += skip_v # if u is invited, sum if v is not invited (skip_v)
-                skip_u += max(invite_v, skip_v) # if u is skipped, we can choose to invite v or not
+            invite_employee = levels[employee]
+            skip_employee = 0
+            for report in reports[employee]:
+                invite_report, skip_report = dfs(report)
+                invite_employee += skip_report # if u is invited, sum if v is not invited (skip_v)
+                skip_employee += max(invite_report, skip_report) # if u is skipped, we can choose to invite v or not
 
-            dp[u] = (invite_u, skip_u)
-            return dp[u]
+            memo[employee] = (invite_employee, skip_employee)
+            return memo[employee]
 
         # Only start DFS on roots because otherwise we can miss nodes or double count them
-        roots = [i for i in range(n) if not has_parent[i]]
+        root_employees = [i for i in range(n) if not has_parent[i]]
         total = 0
-        for u in roots:
-            invite, skip = dfs(u)
+        for root_employee in root_employees:
+            invite, skip = dfs(root_employee)
             total += max(invite, skip)
         return total;
 

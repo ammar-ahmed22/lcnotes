@@ -3,6 +3,7 @@ import heapq
 
 class Solution:
     def furthestDistance(self, heights: List[int], springs: int, sandbags: int) -> int:
+        # Optimal (min heap, O(n log n) time, O(n) space)
         max_heap = []
         # O(n)
         for i in range(len(heights) - 1):
