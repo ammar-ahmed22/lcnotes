@@ -665,5 +665,17 @@
         "notes": "- **Intuition**: Shortest path problem with BFS.\n- **Implementation**: Use BFS. Create a function to get neighbours of a given a coordinate alongside their string direction. No need to check for bounds because infinite grid. Add start to queue alongside empty string. Keep track of visited set of coordinates as well. Pop from queue, iterate over the neighbours, if in barriers or visited, continue. If neighbour is equal to target, return current string path + the neighbours direction. Add neighbour to visited set and to queue alongside current path + string direction. Should always find the shortest path. Can make more optimal using A* with manhattan heuristic.\n- **Complexity**: Time `O(V)` where `V` is the number of states, Space `O(V)`\n",
         "published": true,
         "datetime": "2026-01-14T17:50:43Z"
+    },
+    "merge-strings-alternately": {
+        "id": "merge-strings-alternately",
+        "title": "1768. Merge Strings Alternately",
+        "directory": "1768-merge-strings-alternately",
+        "difficulty": "Easy",
+        "tags": [
+            "two-pointers"
+        ],
+        "notes": "- **Intuition**: Add characters alternately from each string, ensuring to add remaining characters at the end.\n- **Implementation**: Initialize pointers for each word (`i, j`) and a counter variable for the resultant string (`k`). Iterate while `i < len(word1)` and `j < len(word2)` so that it will stop when any one of them goes out of bounds . On each iteration, check if `k % 2 == 0`, if it is, add the character from `word1` to the result and increment `i`, otherwise, add the character from `word2` and increment `j`. Always increment `k`. After the initial iteration, iterate while `i < len(word1)` and add the characters and the same thing for j and word2 to add any remaining characters if the strings are unequal length.\n- **Complexity**: Time `O(n + m)` where `n` is the length of `word1` and `m` is the length of `word2`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2026-01-25T00:44:15Z"
     }
 }
