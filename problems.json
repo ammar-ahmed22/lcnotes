@@ -690,5 +690,17 @@
         "notes": "- **Intuition**: Use if statements to catch the smallest and the second smallest, if we jump over them both, that means triplet found\n- **Implementation**: Initialize variables for `smallest` and `second_smallest` to be a maximum value. Iterate over hte numbers, check if the number is less than or equal to `smallest`, set `smallest`. Else if number is less than or equal to `second_smallest`, set `second_smallest`. Else, we have found the triplet in the sequence because two numbers strictly smaller than each other were already seen before. Therefore, return `True`. If iteration finishes return `False`.\n- **Edge-cases**:\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
         "published": true,
         "datetime": "2026-01-26T05:22:10Z"
+    },
+    "string-compression": {
+        "id": "string-compression",
+        "title": "443. String Compression",
+        "directory": "443-string-compression",
+        "difficulty": "Medium",
+        "tags": [
+            "two-pointers"
+        ],
+        "notes": "- **Intuition**: Use two pointers with a write pointer.\n- **Implementation**: Initialize two pointers, `l` and `r` to zero as well as a write pointer, `k` to zero. Iterate while `r` is less than the length of the character array. Inside the iteration, iterate again while `r` is the same as `l` and increment `r`. After this iteration, `r` will be moved to the first non-repeating character so the difference between `r` and `l` is how many repeating characters we saw. Start off by writing the character at `l` to the array using the write pointer `k` (`chars[k] = chars[l]`). Then increment `k`. After this, check if `r - l` is greater than 1, iterate over the characters of the number and write them to the character array, iterating `k` each time. After this, set `l = r` to continue with the next set of characters. At the end, `k` will be at the end of our modified characters so it can be returned.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2026-01-26T06:03:49Z"
     }
 }
