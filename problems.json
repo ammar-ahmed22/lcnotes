@@ -677,5 +677,18 @@
         "notes": "- **Intuition**: Add characters alternately from each string, ensuring to add remaining characters at the end.\n- **Implementation**: Initialize pointers for each word (`i, j`) and a counter variable for the resultant string (`k`). Iterate while `i < len(word1)` and `j < len(word2)` so that it will stop when any one of them goes out of bounds . On each iteration, check if `k % 2 == 0`, if it is, add the character from `word1` to the result and increment `i`, otherwise, add the character from `word2` and increment `j`. Always increment `k`. After the initial iteration, iterate while `i < len(word1)` and add the characters and the same thing for j and word2 to add any remaining characters if the strings are unequal length.\n- **Complexity**: Time `O(n + m)` where `n` is the length of `word1` and `m` is the length of `word2`, Space `O(1)`\n",
         "published": true,
         "datetime": "2026-01-25T00:44:15Z"
+    },
+    "increasing-triplet-subsequence": {
+        "id": "increasing-triplet-subsequence",
+        "title": "334. Increasing Triplet Subsequence",
+        "directory": "334-increasing-triplet-subsequence",
+        "difficulty": "Medium",
+        "tags": [
+            "math",
+            "trick"
+        ],
+        "notes": "- **Intuition**: Use if statements to catch the smallest and the second smallest, if we jump over them both, that means triplet found\n- **Implementation**: Initialize variables for `smallest` and `second_smallest` to be a maximum value. Iterate over hte numbers, check if the number is less than or equal to `smallest`, set `smallest`. Else if number is less than or equal to `second_smallest`, set `second_smallest`. Else, we have found the triplet in the sequence because two numbers strictly smaller than each other were already seen before. Therefore, return `True`. If iteration finishes return `False`.\n- **Edge-cases**:\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "published": true,
+        "datetime": "2026-01-26T05:22:10Z"
     }
 }

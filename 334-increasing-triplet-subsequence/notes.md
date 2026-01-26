@@ -1,0 +1,4 @@
+- **Intuition**: Use if statements to catch the smallest and the second smallest, if we jump over them both, that means triplet found
+- **Implementation**: Initialize variables for `smallest` and `second_smallest` to be a maximum value. Iterate over hte numbers, check if the number is less than or equal to `smallest`, set `smallest`. Else if number is less than or equal to `second_smallest`, set `second_smallest`. Else, we have found the triplet in the sequence because two numbers strictly smaller than each other were already seen before. Therefore, return `True`. If iteration finishes return `False`.
+- **Edge-cases**:
+- **Complexity**: Time `O(n)`, Space `O(1)`
