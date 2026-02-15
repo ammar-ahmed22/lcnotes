@@ -1,3 +1,12 @@
-- **Intuition**: Use ladders for the largest jumps.
-- **Implementation**: Use a max heap. Iterate over pairs and calculate difference. If difference <= 0, continue. Otherwise, assume we will use bricks and decrement the bricks by the difference. Add the difference to the max heap. If the bricks go below 0, we must use a ladder. If ladders are equal to zero here, return the current index. Otherwise, decrement ladders and add back the max value in the heap to the bricks (effectively switching the largest jump we've seen to ladders instead of bricks). If iteration completes, return the last index.
-- **Complexity**: Time `O(n log n)`, Space `O(n)` (heap)
+## Intuition
+Ladders can cover any height difference, so they're most valuable for the largest jumps. By greedily using bricks first and retroactively converting the largest brick usage to a ladder when we run out, we maximize our reach.
+
+## Implementation
+Use a max heap to track jump sizes. For each positive height difference, assume we use bricks and add the difference to the heap. If bricks go negative, we need a ladder—if none remain, return the current index. Otherwise, use a ladder by popping the largest jump from the heap and adding those bricks back. If we complete the iteration, return the last index.
+
+## Edge-cases
+Python's `heapq` is a min heap, so negate values to simulate a max heap. Remember to negate again when popping.
+
+## Complexity
+- Time: `O(n log n)` — heap operations for each building
+- Space: `O(n)` — heap stores up to n jumps

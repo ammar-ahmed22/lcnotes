@@ -1,4 +1,12 @@
-- **Intuition**: Use a similar approach to [Two Sum II - Input Array Sorted](../167-two-sum-ii-input-array-is-sorted/solution.py), sort the input, look for when left and right of the right side of the array add up to the current number
-- **Implementation**: Sort the input `O(n log n)`, for each number, binary search on the right side of the array, if `l + r = curr`, triplet found, add to result, move right if `l + r` is too big, otherwise move left
-- **Edge-cases**: Ensure that we keep going even after finding a triplet because there could be more with the same `curr`. Also ensure that we move past duplicates for `curr` because it will be the same result, i.e. if we have [-1, -1, -1, 0, 1], we want to start processing at the last -1. Same thing when we find an answer, we want to move left and right until they are at the next non-duplicate
-- **Complexity**: Time `O(n^2 log n)` (sorting, nested loop), Space `O(1)`
+## Intuition
+Building on the two-pointer approach from Two Sum II, we can fix one number and use two pointers on the remaining sorted array to find pairs that sum to its negation. Sorting enables efficient duplicate skipping.
+
+## Implementation
+Sort the array first. For each number `nums[i]`, set up left and right pointers on the subarray to its right. If `l + r` equals the target (negation of `nums[i]`), we found a triplet. If the sum is too large, move right inward; if too small, move left outward. Continue searching even after finding a triplet.
+
+## Edge-cases
+Duplicates require careful handling. Skip duplicate values of `nums[i]` at the outer loop level. After finding a triplet, advance both `l` and `r` past any duplicates to avoid adding the same triplet multiple times.
+
+## Complexity
+- Time: `O(n²)` — sorting is `O(n log n)`, nested iteration is `O(n²)`
+- Space: `O(1)` — excluding the output array
