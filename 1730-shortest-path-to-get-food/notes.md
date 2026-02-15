@@ -1,3 +1,12 @@
-- **Intuition**: Basic graph shortest distance problem, use BFS.
-- **Implementation**: Use BFS to find the shortest path. Start by finding the coordinate of the start position. Add to queue tuple with 0 for the path length. Also add start to visited set. Iterate while queue is not empty, pop from the queue and iterate over the neighbours, if the neighbour is already visited or is blocked, continue. Otherwise, check if the neighbour is a food and return current path length + 1. Otherwise add the neighbour to visited and the queue with path + 1. If iteration completes, return -1.
-- **Complexity**: Time `O(m * n)`, Space `O(m * n)`
+## Intuition
+Finding the shortest path in an unweighted grid is a classic BFS problem. BFS explores all cells at distance k before any cell at distance k+1, guaranteeing the first food cell reached is the closest.
+
+## Implementation
+First, locate the starting position (`*`). Initialize a queue with the start coordinate and path length 0, plus a visited set. Process cells level by level: for each cell, check its four neighbors. Skip if visited or blocked (`X`). If it's food (`#`), return the current path length + 1. Otherwise, add to visited and queue with incremented path.
+
+## Edge-cases
+If BFS completes without finding food, return -1 (no reachable food). The visited set prevents revisiting cells and infinite loops.
+
+## Complexity
+- Time: `O(m * n)` — each cell visited at most once
+- Space: `O(m * n)` — visited set and queue
