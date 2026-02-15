@@ -1,4 +1,12 @@
-- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time
-- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result
-- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed
-- **Complexity**: Time `O(n)`, Space `O(n)` (freq map)
+## Intuition
+Bucket sort by frequency. Since the maximum frequency is n, we can use an array where index represents frequency and values are the elements with that frequency. Scanning from highest to lowest frequency gives us the top k elements.
+
+## Implementation
+First, count frequencies with a hashmap. Then create a frequency array of length `n + 1` (indices 0 to n), where each index is a list of elements with that frequency. Iterate backward through this array, collecting elements until we have k items.
+
+## Edge-cases
+Multiple elements can share the same frequency, so each bucket is a list. When collecting results, iterate through all elements in each bucket before moving to the next lower frequency.
+
+## Complexity
+- Time: `O(n)` — frequency counting and bucket iteration
+- Space: `O(n)` — hashmap and frequency buckets
