@@ -1,3 +1,12 @@
-- **Intuition**: Can be treated like a graph with each state having 8 neighbours (turn each wheel up or down).
-- **Implementation**: Use BFS to find shortest path. Create a function to generate neighbours given a combo, should genrate 8 neighbours, turn each wheel up and down (use mod 10 to keep in bounds). Create a queue that is initialized with the start combo (`"0000"`) and 0 as the number of turns. Also create a map to keep track of the visited states. While the q has elements, pop left from the queue, iterate over the neighbours, if the neighbour is already visited or is in the deadends, continue. If the neighbour is equal to the target, return `turns + 1`, otherwise add the neighbour and turns + 1 to the queue and to the visited set.
-- **Complexity**: Time `O(V)` where `V` is the number of states (10^4), Space `O(V)`
+## Intuition
+Model this as a graph problem where each lock combination is a node and each wheel turn is an edge. Each state has exactly 8 neighbors (4 wheels × 2 directions). BFS finds the shortest path from "0000" to the target.
+
+## Implementation
+Create a function to generate all 8 neighbors of a combination (turn each wheel up or down using mod 10). Start BFS from "0000" with a queue storing (combo, turns) pairs. Track visited states to avoid cycles. For each state, check neighbors—skip if visited or a deadend. If a neighbor equals the target, return `turns + 1`.
+
+## Edge-cases
+Check if "0000" is a deadend (return -1 immediately). Also handle the case where the target is "0000" (return 0).
+
+## Complexity
+- Time: `O(10⁴)` — at most 10,000 possible states
+- Space: `O(10⁴)` — visited set and queue

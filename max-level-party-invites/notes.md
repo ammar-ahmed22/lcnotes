@@ -1,3 +1,12 @@
-- **Intuition**: Tree problem with multiple trees. Compute the sum if we choose to invite or a skip a certain node.
-- **Implementation**: Start off by creating the adjacency list for the potentially disconnected trees. At the same time, create an array to mark nodes that have parents so we can only process roots for DFS. Create the DFS function in which we will compute the sum if we choose to invite a node and if we choose to skip that node. Also create dp/memoization map to ensure we only process each node once, early returning from DFS if we have already processed that node. In the DFS function, initialize the invite value for that node to be the level of that node from the `levels` array and the skip value to be 0. Iterate over the children (reports) from the adjacency list, for each child call dfs on it to get its invite and skip value. Add the skip value for the child to the invite value for the current node because if we choose to invite the current node, we have to skip its reports. For the skip value, we can take the max of the invite and skip value for the child because either works, we just want the max. Save the value in the dp/memoization map and return. After this, we iterate over all the roots (for the example cases, there is only one root but for generic cases, there could be multiple). Calculate the invite and skip values for each node and take the max of them forthe answer.
-- **Complexity**: Time `O(n)` (each node is only processed once due to the DP and DFS), Space `O(n)` (adjacency, memoization)
+## Intuition
+This is a tree DP problem similar to "House Robber III." For each employee, we compute two values: the maximum sum if we invite them (must skip their direct reports) and if we skip them (can choose either for reports).
+
+## Implementation
+Build an adjacency list from the reporting chain and identify root employees (those without managers). DFS with memoization computes (invite, skip) pairs bottom-up. If we invite an employee, add their level plus the skip values of all reports. If we skip, add max(invite, skip) of each report. Process all roots and sum the maximum of invite/skip for each tree.
+
+## Edge-cases
+The graph may be a forest (multiple disconnected trees). Track which nodes have parents to identify all roots and process each independently.
+
+## Complexity
+- Time: `O(n)` — each node processed exactly once via memoization
+- Space: `O(n)` — adjacency list and memoization cache

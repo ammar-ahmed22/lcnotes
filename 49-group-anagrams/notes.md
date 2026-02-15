@@ -1,4 +1,12 @@
-- **Intuition**: Every "group" of anagrams will have the same frequency table (26 value array)
-- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result
-- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string
-- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)
+## Intuition
+Anagrams have identical character frequencies. By using the frequency distribution as a key, all anagrams will hash to the same bucket.
+
+## Implementation
+Use a hashmap where keys represent frequency distributions and values are lists of anagrams. For each string, build a 26-element frequency array. Use this as the key to group strings together. Finally, collect all the values from the map as the result.
+
+## Edge-cases
+Python doesn't allow lists as dictionary keys. Convert the frequency array to a tuple or comma-separated string to make it hashable.
+
+## Complexity
+- Time: `O(n * k)` — where n is the number of strings and k is the maximum string length
+- Space: `O(n * k)` — storing all strings in the hashmap
