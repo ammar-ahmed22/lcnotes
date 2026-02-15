@@ -1,4 +1,12 @@
-- **Intuition**: Add like on paper with carrying over logic.
-- **Implementation**: Create a dummy node for the result. Intialize two pointers for each list, `p1` and `p2`. Initialize a pointe for the dummy, `curr`. Initialize `carry` value to zero. Iterate while `p1` and `p2` are not`None`. Calculate the total with `p1.val + p2.val + carry`. The new node's value is set to this `tot` and the carry is set to zero. If the total is greater than or equal to 10 (i.e. we have to carry), update the value to `tot % 10` and the `carry` to `tot // 10`. After the main iteration, there may still be residual values in `p1` OR `p2` repeat the same logic for both lists individually. At the end, carry may still have value, if it does create a final node with the carry value. 
-- **Edge-cases**: Rememver to handle the case of the `carry` still have a value at the end of all iterations.
-- **Complexity**: Time `O(n)`, Space `O(1)` (result does not count)
+## Intuition
+Since the digits are stored in reverse order, we can add them just like we would on paper—starting from the ones place and carrying over when the sum exceeds 9.
+
+## Implementation
+Create a dummy node for the result and maintain pointers for both input lists and the result. Track a carry value initialized to 0. While both lists have nodes, compute `p1.val + p2.val + carry`. The new digit is `total % 10` and the new carry is `total // 10`. Create a new node and advance all pointers. After the main loop, process any remaining nodes in either list with the same carry logic.
+
+## Edge-cases
+After processing both lists, the carry might still be non-zero (e.g., 99 + 1 = 100). Create a final node with the carry value if needed.
+
+## Complexity
+- Time: `O(n)` — traverse both lists once
+- Space: `O(1)` — result list doesn't count toward space complexity
