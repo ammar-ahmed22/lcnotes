@@ -1,3 +1,12 @@
-- **Intuition**: Water trapped at any point is bounded by smaller of the maxes on left and right.
-- **Implementation**: Two pointer approach with tracking of left and right max. Initialize two pointers on left and right. Initialize trackers for left and right max, `maxL` and `maxR`. Iterate while `l < r`. On each iteration, update `maxL` and `maxR` with appropriate values (`height[l]` and `height[r]`). If `maxL <= maxR`, the water is bounded only by the left value (already a larger value on the right). Update answer with `maxL - height[l]` and move left. Otherwise, answer is bounded by right value only (already a larger value on the left). Update answer with `maxR - height[r]` and move right.
-- **Complexity**: Time `O(n)`, Space `O(1)`
+## Intuition
+Water at any position is bounded by the minimum of the maximum heights on its left and right. The two-pointer technique lets us compute this without precomputing all prefix/suffix maximums.
+
+## Implementation
+Use left and right pointers at opposite ends, tracking `maxL` (max height seen from left) and `maxR` (max height seen from right). Update these maxes on each iteration. If `maxL ≤ maxR`, we know the left side is the bottleneck—add `maxL - height[l]` to the answer and move left. Otherwise, the right side is the bottleneck—add `maxR - height[r]` and move right.
+
+## Edge-cases
+The algorithm handles flat terrain (no trapping) naturally since `max - height` will be zero. Empty arrays or single-element arrays trap no water.
+
+## Complexity
+- Time: `O(n)` — each element visited once
+- Space: `O(1)` — only tracking pointers and two max values
