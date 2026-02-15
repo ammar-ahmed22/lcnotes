@@ -1,4 +1,11 @@
-- **Intuition**: Use if statements to catch the smallest and the second smallest, if we jump over them both, that means triplet found
-- **Implementation**: Initialize variables for `smallest` and `second_smallest` to be a maximum value. Iterate over hte numbers, check if the number is less than or equal to `smallest`, set `smallest`. Else if number is less than or equal to `second_smallest`, set `second_smallest`. Else, we have found the triplet in the sequence because two numbers strictly smaller than each other were already seen before. Therefore, return `True`. If iteration finishes return `False`.
-- **Edge-cases**:
-- **Complexity**: Time `O(n)`, Space `O(1)`
+## Intuition
+Track the smallest value and the smallest value that comes after it. If we ever find a third value larger than both, we have an increasing triplet.
+
+## Implementation
+Maintain two variables: `smallest` (minimum so far) and `second_smallest` (minimum value following some smaller value). For each number: if it's <= smallest, update smallest. Else if it's <= second_smallest, update second_smallest. Else, we found a value > second_smallest > smallest—return True.
+
+## Edge-cases
+The values don't need to be contiguous in the array. We're finding any increasing subsequence of length 3.
+
+## Complexity
+Time `O(n)` for a single pass. Space `O(1)` using only two tracking variables.

@@ -1,4 +1,11 @@
-- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.
-- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.
-- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.
-- **Complexity**: Time `O(n)`, Space `O(n)` (stack)
+## Intuition
+For each bar, we want to find how far left and right it can extend as the shortest bar. A monotonic increasing stack helps—when we encounter a shorter bar, all taller bars on the stack can no longer extend right, so we calculate their areas.
+
+## Implementation
+Use a stack storing indices of bars in increasing height order. Iterate through the histogram plus one extra index (with height 0 to flush the stack). When the current height is less than the stack's top, pop and calculate area using the popped height and the width between the current index and the new stack top.
+
+## Edge-cases
+When the stack becomes empty after popping, the left boundary extends to index -1 (the popped bar spans from the start). Handle this by using -1 as the left index.
+
+## Complexity
+Time `O(n)` since each bar is pushed and popped at most once. Space `O(n)` for the stack.

@@ -1,4 +1,11 @@
-- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially
-- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox
-- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`
-- **Complexity**: Time `O(n^2)`, Space `O(1)`
+## Intuition
+A valid Sudoku board must have no duplicate digits in any row, column, or 3x3 subbox. We need to validate all three constraints independently.
+
+## Implementation
+Use a hashmap to track seen digits for each constraint. Iterate through rows checking for duplicates, then columns, then each 3x3 subbox. For subboxes, use nested loops with the outer loops selecting which box (0-2 for both row and column) and inner loops iterating within that box.
+
+## Edge-cases
+The tricky part is indexing into 3x3 subboxes. With box indices `brow` and `bcol` (0-2) and local indices `row` and `col` (0-2), access the cell at `board[3 * brow + row][3 * bcol + col]`.
+
+## Complexity
+Time `O(1)` since the board is always 9x9. Space `O(1)` since the hashmaps hold at most 9 elements each.

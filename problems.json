@@ -8,7 +8,7 @@
             "hashmap",
             "math"
         ],
-        "notes": "- **Intuition**: To find a valid answer we simply need to find if the complement (`target - curr`) exists in the array\n- **Implementation**: Use a hashmap to store numbers with their indices (allow overwrites because duplicates are not allowed), check if the complement exists in the map and is not the same number, return\n- **Edge-cases**: Ensure that you check the indices are not the same when returning (i.e. `map[complement] != i`)\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
+        "notes": "## Intuition\nThe key insight is that for any number in the array, we need to find if its complement (target minus that number) exists elsewhere in the array. Rather than searching for the complement with nested loops, we can use a hashmap for constant-time lookups.\n\n## Implementation\nFirst, populate a hashmap with each number as the key and its index as the value. Since the problem guarantees exactly one solution with distinct indices, we can safely overwrite duplicate values. Then iterate through the array again, computing the complement for each number and checking if it exists in the map.\n\n## Edge-cases\nWhen checking for the complement in the map, ensure the found index is different from the current index. This prevents returning the same element twice (e.g., if target is 6 and we have a 3, we shouldn't return [0, 0]).\n\n## Complexity\nTime `O(n)` for two passes through the array. Space `O(n)` for the hashmap storing all elements.\n",
         "published": true,
         "datetime": "2025-12-22T09:18:55Z"
     },
@@ -20,7 +20,7 @@
         "tags": [
             "hashmap"
         ],
-        "notes": "- **Intuition**: Need to check if a given number exists in the array\n- **Implementation**: Use a hashmap, check if the current number is in the map, return True if found, otherwise add to map, return False at the end of loop (no duplicates found)\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
+        "notes": "## Intuition\nTo detect duplicates efficiently, we need a way to quickly check if we've seen a number before. A hashmap provides O(1) lookups, making it ideal for tracking previously encountered values.\n\n## Implementation\nIterate through the array, checking each number against a hashmap. If the number already exists in the map, we've found a duplicate\u2014return True immediately. Otherwise, add the number to the map and continue. If the loop completes without finding any duplicates, return False.\n\n## Edge-cases\nNo special edge cases beyond empty arrays, which would simply return False since there's nothing to duplicate.\n\n## Complexity\nTime `O(n)` for a single pass through the array. Space `O(n)` for the hashmap in the worst case where all elements are unique.\n",
         "published": true,
         "datetime": "2025-12-22T09:19:02Z"
     },
@@ -33,7 +33,7 @@
             "hashmap",
             "frequency"
         ],
-        "notes": "- **Intuition**: An anagram means the strings have the same frequency of letters, i.e. abc is anagram of bac or cab, etc.\n- **Implementation**: Since only lowercase alphabet, increment in 26 value array at each character index (i.e. a = index 0, b = index 1, etc.) for `s` and decrement for `t`, if frequency array is zero, return True, otherwise False\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
+        "notes": "## Intuition\nTwo strings are anagrams if they contain exactly the same characters with the same frequencies. Rather than sorting both strings and comparing, we can use a frequency count approach that's more efficient.\n\n## Implementation\nSince the input only contains lowercase English letters, use a fixed-size array of 26 elements as a frequency counter. Increment the count for each character in the first string, then decrement for each character in the second string. If the strings are anagrams, all counts will return to zero.\n\n## Edge-cases\nStrings of different lengths cannot be anagrams, though this is implicitly handled by the frequency counting approach.\n\n## Complexity\nTime `O(n)` for iterating through both strings. Space `O(1)` since the frequency array is always 26 elements regardless of input size.\n",
         "published": true,
         "datetime": "2025-12-22T09:19:12Z"
     },
@@ -46,7 +46,7 @@
             "hashmap",
             "frequency"
         ],
-        "notes": "- **Intuition**: Every \"group\" of anagrams will have the same frequency table (26 value array)\n- **Implementation**: Use a hashmap with the key being the frequency table and the value being the group of strings, iterate over each string, create the frequency table, check the map, add or create new entry in the map, finally take all the values from the map and flatten into a single result\n- **Edge-cases**: Python doesn't allow arbitrary values as keys, convert frequency table to comma-separated string\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
+        "notes": "## Intuition\nAll anagrams share the same character frequency distribution. If we can create a canonical representation of this frequency, we can use it as a key to group anagrams together in a hashmap.\n\n## Implementation\nFor each string, build a frequency table (26-element array for lowercase letters). Use this frequency table as a hashmap key, with the value being a list of strings that share that frequency signature. After processing all strings, return the hashmap values as the grouped anagrams.\n\n## Edge-cases\nPython dictionaries don't allow lists as keys, so convert the frequency table to a comma-separated string (e.g., \"1,0,1,0,...\") to use as the key.\n\n## Complexity\nTime `O(n * k)` where n is the number of strings and k is the maximum string length. Space `O(n)` for the hashmap storing all strings.\n",
         "published": true,
         "datetime": "2025-12-22T09:19:22Z"
     },
@@ -59,7 +59,7 @@
             "hashmap",
             "frequency"
         ],
-        "notes": "- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time\n- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result\n- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed\n- **Complexity**: Time `O(n)`, Space `O(n)` (freq map)\n",
+        "notes": "## Intuition\nInstead of sorting by frequency (which would be O(n log n)), we can use bucket sort. Since the maximum frequency of any element is bounded by the array length n, we can create an array where the index represents the frequency and the value is a list of elements with that frequency.\n\n## Implementation\nFirst, count frequencies using a hashmap. Then create a bucket array of size n+1, where each index i contains elements that appear exactly i times. Finally, iterate backwards from the highest frequency bucket, collecting elements until we have k items.\n\n## Edge-cases\nMultiple elements can share the same frequency, so each bucket must be a list rather than a single value. When collecting results, iterate through each bucket's contents before moving to the next.\n\n## Complexity\nTime `O(n)` for counting and bucket distribution. Space `O(n)` for the frequency map and bucket array.\n",
         "published": true,
         "datetime": "2025-12-22T09:19:31Z"
     },
@@ -71,7 +71,7 @@
         "tags": [
             "math"
         ],
-        "notes": "- **Intuition**: Use `prefix` and `suffix` arrays to calculate answer at each index. `prefix` is the product of all elements before `i` and `suffix` is the product of all elements after `i`.\n- **Implementation**: Initialize `prefix` with `1` (before `i = 0` is just 1), iterate from `1 to n`, `prefix[i] = nums[i - 1] * prefix[i - 1]`. Initialize `suffix` with `suffix[-1] = 1` (after the end of the array, just 1 left), iterate backwards `n-2 to 0`, `suffix[i] = nums[i + 1] * suffix[i + 1]`. Answer is `ans[i] = prefix[i] * suffix[i]`\n- **Complexity**: Time `O(n)`, Space `O(n)` (prefix and suffix arrays)\n",
+        "notes": "## Intuition\nWithout using division, we need another way to compute the product of all elements except the current one. The key observation is that for any index i, the answer is the product of all elements to its left multiplied by the product of all elements to its right.\n\n## Implementation\nBuild two arrays: `prefix` where `prefix[i]` holds the product of all elements before index i, and `suffix` where `suffix[i]` holds the product of all elements after index i. Initialize `prefix[0] = 1` (nothing before the first element) and `suffix[n-1] = 1` (nothing after the last element). The answer at each index is simply `prefix[i] * suffix[i]`.\n\n## Edge-cases\nNo special edge cases since the problem guarantees the product will fit in a 32-bit integer.\n\n## Complexity\nTime `O(n)` for three linear passes (prefix, suffix, and result). Space `O(n)` for the prefix and suffix arrays.\n",
         "published": true,
         "datetime": "2025-12-22T09:19:39Z"
     },
@@ -83,7 +83,7 @@
         "tags": [
             "matrix"
         ],
-        "notes": "- **Intuition**: Check each row, column and 3x3 subbox for duplicates essentially\n- **Implementation**: Use a hashmap to check for duplicates in each row, column and 3x3 subbox\n- **Edge-cases**: Figuring out the indexing of the 3x3 subbox is difficult. Do 4 nested loops, `box_row (0 to 3)`, `box_col (0 to 3)`, `row (0 to 3)`, `col (0 to 3)`, then we can access the specific value with `board[3 * box_row + row][3  * box_col + col]`\n- **Complexity**: Time `O(n^2)`, Space `O(1)`\n",
+        "notes": "## Intuition\nA valid Sudoku board must have no duplicate digits in any row, column, or 3x3 subbox. We need to validate all three constraints independently.\n\n## Implementation\nUse a hashmap to track seen digits for each constraint. Iterate through rows checking for duplicates, then columns, then each 3x3 subbox. For subboxes, use nested loops with the outer loops selecting which box (0-2 for both row and column) and inner loops iterating within that box.\n\n## Edge-cases\nThe tricky part is indexing into 3x3 subboxes. With box indices `brow` and `bcol` (0-2) and local indices `row` and `col` (0-2), access the cell at `board[3 * brow + row][3 * bcol + col]`.\n\n## Complexity\nTime `O(1)` since the board is always 9x9. Space `O(1)` since the hashmaps hold at most 9 elements each.\n",
         "published": true,
         "datetime": "2025-12-22T09:19:52Z"
     },
@@ -96,7 +96,7 @@
             "hashmap",
             "math"
         ],
-        "notes": "- **Intuition**: The start of a sequence is when there IS a number exactly 1 greater than it in the array and NOT a number exactly 1 less than it. When a sequence start is found, iterate looking for the next values, keeping track of the max length\n- **Implementation**: Use hashmap to store all numbers for `O(1)` lookup, iterate and look for sequence start, iterate building the sequence and keep track of max\n- **Edge-cases**: In case of duplicates, we don't process the same sequence start multiple times. Initialize hashmap with all `False` values, when processing a sequence start, mark it as `True` to signify this sequence start is already processed and don't process that sequence start again\n- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)\n",
+        "notes": "## Intuition\nTo achieve O(n) time, we can't sort. Instead, identify sequence starting points\u2014numbers that have no predecessor (n-1 not in array). From each starting point, count how far the sequence extends.\n\n## Implementation\nStore all numbers in a hashset for O(1) lookups. Iterate through the array and for each number, check if it's a sequence start (n-1 doesn't exist). If it is, count consecutive numbers starting from it by repeatedly checking for n+1, n+2, etc. Track the maximum sequence length found.\n\n## Edge-cases\nDuplicates can cause the same sequence to be processed multiple times. Mark sequence starts as processed after handling them to avoid redundant work.\n\n## Complexity\nTime `O(n)` because each number is visited at most twice (once in the main loop, once when extending a sequence). Space `O(n)` for the hashset.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:01Z"
     },
@@ -109,7 +109,7 @@
             "two-pointers",
             "string"
         ],
-        "notes": "- **Intuition**: Palindrome will have the same characters on the left and right side of the string when traversing at the same speed\n- **Implementation**: Use right and left pointers, iterate towards the center, check if `l == r`, if not, early return `False`. Otherwise return `True`.\n- **Edge-cases**: Can have non-alphanumeric or uppercase characters, make everything lowercase, skip over non-alphanumerics\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nA palindrome reads the same forwards and backwards. Using two pointers starting from opposite ends and moving toward the center, we can verify this property in a single pass.\n\n## Implementation\nInitialize left pointer at the start and right pointer at the end. Move both toward the center, comparing characters. If they don't match, it's not a palindrome. Continue until the pointers meet or cross.\n\n## Edge-cases\nThe input may contain non-alphanumeric characters and mixed case. Convert everything to lowercase and skip over any non-alphanumeric characters during traversal.\n\n## Complexity\nTime `O(n)` for a single pass through the string. Space `O(1)` using only two pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:13Z"
     },
@@ -122,7 +122,7 @@
             "two-pointers",
             "binary-search"
         ],
-        "notes": "- **Intuition**: Since array is sorted, we only need to look for our complment (`target - curr`) in the values to the right of the current (also sorted, binary search)\n- **Implementation**: For each number, calculate the complement, conduct binary search on the elements to the right of it, if not found keep going, if found return\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n\n",
+        "notes": "## Intuition\nThe sorted property allows us to use binary search. For each number, its complement (target - current) must be somewhere to its right (since using the same element twice isn't allowed and left elements are smaller).\n\n## Implementation\nFor each element at index i, compute the complement and binary search for it in the subarray from i+1 to the end. If found, return both indices (1-indexed as per the problem). If not found, continue to the next element.\n\n## Edge-cases\nRemember to return 1-indexed results as required by the problem.\n\n## Complexity\nTime `O(n log n)` for n binary searches. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:24Z"
     },
@@ -135,7 +135,7 @@
             "binary-search",
             "two-pointers"
         ],
-        "notes": "- **Intuition**: Use a similar approach to [Two Sum II - Input Array Sorted](../167-two-sum-ii-input-array-is-sorted/solution.py), sort the input, look for when left and right of the right side of the array add up to the current number\n- **Implementation**: Sort the input `O(n log n)`, for each number, binary search on the right side of the array, if `l + r = curr`, triplet found, add to result, move right if `l + r` is too big, otherwise move left\n- **Edge-cases**: Ensure that we keep going even after finding a triplet because there could be more with the same `curr`. Also ensure that we move past duplicates for `curr` because it will be the same result, i.e. if we have [-1, -1, -1, 0, 1], we want to start processing at the last -1. Same thing when we find an answer, we want to move left and right until they are at the next non-duplicate\n- **Complexity**: Time `O(n^2 log n)` (sorting, nested loop), Space `O(1)`\n",
+        "notes": "## Intuition\nThis extends the Two Sum II pattern. Sort the array first, then for each element, use two pointers to find pairs in the remaining array that sum to the negative of that element (making the total zero).\n\n## Implementation\nSort the array. For each index i, set left pointer to i+1 and right pointer to the end. If the sum of all three equals zero, record the triplet. If the sum is too large, move right pointer left; if too small, move left pointer right.\n\n## Edge-cases\nTo avoid duplicate triplets, skip over consecutive identical values for the outer loop index. Similarly, after finding a valid triplet, skip over duplicates for both left and right pointers before continuing the search.\n\n## Complexity\nTime `O(n^2)` for sorting plus the nested two-pointer search. Space `O(1)` excluding the output array.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:38Z"
     },
@@ -148,7 +148,7 @@
             "two-pointers",
             "math"
         ],
-        "notes": "- **Intuition**: We want to maximize height and width. Start with max width and always reduce the width towards the larger height.\n- **Implementation**: Left and right pointers at the end of the array. Keep track of max area using min of left and right as height. Move right or left pointer towards the larger one. i.e. if left > right, move right. if right > left, move left.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nThe area is determined by width (distance between lines) and height (the shorter of the two lines). Starting with maximum width (pointers at both ends), we can only potentially increase area by finding a taller line, so always move the pointer pointing to the shorter line inward.\n\n## Implementation\nPlace left and right pointers at the array ends. Calculate area using the minimum height times the width. Move the pointer at the shorter line toward the center, as keeping it could only decrease the area. Track the maximum area seen.\n\n## Edge-cases\nWhen both heights are equal, it doesn't matter which pointer moves since neither can form a larger area with the current other side.\n\n## Complexity\nTime `O(n)` for a single pass with two pointers. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:47Z"
     },
@@ -160,7 +160,7 @@
         "tags": [
             "stack"
         ],
-        "notes": "- **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.\n- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.\n- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
+        "notes": "## Intuition\nBrackets must be closed in the reverse order they were opened (LIFO). A stack naturally models this\u2014push opening brackets and pop when we see their matching closing brackets.\n\n## Implementation\nCreate a map from opening to closing brackets. When encountering an opening bracket, push its expected closing bracket onto the stack. When encountering a closing bracket, check if it matches the stack's top. If it matches, pop and continue; if not, the string is invalid.\n\n## Edge-cases\nCheck for two conditions: if a closing bracket appears when the stack is empty (no matching opener), and if the stack is non-empty after processing (unclosed brackets remain).\n\n## Complexity\nTime `O(n)` for a single pass through the string. Space `O(n)` for the stack in the worst case of all opening brackets.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:52Z"
     },
@@ -172,7 +172,7 @@
         "tags": [
             "stack"
         ],
-        "notes": "- **Intuition**: Use two stacks, one to track the min values and one for the actual stack\n- **Implementation**: Initialize two stacks. `getMin` gets the top of the min stack if it has elements, otherwise top of main stack. `top` gets the top of the main stack always. `push` will always push to main stack, checks if the number is less than or equal to the min or if the stack is empty and pushes to the min stack, `pop` will check if the current top is equal to the min, pop from min stack, always pop from main stack after.\n- **Complexity**: Time `O(1)` for `getMin`, Space `O(n)` (stack)\n",
+        "notes": "## Intuition\nTo retrieve the minimum in O(1), maintain a secondary stack that tracks the minimum value at each \"level\" of the main stack. The min stack's top always reflects the current minimum.\n\n## Implementation\nUse two stacks: a main stack for values and a min stack for minimums. On push, always add to the main stack. If the value is less than or equal to the current minimum (or the stack is empty), also push to the min stack. On pop, remove from the main stack, and if the popped value equals the min stack's top, also pop from the min stack.\n\n## Edge-cases\nPush to the min stack when the value equals the current minimum, not just when it's strictly less. This handles duplicate minimum values correctly.\n\n## Complexity\nTime `O(1)` for all operations. Space `O(n)` for both stacks in the worst case.\n",
         "published": true,
         "datetime": "2025-12-22T09:20:59Z"
     },
@@ -185,7 +185,7 @@
             "stack",
             "math"
         ],
-        "notes": "- **Intuition**: In RPN, every operator operates on the last two elements while ensuring the results of all operations are continously updated.\n- **Implementation**: Use a stack, whenever a number is seen, add to stack. When an operator seen, pop the last 2 and operate on them, push the result back to the stack and keep going. Return top of stack at the end.\n- **Edge-cases**: In Python, integer division (`a // b`) does not truncate to zero, use `int(b / a)`. Remember order for division and subtraction matter, its `b - a` and `int(b / a)`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
+        "notes": "## Intuition\nIn Reverse Polish Notation, operators come after their operands. A stack naturally handles this\u2014operands are pushed, and when an operator appears, we pop the last two operands, apply the operation, and push the result.\n\n## Implementation\nIterate through tokens. If the token is a number, push it onto the stack. If it's an operator, pop two values, apply the operation (with the second popped value as the left operand), and push the result. After processing all tokens, the stack contains one element: the answer.\n\n## Edge-cases\nFor division and subtraction, operand order matters. The first pop gives the right operand, the second pop gives the left. Also, Python's `//` operator doesn't truncate toward zero for negative numbers\u2014use `int(a / b)` instead.\n\n## Complexity\nTime `O(n)` for a single pass through tokens. Space `O(n)` for the stack.\n",
         "published": true,
         "datetime": "2025-12-22T09:21:09Z"
     },
@@ -198,7 +198,7 @@
             "stack",
             "recursion"
         ],
-        "notes": "- **Intuition**: Recursively generate by going down the different possible paths to make a well-formed parentheses set. Open and closed must both equal n for it to be well-formed\n- **Implementation**: Recursive function that takes open, closed, n, stack and result. Base case `open == close == n`, form the string from the stack and add to result. Otherwise, check if `open < n`, add open to stack, recurse with new count, pop from stack after to go down other path. Check if `closed < open` (other path), add close to stack, recurse with new count, pop from stack.\n- **Complexity**: Time is complex, something to do with the n-th Catalan number: `O(1 / (n + 1) * 2nCn * n)`, Space `O(n)` (call stack)\n",
+        "notes": "## Intuition\nGenerate all valid combinations by building strings character by character, only adding characters that keep the string valid. We can add an open parenthesis if we haven't used all n, and a close parenthesis only if it doesn't exceed the number of opens.\n\n## Implementation\nUse backtracking with a recursive function tracking the count of open and close parentheses used. Base case: when both counts equal n, add the current string to results. Otherwise, try adding '(' if opens < n, then backtrack. Try adding ')' if closes < opens, then backtrack.\n\n## Edge-cases\nNo special edge cases since the constraints ensure valid input (n >= 1).\n\n## Complexity\nTime is related to the n-th Catalan number: `O(4^n / sqrt(n))`. Space `O(n)` for the recursion depth and current string being built.\n",
         "published": true,
         "datetime": "2025-12-22T09:21:18Z"
     },
@@ -210,7 +210,7 @@
         "tags": [
             "stack"
         ],
-        "notes": "- **Intuition**: Store the temperature until a greater temperature is found.\n- **Implementation**: Initialize result with all zeros, we will add in values when we find the larger one. Use a stack to store both temp and index, iterate, while stack is not empty and stack top temp is less than curr, pop from stack, calculate distance with indices, add to result at popped index. Add curr temp and index to stack.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
+        "notes": "## Intuition\nFor each day, we need to find the next warmer day. A monotonic decreasing stack helps\u2014when we find a warmer temperature, it's warmer than all temperatures currently on the stack, so we can pop and compute distances.\n\n## Implementation\nInitialize a result array with zeros (default for days with no warmer future day). Use a stack storing (temperature, index) pairs. For each day, while the stack is non-empty and the current temperature is warmer than the stack's top, pop and record the distance in the result. Then push the current day onto the stack.\n\n## Edge-cases\nDays remaining on the stack after processing have no warmer future day, which is correctly represented by the initialized zeros.\n\n## Complexity\nTime `O(n)` since each element is pushed and popped at most once. Space `O(n)` for the stack.\n",
         "published": true,
         "datetime": "2025-12-22T09:21:24Z"
     },
@@ -223,7 +223,7 @@
             "stack",
             "math"
         ],
-        "notes": "- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting\n- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.\n- **Complexity**: Time `O(n log n)` (sorting), Space `O(n)`\n",
+        "notes": "## Intuition\nCars can only form fleets by catching up to slower cars ahead. Process cars from closest to target backward\u2014if a car behind arrives at the same time or earlier than the car ahead, they form a fleet traveling at the slower car's speed.\n\n## Implementation\nCombine position and speed, then sort by position in descending order (closest to target first). Use a stack to track arrival times of fleet leaders. For each car, calculate its time to reach the target. If this time exceeds the stack's top (meaning it can't catch the fleet ahead), it becomes a new fleet leader\u2014push it onto the stack.\n\n## Edge-cases\nCars at the same position with different speeds should be handled by the sorting; the faster one would catch up instantly.\n\n## Complexity\nTime `O(n log n)` dominated by sorting. Space `O(n)` for the stack.\n",
         "published": true,
         "datetime": "2025-12-22T09:21:32Z"
     },
@@ -236,7 +236,7 @@
             "stack",
             "math"
         ],
-        "notes": "- **Intuition**: We only want to increase the width when we find a taller line that can potentially form a larger area with a previous line.\n- **Implementation**: Use a stack and keep track of max area. Stack will store indices of the lines. Iterate from 0 to n + 1. curr is the current height or 0. If current is less than the top of the stack, pop from stack as our height and calculate area with the smaller height before it (top of stack after popping). Update max area. Push current index to stack.\n- **Edge-cases**: When stack is empty after popping, the left index can be set to -1 to calculate width correctly.\n- **Complexity**: Time `O(n)`, Space `O(n)` (stack)\n",
+        "notes": "## Intuition\nFor each bar, we want to find how far left and right it can extend as the shortest bar. A monotonic increasing stack helps\u2014when we encounter a shorter bar, all taller bars on the stack can no longer extend right, so we calculate their areas.\n\n## Implementation\nUse a stack storing indices of bars in increasing height order. Iterate through the histogram plus one extra index (with height 0 to flush the stack). When the current height is less than the stack's top, pop and calculate area using the popped height and the width between the current index and the new stack top.\n\n## Edge-cases\nWhen the stack becomes empty after popping, the left boundary extends to index -1 (the popped bar spans from the start). Handle this by using -1 as the left index.\n\n## Complexity\nTime `O(n)` since each bar is pushed and popped at most once. Space `O(n)` for the stack.\n",
         "published": true,
         "datetime": "2025-12-22T09:21:38Z"
     },
@@ -248,7 +248,7 @@
         "tags": [
             "binary-search"
         ],
-        "notes": "- **Intuition**: Cut the search area in half each time.\n- **Implementation**: Left and right pointers, iterate while left less than or equal to right. Calculate mid point. If mid equal to target, return. Otherwise, if middle is less than target, value is in right side of array, move left pointer to mid + 1. Otherwise, value is in left side, move right to mid - 1. Iteration finishes, return -1 (not found).\n- **Edge-cases**: Iterating while left less than or EQUAL to right.\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nIn a sorted array, comparing the target with the middle element tells us which half to search next. By repeatedly halving the search space, we find the target in logarithmic time.\n\n## Implementation\nSet left and right pointers to the array bounds. While left <= right, compute the midpoint. If the middle element equals the target, return its index. If the middle is less than the target, search the right half by setting left = mid + 1. Otherwise, search the left half by setting right = mid - 1.\n\n## Edge-cases\nThe loop condition must be left <= right (not just <) to handle the case where the target is at the last remaining position when left equals right.\n\n## Complexity\nTime `O(log n)` as the search space halves each iteration. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:21:50Z"
     },
@@ -261,7 +261,7 @@
             "binary-search",
             "matrix"
         ],
-        "notes": "- **Intuition**: Nested binary search. Find the row, then find the value.\n- **Implementation**: Start with binary search for the rows, found condition is if the first value in the row is less than or equal to target and last value is greater than or equal to target. Binary search on the row as usual.\n- **Edge-cases**: If the nested search (row search) completes without early return, return False right afterwards, do not continue.\n- **Complexity**: Time `O(log n * log m)` (binary search on rows, then cols), Space `O(1)`\n",
+        "notes": "## Intuition\nThe matrix is sorted both row-wise and column-wise, with each row's first element greater than the previous row's last element. This allows two binary searches: first find the correct row, then search within that row.\n\n## Implementation\nBinary search on rows using top and bottom pointers. A row is correct if the target falls between its first and last elements. Once found, perform standard binary search within that row. If the row search completes without finding a valid row, the target doesn't exist.\n\n## Edge-cases\nIf the row containing the target range is found but the inner binary search fails, return False immediately\u2014don't continue searching other rows.\n\n## Complexity\nTime `O(log m + log n)` for binary search on rows then columns. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:00Z"
     },
@@ -274,7 +274,7 @@
             "binary-search",
             "math"
         ],
-        "notes": "- **Intuition**: The max eating speed will be the max value in the piles.\n- **Implementation**: Binary search from 1 to the max value in piles. On each iteration, calculate the hours required. If the hours is greater than the provided hours, increase the speed (look in the right side). Otherwise left side. When iterating stops, answer will be the left value.\n- **Edge-cases**: Use `ceil` when calculating the hours because the you can't have 0 bananas eaten.\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nWe're searching for the minimum eating speed that allows finishing within h hours. The answer lies between 1 and max(piles). Binary search works because if speed k works, all speeds > k also work\u2014the answer space is monotonic.\n\n## Implementation\nBinary search on speed from 1 to max(piles). For each candidate speed, calculate total hours needed (sum of ceil(pile/speed) for each pile). If hours exceed h, we need faster eating\u2014search higher. Otherwise, search lower to find the minimum valid speed.\n\n## Edge-cases\nUse ceiling division when calculating hours per pile since Koko can't eat a fractional pile and must spend at least one hour on any non-empty pile.\n\n## Complexity\nTime `O(n log m)` where n is number of piles and m is max pile size. Space `O(1)`.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:08Z"
     },
@@ -286,7 +286,7 @@
         "tags": [
             "binary-search"
         ],
-        "notes": "- **Intuition**: The number before and after the min will be greater than it.\n- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.\n- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.\n- **Complexity**: Time `O(log n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nIn a rotated sorted array, the minimum is the only element smaller than both its neighbors (the rotation pivot point). Binary search can find it by always moving toward the unsorted half.\n\n## Implementation\nCompare the middle element with the rightmost element. If mid > right, the minimum must be in the right half (that's where the rotation occurred). Otherwise, it's in the left half including mid. The minimum is found when an element is smaller than both neighbors.\n\n## Edge-cases\nHandle boundary conditions at index 0 and n-1 when checking neighbors. If mid is at these boundaries, only check the valid neighbor.\n\n## Complexity\nTime `O(log n)` for binary search. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:15Z"
     },
@@ -298,7 +298,7 @@
         "tags": [
             "binary-search"
         ],
-        "notes": "- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which \"side\" of the array to search in.\n- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.\n- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.\n- **Complexity**: Time `O(log n)` (binary search), Space `O(1)`\n",
+        "notes": "## Intuition\nFirst find the rotation pivot (minimum element), which divides the array into two sorted subarrays. Then determine which subarray contains the target and perform standard binary search on it.\n\n## Implementation\nUse the Find Minimum in Rotated Sorted Array algorithm to locate the pivot index. Then check if the target falls in the left sorted portion (0 to pivot-1) or the right sorted portion (pivot to end). Perform binary search on the appropriate half.\n\n## Edge-cases\nWhen determining which half contains the target, compare against both the first element and the element before the pivot to correctly identify the range.\n\n## Complexity\nTime `O(log n)` for finding the pivot plus searching. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:23Z"
     },
@@ -310,7 +310,7 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Selling is always after buying. When finding a good small price, keep checking later days for better profit.\n- **Implementation**: Two pointers, `buy` and `sell` initialized to `0` and `1`. Iterate while `sell < len(prices)`. Calculate profit, if its greater than 0, update max profit. If not, set `buy` to `sell`, restart the window at the `sell` spot. Always increment `sell`. \n- **Edge-cases**: If `prices <= 1`, return 0 (no profit possible). \n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nWe need to find the maximum difference where the larger value comes after the smaller one. Track the minimum price seen so far and compute the potential profit at each step.\n\n## Implementation\nUse two pointers: buy (tracking the minimum price so far) and sell (current day). For each sell day, calculate profit. If positive, update max profit. If negative (current price is lower than buy price), move buy to the current position\u2014we found a better buying opportunity.\n\n## Edge-cases\nIf the array has one or zero elements, no transaction is possible\u2014return 0.\n\n## Complexity\nTime `O(n)` for a single pass. Space `O(1)` using only pointers and a max tracker.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:31Z"
     },
@@ -322,7 +322,7 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Slide a window by removing from the left when a character is seen again on the right\n- **Implementation**: Use a set. Iterate with the right pointer, initialize a left pointer. If the right character is in the set, remove from the left side, increment left. Add the right character to set after the check. Keep track of max length after the check.\n- **Edge-cases**: Window size will be `r - l + 1`\n- **Complexity**: Time `O(n)`, Space `O(n)` (set)\n",
+        "notes": "## Intuition\nUse a sliding window that expands right and contracts left whenever we encounter a duplicate. The window always represents a valid substring without repeating characters.\n\n## Implementation\nMaintain a set of characters in the current window. Expand the window by moving the right pointer. If the new character already exists in the set, shrink from the left by removing characters until the duplicate is gone. Track the maximum window size throughout.\n\n## Edge-cases\nWindow size is calculated as `r - l + 1` since both pointers are inclusive indices.\n\n## Complexity\nTime `O(n)` since each character is added and removed from the set at most once. Space `O(min(n, m))` where m is the character set size.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:40Z"
     },
@@ -334,7 +334,7 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Only 26 characters possible. In each window, the number of operations to make them all the same is the max frequency of the window minus the window length. Reduce the window until this condition is satisfied.\n- **Implementation**: Create a frequency array (26 value array). Iterate with `r` pointer. Increment the character at `r` in the frequency array. Update the max frequency with the frequency value of the value at `r` (new value added). If the number of operations (`windowLen - maxFreq`) is greater than `k`, increment l (reduce window size) and decrement the frequency value.\n- **Edge-cases**: Window size is calculated with `r - l + 1`.\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
+        "notes": "## Intuition\nIn any window, the number of characters we need to replace equals the window length minus the count of the most frequent character. If this exceeds k, the window is invalid and must shrink.\n\n## Implementation\nUse a frequency array (26 elements) and track the maximum frequency seen. Expand the window right, updating frequencies. If `windowLength - maxFreq > k`, the window needs too many replacements\u2014shrink from the left. Track the maximum valid window length.\n\n## Edge-cases\nWindow size is `r - l + 1`. The maxFreq doesn't need to decrease when shrinking because we only care about finding larger valid windows, not maintaining exact counts.\n\n## Complexity\nTime `O(n)` for a single pass. Space `O(1)` since the frequency array is fixed at 26 elements.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:51Z"
     },
@@ -346,7 +346,7 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Only 26 characters possible. Slide window of `len(s1)` across `s2` and check if the frequencies match up.\n- **Implementation**: Can use a single frequency map. Populate frequency map with characters from `s1`. Decrement frequency map with characters from `s2` up to `len(s1)` (first window). Initialize `r` to length of `s1` (first window already computed). Iterate while `r` is less than `len(s2)`. Check if frequency map is all zeros, early return. Increment value at left from frequency map (leaving window), decrement value at right from frequency map (entering window). Increment both l and r (they are already spaced at the correct window length).\n- **Edge-cases**: Early return at the start if `len(s1) > len(s2)`. Ensure to do a check at the end for the frequency map being zeros.\n- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)\n",
+        "notes": "## Intuition\nA permutation of s1 has exactly the same character frequencies as s1. Slide a fixed-size window (length of s1) across s2 and check if the window's frequency matches s1's frequency.\n\n## Implementation\nBuild a frequency map from s1. Slide a window of the same size across s2: subtract entering characters and add leaving characters to the map. When all frequencies are zero, we've found a permutation. Use a single map\u2014increment for s1 chars, decrement for s2 window chars.\n\n## Edge-cases\nIf s1 is longer than s2, no permutation can exist\u2014return False immediately. Also check the final window position after the loop ends.\n\n## Complexity\nTime `O(n)` where n is the length of s2. Space `O(1)` since the frequency array is always 26 elements.\n",
         "published": true,
         "datetime": "2025-12-22T09:22:58Z"
     },
@@ -358,7 +358,7 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Frequency map created with chars of `t`, substring will be valid if when substracting frequencies from the same map are all less than or equal to zero.\n- **Implementation**: Create a frequency map of all characters in `t`. The minimum window size will be of length `t`, start `r` there. Process the first window first by iteration from `0` to `r` and subtracting from the map if the character exists. Iterate while `r` is less than `s`. Check if the current substring is valid by checking if the map has all `<= 0`. If it is valid, update the minimum string if needed. Always reduce the window when valid by incrementing `l` and updating the map. Only increment `r` when it's invalid or the length of the window has reached the minimum length (`len(t)`).\n- **Edge-cases**: When incrementing `r`, the frequency map should be updated AFTER. When incrementing `l`, frequency map should be updated BEFORE. Aeeswer is initialized to `\"\"` so check for that as well (see solution).\n- **Complexity**: Time `O(m)` (sliding window across `s`), Space `O(n)` (hashmap for `t`), where `m` is the length of `s` and `n` is the length of `t`.\n",
+        "notes": "## Intuition\nExpand the window until it contains all characters from t, then contract from the left to find the minimum valid window. Track required character frequencies and decrement as we include them in the window.\n\n## Implementation\nBuild a frequency map of characters needed from t. Expand right, decrementing frequencies for matched characters. When all frequencies are <= 0 (all requirements met), the window is valid\u2014record it if it's the smallest. Then shrink from the left, incrementing frequencies for removed characters, until the window becomes invalid again.\n\n## Edge-cases\nWhen expanding, update the frequency map after moving the pointer. When shrinking, update before moving. Initialize the result to empty string to distinguish \"not found\" from \"found empty.\"\n\n## Complexity\nTime `O(m + n)` where m is the length of s and n is the length of t. Space `O(n)` for the frequency map.\n",
         "published": true,
         "datetime": "2025-12-22T09:58:11Z"
     },
@@ -370,7 +370,7 @@
         "tags": [
             "linked-list"
         ],
-        "notes": "- **Intuition**: Iterate through reversing the links.\n- **Implementation**: `curr` pointer (initialized to `head`) and `prev` pointer (initialized to `None`). Iterate while `curr` is not `None`. Save `curr.next` into a temporary var because it will be needed. Set `curr.next` to `prev`. Set `prev` to `curr` and set `curr` to `temp`.\n- **Edge-cases**: Go through the ordering of how everything is set conceptually.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nTo reverse a linked list in place, we need to reverse each node's next pointer to point to its previous node instead of its next node.\n\n## Implementation\nMaintain two pointers: `curr` (starting at head) and `prev` (starting at None). For each node, save its next pointer, reverse it to point to prev, then advance both pointers. When curr becomes None, prev points to the new head.\n\n## Edge-cases\nThe order of operations matters: save next before overwriting it, then update the link, then move pointers. An empty list (head is None) works correctly since the loop never executes.\n\n## Complexity\nTime `O(n)` for a single pass through the list. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-22T22:43:29Z"
     },
@@ -382,7 +382,7 @@
         "tags": [
             "linked-list"
         ],
-        "notes": "- **Intuition**: Iterate the lists together, smaller ones going in first.\n- **Implementation**: Pointers for `list1`, `l1` and `list2`, `l2`. Create a dummy node for the result, set the `curr` pointer to the dummy. Iterate while `l1` and `l2` are not `None`. If `l1` value is less than `l2` val, set `curr.next` to a new node with that value. Update the curr pointer and the `l1` pointer. Else, set `curr.next` to a new node with that value. Update the curr pointer and the `l2` pointer. After the first iteration completes, one of `l1` or `l2` might still be not fully complete. Iterate through both of them the same way as above to finish it off. Return `dummy.next`.\n- **Complexity**: Time `O(m + n)` where `m` is length of `list1` and `n` is the length of `list2`, Space `O(1)` \n",
+        "notes": "## Intuition\nSince both lists are sorted, the smallest element is always at one of the two heads. Compare them, take the smaller one, and advance that list's pointer.\n\n## Implementation\nCreate a dummy node to simplify edge cases. Use a curr pointer starting at dummy. While both lists have nodes, compare their values, append the smaller one to curr, and advance the appropriate pointer. After one list is exhausted, append the remainder of the other list.\n\n## Edge-cases\nUsing a dummy node eliminates special handling for the result's head. One or both input lists might be empty, which the algorithm handles naturally.\n\n## Complexity\nTime `O(m + n)` visiting each node once. Space `O(1)` if we reuse existing nodes, or `O(m + n)` if creating new nodes.\n",
         "published": true,
         "datetime": "2025-12-22T22:55:29Z"
     },
@@ -394,7 +394,7 @@
         "tags": [
             "linked-list"
         ],
-        "notes": "- **Intuition**: With fast and slow pointers, if there is a cycle they will eventually meet up.\n- **Implementation**: `slow` and `fast` pointers initialized to head. Iterate while `fast` and `fast.next` is not `None`. Update `slow` with `slow.next` and update `fast` with `fast.next.next`. After updating, if `fast == slow`, cycle found, early return `True`. Otherwise, if iteration completes (no cycle), return `False`.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nFloyd's cycle detection: use two pointers moving at different speeds. If there's a cycle, the fast pointer will eventually lap the slow pointer and they'll meet. If no cycle, fast will reach the end.\n\n## Implementation\nInitialize both slow and fast pointers at the head. Move slow by one step and fast by two steps each iteration. If they ever point to the same node, a cycle exists. If fast reaches None or fast.next is None, there's no cycle.\n\n## Edge-cases\nCheck both fast and fast.next before advancing to avoid null pointer errors when the list is short or has no cycle.\n\n## Complexity\nTime `O(n)` since fast pointer moves twice as fast and will either exit or catch up within n steps. Space `O(1)` using only two pointers.\n",
         "published": true,
         "datetime": "2025-12-22T23:31:36Z"
     },
@@ -406,7 +406,7 @@
         "tags": [
             "linked-list"
         ],
-        "notes": "- **Intuition**: Reverse the second half of the list and merge the two together. \n- **Implementation**: Find the midpoint with slow and fast pointers, fast starting at `head.next`. Reverse the second half by starting at `slow.next`. Break the link in the original list by setting `slow.next` to `None`. Merge the two lists together by creating two pointers, `first` and `second`. Iterate while `second` is not `None`. Save the next values of first and second in temp variables. Set `first.next` to `second`. Set `second.next` to `temp1`, Increment by setting first to `temp1`, second to `temp2`.\n- **Complexity**: Time `O(n)` (3 operations sequentially, all `O(n)`), Space `O(1)`\n",
+        "notes": "## Intuition\nThe reordered list alternates between nodes from the start and nodes from the end. Achieve this by finding the middle, reversing the second half, and then interleaving the two halves.\n\n## Implementation\nThree steps: (1) Find the middle using slow/fast pointers, with fast starting at head.next for correct splitting. (2) Reverse the second half starting from slow.next, breaking the link by setting slow.next to None. (3) Merge by alternating nodes from both halves.\n\n## Edge-cases\nThe merging loop continues while the second half has nodes. Since the first half may be one node longer (odd length lists), this works correctly.\n\n## Complexity\nTime `O(n)` for three sequential linear operations. Space `O(1)` modifying the list in place.\n",
         "published": true,
         "datetime": "2025-12-23T22:09:36Z"
     },
@@ -419,7 +419,7 @@
             "binary-tree",
             "bfs"
         ],
-        "notes": "- **Intuition**: Use BFS and swap (can also use DFS)\n- **Implementation**: Early return if root is None. Initialize a queue with `root`. Iterate while `q` is not empty. Pop node from the left, swap right and left. If node has left, push to queue, if node has right push to queue. Return `root`\n- **Complexity**: Time `O(n)`, Space `O(n)` queue.\n",
+        "notes": "## Intuition\nInverting a binary tree means swapping every node's left and right children. We can visit every node using either BFS or DFS and perform the swap.\n\n## Implementation\nUsing BFS: initialize a queue with the root. For each node dequeued, swap its left and right children, then enqueue both children if they exist. Continue until the queue is empty. Return the original root reference.\n\n## Edge-cases\nIf the root is None, return None immediately\u2014there's nothing to invert.\n\n## Complexity\nTime `O(n)` visiting every node once. Space `O(n)` for the queue, which at worst holds an entire level of the tree.\n",
         "published": true,
         "datetime": "2025-12-23T23:19:16Z"
     },
@@ -432,7 +432,7 @@
             "binary-tree",
             "dfs"
         ],
-        "notes": "- **Intuition**: DFS on the tree taking the max of left and right, increasing depth count each time.\n- **Implementation**: Create a `dfs` recursive function that takes in the `root` and the `depth`. Base case, `root` is `None`, return `depth`. Otherwise, recursve with max of the `dfs` call on the left and the right with `depth + 1`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (recursive call stack)\n",
+        "notes": "## Intuition\nThe maximum depth is the longest path from root to any leaf. Recursively, it's 1 plus the maximum of the left and right subtree depths.\n\n## Implementation\nUse DFS with a recursive function that returns the depth. Base case: if the node is None, return the current depth (0 if counting edges, or the accumulated depth if passing it down). Otherwise, return the maximum of recursing on left and right children with incremented depth.\n\n## Edge-cases\nAn empty tree (root is None) has depth 0.\n\n## Complexity\nTime `O(n)` visiting every node. Space `O(h)` where h is the tree height, due to the recursive call stack. In the worst case (skewed tree), this is O(n).\n",
         "published": true,
         "datetime": "2025-12-23T23:32:18Z"
     },
@@ -445,7 +445,7 @@
             "binary-tree",
             "dfs"
         ],
-        "notes": "- **Intuition**: The maximum of the heights through any given node will be the diameter.\n- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.\n- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).\n- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)\n",
+        "notes": "## Intuition\nThe diameter passes through some node where it equals the sum of the left subtree height plus the right subtree height. We need to check this sum at every node while computing heights.\n\n## Implementation\nUse DFS to compute heights while tracking the maximum diameter found. For each node, compute left and right subtree heights recursively. Update the global maximum with left_height + right_height. Return 1 + max(left, right) as this node's height contribution.\n\n## Edge-cases\nIn Python, use the `nonlocal` keyword to modify a variable from an enclosing scope within the nested DFS function.\n\n## Complexity\nTime `O(n)` visiting every node once. Space `O(h)` for the call stack, which is O(n) in the worst case.\n",
         "published": true,
         "datetime": "2025-12-24T05:55:35Z"
     },
@@ -457,7 +457,7 @@
         "tags": [
             "linked-list"
         ],
-        "notes": "- **Intuition**: Two pointers delayed by `n`.\n- **Implementation**: Move the right pointer `n` spaces. Create a dummy node and set the `next` value to the input list (to handle the case of having nothing in the input or just a single node). Set the left pointer to the dummy node. Iterate while `right` is not none and increment both left and right. When finished, `left` will be at the correct position. Set `left.next` to `left.next.next` (skip over one).\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nBy maintaining two pointers n nodes apart, when the right pointer reaches the end, the left pointer is at the node just before the one to remove.\n\n## Implementation\nAdvance the right pointer n positions. Create a dummy node pointing to head to handle edge cases. Position left at the dummy. Move both pointers together until right reaches None. Now left.next is the target node\u2014skip it by setting left.next = left.next.next.\n\n## Edge-cases\nThe dummy node handles removing the head node (when n equals list length). Without it, we'd need special logic for that case.\n\n## Complexity\nTime `O(n)` for a single pass. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-24T07:25:36Z"
     },
@@ -470,7 +470,7 @@
             "linked-list",
             "math"
         ],
-        "notes": "- **Intuition**: Add like on paper with carrying over logic.\n- **Implementation**: Create a dummy node for the result. Intialize two pointers for each list, `p1` and `p2`. Initialize a pointe for the dummy, `curr`. Initialize `carry` value to zero. Iterate while `p1` and `p2` are not`None`. Calculate the total with `p1.val + p2.val + carry`. The new node's value is set to this `tot` and the carry is set to zero. If the total is greater than or equal to 10 (i.e. we have to carry), update the value to `tot % 10` and the `carry` to `tot // 10`. After the main iteration, there may still be residual values in `p1` OR `p2` repeat the same logic for both lists individually. At the end, carry may still have value, if it does create a final node with the carry value. \n- **Edge-cases**: Rememver to handle the case of the `carry` still have a value at the end of all iterations.\n- **Complexity**: Time `O(n)`, Space `O(1)` (result does not count)\n",
+        "notes": "## Intuition\nAdd digits from both lists like pencil-and-paper arithmetic\u2014sum corresponding digits plus any carry, keep the ones digit, carry the tens digit to the next position.\n\n## Implementation\nUse a dummy node for the result. Iterate while either list has nodes or there's a carry. For each position, sum the available values plus carry. The new digit is sum % 10, and the new carry is sum // 10. After both lists are exhausted, if carry remains, add one final node.\n\n## Edge-cases\nDon't forget to handle remaining carry after processing both lists. Lists of different lengths are handled naturally by treating exhausted lists as contributing zero.\n\n## Complexity\nTime `O(max(m, n))` where m and n are list lengths. Space `O(1)` excluding the result list.\n",
         "published": true,
         "datetime": "2025-12-24T07:52:29Z"
     },
@@ -483,7 +483,7 @@
             "linked-list",
             "array"
         ],
-        "notes": "- **Intuition**: Treat like linked list with indices as values, array values as next pointers. Duplicate causes cycle, need to find start of cycle (will not always be at the end).\n- **Implementation**: First, we need to move a pointer into the cycle by using fast and slow pointers. When they are equal, slow pointer will be inside the cycle. Break the iteration. After this intialize a new pointer at the start, continue iterating slow and the new pointer until they meet, now slow will be at the start of the cycle (duplicate).\n- **Edge-cases**: Remember the second iteration, slow and fast only finds if a cycle exists not the start of it.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nTreat the array as a linked list where each value points to the next index. A duplicate value means two indices point to the same location\u2014forming a cycle. Finding the duplicate is equivalent to finding where the cycle begins.\n\n## Implementation\nUse Floyd's algorithm in two phases. Phase 1: fast and slow pointers starting at index 0, where the \"next\" of index i is nums[i]. They'll meet inside the cycle. Phase 2: reset one pointer to the start and move both at the same speed\u2014they'll meet at the cycle's entrance, which is the duplicate.\n\n## Edge-cases\nThe second phase is essential\u2014the first meeting point is somewhere in the cycle, not necessarily at its start. The duplicate is specifically at the cycle entrance.\n\n## Complexity\nTime `O(n)` for both phases. Space `O(1)` using only pointers.\n",
         "published": true,
         "datetime": "2025-12-24T22:33:29Z"
     },
@@ -496,7 +496,7 @@
             "two-pointers",
             "math"
         ],
-        "notes": "- **Intuition**: Water trapped at any point is bounded by smaller of the maxes on left and right.\n- **Implementation**: Two pointer approach with tracking of left and right max. Initialize two pointers on left and right. Initialize trackers for left and right max, `maxL` and `maxR`. Iterate while `l < r`. On each iteration, update `maxL` and `maxR` with appropriate values (`height[l]` and `height[r]`). If `maxL <= maxR`, the water is bounded only by the left value (already a larger value on the right). Update answer with `maxL - height[l]` and move left. Otherwise, answer is bounded by right value only (already a larger value on the left). Update answer with `maxR - height[r]` and move right.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nWater at any position is bounded by the minimum of the maximum heights to its left and right, minus its own height. We can compute this efficiently using two pointers tracking the max heights seen from each direction.\n\n## Implementation\nUse left and right pointers starting at the ends. Track maxL (max height seen from left) and maxR (max height seen from right). If maxL <= maxR, the left side is the bottleneck\u2014calculate water at left pointer using maxL, then move left. Otherwise, calculate at right pointer using maxR and move right.\n\n## Edge-cases\nNo water can be trapped at the first and last positions since there's no wall on one side.\n\n## Complexity\nTime `O(n)` for a single pass. Space `O(1)` using only pointers and max trackers.\n",
         "published": true,
         "datetime": "2025-12-26T20:38:36Z"
     },
@@ -508,7 +508,7 @@
         "tags": [
             "sliding-window"
         ],
-        "notes": "- **Intuition**: Track indices in queue removing from front when larger number enters window.\n- **Implementation**: Initialize deque and ans. Initialize left and right pointers to zero. Iterate while `r < len(nums)`. While queue is not empty and value at the top of the queue is less than the current value at right, pop from the top of the queue. Add right to queue. If left is greater than the index at the back of the queue (out of the window), pop from left. If `r + 1 >= k` (i.e. we have gotten to the minimum window size), add value at the back of the queue to the answer and slide window (increment `l`). Always increment `r`.\n- **Complexity**: Time `O(n)`, Space `O(n)` (queue)\n",
+        "notes": "## Intuition\nUse a monotonic decreasing deque that stores indices. The front always holds the maximum for the current window. Remove elements from the back that are smaller than the incoming element (they can never be the maximum), and remove from the front when indices fall outside the window.\n\n## Implementation\nMaintain a deque of indices in decreasing order of their values. For each new element: (1) remove smaller elements from the back, (2) add the current index, (3) remove the front if it's outside the window, (4) once the window reaches size k, record the front as the maximum.\n\n## Edge-cases\nThe deque stores indices, not values\u2014this allows checking whether elements have left the window. Only start recording answers once the window has reached full size (when r + 1 >= k).\n\n## Complexity\nTime `O(n)` since each element is added and removed from the deque at most once. Space `O(k)` for the deque.\n",
         "published": true,
         "datetime": "2025-12-27T22:29:30Z"
     },
@@ -520,7 +520,7 @@
         "tags": [
             "binary-tree"
         ],
-        "notes": "- **Intuition**: Calculate depth with sentinel `-1` when abs difference is greater than 1.\n- **Implementation**: Calculate depth with DFS using recursive function. Base case, node is `None`, return `0`. Recurse on left side and save into variable, if depth is `-1`, early return `-1`. Same thing on right side. Check if absolute difference is greater than 1, return `-1`. Otherwise, return `1 + max(left, right)`. In main function, call DFS on root and check if equals `-1` (not balanced).\n- **Complexity**: Time `O(n)`, Space `O(h)` (recursion)\n",
+        "notes": "## Intuition\nA tree is balanced if every node's left and right subtrees differ in height by at most 1. Compute heights recursively, using -1 as a sentinel to propagate imbalance upward.\n\n## Implementation\nCreate a height function that returns -1 if imbalanced. Base case: None returns 0. Recursively get left and right heights. If either is -1, or their difference exceeds 1, return -1. Otherwise return 1 + max(left, right). The tree is balanced if the root's height is not -1.\n\n## Edge-cases\nThe sentinel -1 allows early termination\u2014once we find imbalance anywhere, we stop computing heights and propagate the failure upward.\n\n## Complexity\nTime `O(n)` visiting each node once. Space `O(h)` for the recursive call stack.\n",
         "published": true,
         "datetime": "2026-01-02T22:58:23Z"
     },
@@ -533,7 +533,7 @@
             "binary-tree",
             "dfs"
         ],
-        "notes": "- **Intuition**: Both sides should be the same while iterating down together.\n- **Implementation**: Recursive DFS. Base case, `p` and `q` are null, return true. Otherwise, if `p` and `q` are not null and values are the same, return checking if both `p.left` and `q.left` are the same AND `p.right` and `q.right` are the same (recursive call). Otherwise, return false.\n- **Complexity**: Time `O(n)`, Space `O(h)` (recursive)\n",
+        "notes": "## Intuition\nTwo trees are the same if their structures are identical and corresponding nodes have equal values. Recursively compare nodes in parallel.\n\n## Implementation\nBase case: if both nodes are None, they're equal. If exactly one is None or their values differ, they're not equal. Otherwise, recursively check that both left subtrees are the same AND both right subtrees are the same.\n\n## Edge-cases\nThe comparison handles all combinations: both None (equal), one None (not equal), both present (compare values and recurse).\n\n## Complexity\nTime `O(n)` visiting each node. Space `O(h)` for the recursive call stack, where h is the tree height.\n",
         "published": true,
         "datetime": "2026-01-03T07:12:18Z"
     },
@@ -546,7 +546,7 @@
             "binary-tree",
             "dfs"
         ],
-        "notes": "- **Intuition**: Check if either left or right subtree is the same as subRoot recursively (DFS).\n- **Implementation**: Use DFS. Implement a function to check a if a two tree roots are the same using DFS (see solution). In the main function, if `subRoot` is None, early return `True`. If `root` is None, early return False. Check if `root` is the same as `subRoot` return True. Recursively call isSubtree on left and subroot OR right and subRoot. \n- **Edge-cases**: Remember the none checks on root and subRoot\n- **Complexity**: Time `O(n)` (DFS), Space `O(n)` (recursion)\n",
+        "notes": "## Intuition\nCheck if subRoot matches the tree rooted at any node of root. Use the \"same tree\" comparison at each node of root.\n\n## Implementation\nCreate a helper function to check if two trees are identical (same structure and values). For the main function: if subRoot is None, it's trivially a subtree. If root is None but subRoot isn't, return False. Check if root matches subRoot using the helper. If not, recursively check the left and right subtrees of root.\n\n## Edge-cases\nA None subRoot is always a subtree. A None root with non-None subRoot is never a match.\n\n## Complexity\nTime `O(m * n)` in the worst case, comparing at each of n nodes with m-node comparison. Space `O(h)` for recursion depth.\n",
         "published": true,
         "datetime": "2026-01-12T19:01:22Z"
     },
@@ -559,7 +559,7 @@
             "binary-tree",
             "dfs"
         ],
-        "notes": "- **Intuition**: Nodes of a BST will have values strictly smaller on the left and strictly larger on the right. LCA will be the split point.\n- **Implementation**: To solve iteratively (no recursion call stack, better space), initialize curr to root. Iterate while curr is not None. Check if p and q are both greater than the current value, that means the nodes are in the right side (larger side). Else if check if p and q are both smaller than the current value, that means the nodes in the left side (smaller side). Else, we have found the divergence point, LCA, return curr.\n- **Edge-cases**: Don't need to worry about the edge cases of root, p and q being null because valid input will be defined for all of these.\n- **Complexity**: Time `O(h)` (height of tree), Spce `O(1)`\n",
+        "notes": "## Intuition\nIn a BST, the LCA is the first node where p and q diverge\u2014one goes left, the other goes right (or one equals the current node). This is the split point in the BST ordering.\n\n## Implementation\nStart at the root. If both p and q are greater than current, move right. If both are less, move left. Otherwise, current is the LCA\u2014either it's a split point, or one of p/q equals current.\n\n## Edge-cases\nThe problem guarantees valid inputs with p and q existing in the tree, so no null checks needed beyond the traversal.\n\n## Complexity\nTime `O(h)` where h is the tree height. Space `O(1)` using iterative traversal.\n",
         "published": true,
         "datetime": "2026-01-12T19:58:25Z"
     },
@@ -573,7 +573,7 @@
             "dp",
             "dfs"
         ],
-        "notes": "- **Intuition**: Tree problem with multiple trees. Compute the sum if we choose to invite or a skip a certain node.\n- **Implementation**: Start off by creating the adjacency list for the potentially disconnected trees. At the same time, create an array to mark nodes that have parents so we can only process roots for DFS. Create the DFS function in which we will compute the sum if we choose to invite a node and if we choose to skip that node. Also create dp/memoization map to ensure we only process each node once, early returning from DFS if we have already processed that node. In the DFS function, initialize the invite value for that node to be the level of that node from the `levels` array and the skip value to be 0. Iterate over the children (reports) from the adjacency list, for each child call dfs on it to get its invite and skip value. Add the skip value for the child to the invite value for the current node because if we choose to invite the current node, we have to skip its reports. For the skip value, we can take the max of the invite and skip value for the child because either works, we just want the max. Save the value in the dp/memoization map and return. After this, we iterate over all the roots (for the example cases, there is only one root but for generic cases, there could be multiple). Calculate the invite and skip values for each node and take the max of them forthe answer.\n- **Complexity**: Time `O(n)` (each node is only processed once due to the DP and DFS), Space `O(n)` (adjacency, memoization)\n",
+        "notes": "## Intuition\nThis is a tree DP problem similar to House Robber III. For each node, we track two states: the maximum sum if we invite this node (must skip children) versus if we skip this node (can choose either for children).\n\n## Implementation\nBuild an adjacency list from the reporting chain and identify root nodes (those without parents). DFS from each root computing two values per node: `invite` (node's level + sum of children's skip values) and `skip` (sum of max(invite, skip) for each child). Memoize results to avoid recomputation.\n\n## Edge-cases\nThe graph may have multiple disconnected trees (multiple roots). Process each root separately and sum their contributions.\n\n## Complexity\nTime `O(n)` with memoization ensuring each node is processed once. Space `O(n)` for the adjacency list and memoization map.\n",
         "published": true,
         "datetime": "2026-01-13T03:15:05Z"
     },
@@ -586,7 +586,7 @@
             "graph",
             "bfs"
         ],
-        "notes": "- **Intuition**: Can be treated like a graph, traverse with BFS to find shortest path.\n- **Implementation**: Write a function to compute all neighbours of given combo (8 possible neighbours, 1 up and 1 down for each number). Create a set for the blocked combos and create a queue that is initialized with the start combo and 0 (number of turns) as a tuple. Also created a visited map initialized with the start combo. Iterate while q is not empty, popleft the current combo and the number of turns. Iterate over all the neighbours of that combo, if the neighbor is already visited or in the blocked combos, continue. If the neighbour is the target, return `turns + 1` as the answer. Otherwise, add the neighbour and `turns + 1` to the queue. If queue finishes, no possible turns can get to the target, return -1.\n- **Edge-cases**: Check before BFS if start is equal to target, return 0. Also check if start is in the blocked combos, return -1 (cannot go anywhere).\n- **Complexity**: Time `O(V)` where `V` is the number of possible states (10^4), Space `O(V)`\n",
+        "notes": "## Intuition\nTreat each combination as a node in a graph where edges connect combinations differing by one wheel turn. BFS finds the shortest path from start to target.\n\n## Implementation\nCreate a neighbor function that generates all 8 possible combinations from one turn (each of 4 wheels can go up or down). BFS from start: for each combination, try all neighbors. Skip blocked or visited combinations. Return the number of turns when we reach the target.\n\n## Edge-cases\nIf start equals target, return 0. If start is blocked, return -1 immediately since no moves are possible.\n\n## Complexity\nTime `O(10^4 * 8)` for BFS over all possible states, each with 8 neighbors. Space `O(10^4)` for visited set.\n",
         "published": true,
         "datetime": "2026-01-13T05:23:25Z"
     },
@@ -599,7 +599,7 @@
             "sliding-window",
             "math"
         ],
-        "notes": "- **Intuition**: Group cards by rank and suit and then generate sets from same rank cards and sets from same suit cards.\n- **Implementation**: Start off by grouping cards by rank and suit in hash maps. For the sets, iterate over the rank map and ignore any ranks that have fewer than 3 cards. If they have >= 3 cards, iterate from 3 to the length of the cards + 1 and genrate combinations of those cards for each iteration. 3, 4, 5, so on. add that to result. For the sets, iterate over the suit map, ignore suits that have fewer than 3 cards. Extract the cards and sort them by suit. Iterate through and generate segments of consecutive cards. If you get to a point that it no longer consecutive, check if the current segments is greater than 3 and slide window across of size 3+, adding to result. Then, reset the segments to the current value to continue. At the end, there may be one more segment left so do the same.\n- **Complexity**: Time `O(n^2)` (because of the set algo, very small n so ok), Space `O(n^2)`\n",
+        "notes": "## Intuition\nRummy melds are either sets (3+ cards of same rank, different suits) or runs (3+ consecutive cards of same suit). Group cards by rank for sets and by suit for runs, then generate all valid combinations.\n\n## Implementation\nGroup cards into two hashmaps: by rank and by suit. For sets, generate all combinations of 3+ cards with the same rank. For runs, sort cards by rank within each suit, find consecutive sequences, and generate all windows of 3+ consecutive cards.\n\n## Edge-cases\nOnly process groups with at least 3 cards. When building consecutive sequences, flush the current segment when a gap is found, then start a new segment.\n\n## Complexity\nTime `O(n^2)` due to generating combinations. Space `O(n^2)` for storing all possible melds.\n",
         "published": true,
         "datetime": "2026-01-13T07:01:53Z"
     },
@@ -611,7 +611,7 @@
         "tags": [
             "heap"
         ],
-        "notes": "- **Intuition**: We want to save spring use only for the largest jumps.\n- **Implementation**: Use a max heap. Iterate through pairs, calculate the difference, if less than or equal to zero, free move, continue. Otherwise, assume we will use sandbags and decrement the sandbags. Add the difference to the max heap. If the sandbags value goes below zero, we need to use springs instead if we have them, if springs equals zero here, early return the index we are currently at. This handles the case of either springs being already used or not having any springs at all. If springs are not zero, decrement the springs value and add the value at the top of the max heap back to the sandbags. Effectively, this converts the largest jump we've seen to use a spring instead of sandbags.\n- **Edge-cases**: Rememeber Python uses min heap so we just negate the values to make it into a max heap.\n- **Complexity**: Time `O(n log n)` heap push and pop is `O(log n)`, Space `O(n)` (heap)\n",
+        "notes": "## Intuition\nSprings should be used for the largest height differences to maximize distance. Greedily use sandbags first, then retroactively convert the largest sandbag uses to springs when sandbags run out.\n\n## Implementation\nUse a max heap (via negation in Python) to track height differences. For each upward jump, initially use sandbags and push the difference to the heap. When sandbags go negative, convert the largest previous sandbag use to a spring by popping from the heap and restoring those sandbags.\n\n## Edge-cases\nIf sandbags go negative and no springs remain, return the current index\u2014we can't proceed further. Python uses min heap, so negate values for max heap behavior.\n\n## Complexity\nTime `O(n log n)` for n heap operations. Space `O(n)` for the heap.\n",
         "published": true,
         "datetime": "2026-01-13T20:11:29Z"
     },
@@ -624,7 +624,7 @@
             "graph",
             "bfs"
         ],
-        "notes": "- **Intuition**: Can be treated like a graph with each state having 8 neighbours (turn each wheel up or down).\n- **Implementation**: Use BFS to find shortest path. Create a function to generate neighbours given a combo, should genrate 8 neighbours, turn each wheel up and down (use mod 10 to keep in bounds). Create a queue that is initialized with the start combo (`\"0000\"`) and 0 as the number of turns. Also create a map to keep track of the visited states. While the q has elements, pop left from the queue, iterate over the neighbours, if the neighbour is already visited or is in the deadends, continue. If the neighbour is equal to the target, return `turns + 1`, otherwise add the neighbour and turns + 1 to the queue and to the visited set.\n- **Complexity**: Time `O(V)` where `V` is the number of states (10^4), Space `O(V)`\n",
+        "notes": "## Intuition\nModel the lock as a graph where each 4-digit combination is a node, connected to 8 neighbors (each wheel can turn up or down). BFS finds the minimum turns from \"0000\" to the target.\n\n## Implementation\nGenerate neighbors by incrementing or decrementing each digit (mod 10). BFS from \"0000\": skip deadends and visited states, return turn count when reaching target. Track visited states to avoid cycles.\n\n## Edge-cases\nCheck if \"0000\" is in deadends\u2014if so, return -1 immediately. Also handle the case where start equals target.\n\n## Complexity\nTime `O(10^4 * 8)` for BFS across all possible combinations. Space `O(10^4)` for the visited set and queue.\n",
         "published": true,
         "datetime": "2026-01-13T20:51:21Z"
     },
@@ -636,7 +636,7 @@
         "tags": [
             "heap"
         ],
-        "notes": "- **Intuition**: Use ladders for the largest jumps.\n- **Implementation**: Use a max heap. Iterate over pairs and calculate difference. If difference <= 0, continue. Otherwise, assume we will use bricks and decrement the bricks by the difference. Add the difference to the max heap. If the bricks go below 0, we must use a ladder. If ladders are equal to zero here, return the current index. Otherwise, decrement ladders and add back the max value in the heap to the bricks (effectively switching the largest jump we've seen to ladders instead of bricks). If iteration completes, return the last index.\n- **Complexity**: Time `O(n log n)`, Space `O(n)` (heap)\n",
+        "notes": "## Intuition\nLadders should be reserved for the largest climbs since they handle any height. Use bricks first, and when bricks run out, retroactively convert the largest brick usage to a ladder.\n\n## Implementation\nTrack all climbs in a max heap. For each climb, use bricks and push the climb to the heap. If bricks go negative, use a ladder instead: pop the largest climb from the heap and add those bricks back. If no ladders remain when needed, return the current index.\n\n## Edge-cases\nDownward moves (negative differences) are free\u2014skip them. Return the last index if we successfully traverse the entire array.\n\n## Complexity\nTime `O(n log n)` for heap operations. Space `O(n)` for the heap.\n",
         "published": true,
         "datetime": "2026-01-13T21:03:19Z"
     },
@@ -649,7 +649,7 @@
             "graph",
             "bfs"
         ],
-        "notes": "- **Intuition**: Basic graph shortest distance problem, use BFS.\n- **Implementation**: Use BFS to find the shortest path. Start by finding the coordinate of the start position. Add to queue tuple with 0 for the path length. Also add start to visited set. Iterate while queue is not empty, pop from the queue and iterate over the neighbours, if the neighbour is already visited or is blocked, continue. Otherwise, check if the neighbour is a food and return current path length + 1. Otherwise add the neighbour to visited and the queue with path + 1. If iteration completes, return -1.\n- **Complexity**: Time `O(m * n)`, Space `O(m * n)`\n",
+        "notes": "## Intuition\nThis is a standard BFS shortest path problem on a grid. Start from the initial position and explore all reachable cells level by level until finding food.\n\n## Implementation\nLocate the start cell (marked with '*'). BFS from there: for each cell, check all four neighbors. Skip visited cells and obstacles ('X'). When reaching a food cell ('#'), return the path length. Mark cells as visited when adding to the queue.\n\n## Edge-cases\nIf no path to food exists (all food is blocked or unreachable), return -1 after BFS completes.\n\n## Complexity\nTime `O(m * n)` visiting each cell at most once. Space `O(m * n)` for the visited set and queue.\n",
         "published": true,
         "datetime": "2026-01-13T23:04:22Z"
     },
@@ -662,7 +662,7 @@
             "graph",
             "bfs"
         ],
-        "notes": "- **Intuition**: Shortest path problem with BFS.\n- **Implementation**: Use BFS. Create a function to get neighbours of a given a coordinate alongside their string direction. No need to check for bounds because infinite grid. Add start to queue alongside empty string. Keep track of visited set of coordinates as well. Pop from queue, iterate over the neighbours, if in barriers or visited, continue. If neighbour is equal to target, return current string path + the neighbours direction. Add neighbour to visited set and to queue alongside current path + string direction. Should always find the shortest path. Can make more optimal using A* with manhattan heuristic.\n- **Complexity**: Time `O(V)` where `V` is the number of states, Space `O(V)`\n",
+        "notes": "## Intuition\nOn an infinite grid with obstacles, BFS finds the shortest path while building a direction string. Each move adds its cardinal direction (N, S, E, W) to the path.\n\n## Implementation\nBFS from start, tracking both the coordinate and the path string. Generate 4 neighbors (N, S, E, W) for each position. Skip barriers and visited cells. When reaching the target, return the accumulated direction string.\n\n## Edge-cases\nNo bounds checking needed since the grid is infinite. If start equals target, return an empty string.\n\n## Complexity\nTime and Space `O(d^2)` where d is the distance to target, since BFS explores in expanding circles. Could be optimized with A* using Manhattan distance heuristic.\n",
         "published": true,
         "datetime": "2026-01-14T17:50:43Z"
     },
@@ -674,7 +674,7 @@
         "tags": [
             "two-pointers"
         ],
-        "notes": "- **Intuition**: Add characters alternately from each string, ensuring to add remaining characters at the end.\n- **Implementation**: Initialize pointers for each word (`i, j`) and a counter variable for the resultant string (`k`). Iterate while `i < len(word1)` and `j < len(word2)` so that it will stop when any one of them goes out of bounds . On each iteration, check if `k % 2 == 0`, if it is, add the character from `word1` to the result and increment `i`, otherwise, add the character from `word2` and increment `j`. Always increment `k`. After the initial iteration, iterate while `i < len(word1)` and add the characters and the same thing for j and word2 to add any remaining characters if the strings are unequal length.\n- **Complexity**: Time `O(n + m)` where `n` is the length of `word1` and `m` is the length of `word2`, Space `O(1)`\n",
+        "notes": "## Intuition\nAlternate between the two strings, taking one character at a time from each. When one string is exhausted, append the remainder of the other.\n\n## Implementation\nUse two pointers (i for word1, j for word2) and a counter k. While both strings have characters remaining, add from word1 when k is even, from word2 when k is odd. After one string is exhausted, append any remaining characters from the other.\n\n## Edge-cases\nStrings may have different lengths. The remaining characters from the longer string are simply appended at the end.\n\n## Complexity\nTime `O(n + m)` touching each character once. Space `O(1)` excluding the output string.\n",
         "published": true,
         "datetime": "2026-01-25T00:44:15Z"
     },
@@ -687,7 +687,7 @@
             "math",
             "trick"
         ],
-        "notes": "- **Intuition**: Use if statements to catch the smallest and the second smallest, if we jump over them both, that means triplet found\n- **Implementation**: Initialize variables for `smallest` and `second_smallest` to be a maximum value. Iterate over hte numbers, check if the number is less than or equal to `smallest`, set `smallest`. Else if number is less than or equal to `second_smallest`, set `second_smallest`. Else, we have found the triplet in the sequence because two numbers strictly smaller than each other were already seen before. Therefore, return `True`. If iteration finishes return `False`.\n- **Edge-cases**:\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nTrack the smallest value and the smallest value that comes after it. If we ever find a third value larger than both, we have an increasing triplet.\n\n## Implementation\nMaintain two variables: `smallest` (minimum so far) and `second_smallest` (minimum value following some smaller value). For each number: if it's <= smallest, update smallest. Else if it's <= second_smallest, update second_smallest. Else, we found a value > second_smallest > smallest\u2014return True.\n\n## Edge-cases\nThe values don't need to be contiguous in the array. We're finding any increasing subsequence of length 3.\n\n## Complexity\nTime `O(n)` for a single pass. Space `O(1)` using only two tracking variables.\n",
         "published": true,
         "datetime": "2026-01-26T05:22:10Z"
     },
@@ -699,7 +699,7 @@
         "tags": [
             "two-pointers"
         ],
-        "notes": "- **Intuition**: Use two pointers with a write pointer.\n- **Implementation**: Initialize two pointers, `l` and `r` to zero as well as a write pointer, `k` to zero. Iterate while `r` is less than the length of the character array. Inside the iteration, iterate again while `r` is the same as `l` and increment `r`. After this iteration, `r` will be moved to the first non-repeating character so the difference between `r` and `l` is how many repeating characters we saw. Start off by writing the character at `l` to the array using the write pointer `k` (`chars[k] = chars[l]`). Then increment `k`. After this, check if `r - l` is greater than 1, iterate over the characters of the number and write them to the character array, iterating `k` each time. After this, set `l = r` to continue with the next set of characters. At the end, `k` will be at the end of our modified characters so it can be returned.\n- **Complexity**: Time `O(n)`, Space `O(1)`\n",
+        "notes": "## Intuition\nUse three pointers: left marks the start of a character group, right scans for the group's end, and write tracks where to put the compressed output. Compress in-place by overwriting the input array.\n\n## Implementation\nFor each group of consecutive identical characters: (1) advance right until the character changes, (2) write the character at the write pointer, (3) if the count > 1, write each digit of the count. Then move left to right's position and repeat.\n\n## Edge-cases\nWhen count > 9, write each digit separately (e.g., 12 becomes '1' then '2'). Single-character groups don't need a count.\n\n## Complexity\nTime `O(n)` processing each character once. Space `O(1)` modifying the array in place.\n",
         "published": true,
         "datetime": "2026-01-26T06:03:49Z"
     }

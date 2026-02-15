@@ -1,4 +1,11 @@
-- **Intuition**: Can be treated like a graph, traverse with BFS to find shortest path.
-- **Implementation**: Write a function to compute all neighbours of given combo (8 possible neighbours, 1 up and 1 down for each number). Create a set for the blocked combos and create a queue that is initialized with the start combo and 0 (number of turns) as a tuple. Also created a visited map initialized with the start combo. Iterate while q is not empty, popleft the current combo and the number of turns. Iterate over all the neighbours of that combo, if the neighbor is already visited or in the blocked combos, continue. If the neighbour is the target, return `turns + 1` as the answer. Otherwise, add the neighbour and `turns + 1` to the queue. If queue finishes, no possible turns can get to the target, return -1.
-- **Edge-cases**: Check before BFS if start is equal to target, return 0. Also check if start is in the blocked combos, return -1 (cannot go anywhere).
-- **Complexity**: Time `O(V)` where `V` is the number of possible states (10^4), Space `O(V)`
+## Intuition
+Treat each combination as a node in a graph where edges connect combinations differing by one wheel turn. BFS finds the shortest path from start to target.
+
+## Implementation
+Create a neighbor function that generates all 8 possible combinations from one turn (each of 4 wheels can go up or down). BFS from start: for each combination, try all neighbors. Skip blocked or visited combinations. Return the number of turns when we reach the target.
+
+## Edge-cases
+If start equals target, return 0. If start is blocked, return -1 immediately since no moves are possible.
+
+## Complexity
+Time `O(10^4 * 8)` for BFS over all possible states, each with 8 neighbors. Space `O(10^4)` for visited set.

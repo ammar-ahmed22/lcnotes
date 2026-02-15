@@ -1,3 +1,11 @@
-- **Intuition**: Group cards by rank and suit and then generate sets from same rank cards and sets from same suit cards.
-- **Implementation**: Start off by grouping cards by rank and suit in hash maps. For the sets, iterate over the rank map and ignore any ranks that have fewer than 3 cards. If they have >= 3 cards, iterate from 3 to the length of the cards + 1 and genrate combinations of those cards for each iteration. 3, 4, 5, so on. add that to result. For the sets, iterate over the suit map, ignore suits that have fewer than 3 cards. Extract the cards and sort them by suit. Iterate through and generate segments of consecutive cards. If you get to a point that it no longer consecutive, check if the current segments is greater than 3 and slide window across of size 3+, adding to result. Then, reset the segments to the current value to continue. At the end, there may be one more segment left so do the same.
-- **Complexity**: Time `O(n^2)` (because of the set algo, very small n so ok), Space `O(n^2)`
+## Intuition
+Rummy melds are either sets (3+ cards of same rank, different suits) or runs (3+ consecutive cards of same suit). Group cards by rank for sets and by suit for runs, then generate all valid combinations.
+
+## Implementation
+Group cards into two hashmaps: by rank and by suit. For sets, generate all combinations of 3+ cards with the same rank. For runs, sort cards by rank within each suit, find consecutive sequences, and generate all windows of 3+ consecutive cards.
+
+## Edge-cases
+Only process groups with at least 3 cards. When building consecutive sequences, flush the current segment when a gap is found, then start a new segment.
+
+## Complexity
+Time `O(n^2)` due to generating combinations. Space `O(n^2)` for storing all possible melds.

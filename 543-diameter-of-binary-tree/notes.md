@@ -1,4 +1,11 @@
-- **Intuition**: The maximum of the heights through any given node will be the diameter.
-- **Implementation**: Use DFS. The recursive function will calculate the height of the tree as well as update a global `res` value for the answer. Base case is if `root` is `None`, return `0`. Otherwise, `dfs` on `left` and `right`. Update global `res` with max of left and right calculation. Recurse with `1 + max(left, right)`.
-- **Edge-cases**: In Python, variable scoped outside of the closure must be initialized inside it with `nonlocal` keyword (see solution).
-- **Complexity**: Time `O(n)`, Space `O(n)` (call stack)
+## Intuition
+The diameter passes through some node where it equals the sum of the left subtree height plus the right subtree height. We need to check this sum at every node while computing heights.
+
+## Implementation
+Use DFS to compute heights while tracking the maximum diameter found. For each node, compute left and right subtree heights recursively. Update the global maximum with left_height + right_height. Return 1 + max(left, right) as this node's height contribution.
+
+## Edge-cases
+In Python, use the `nonlocal` keyword to modify a variable from an enclosing scope within the nested DFS function.
+
+## Complexity
+Time `O(n)` visiting every node once. Space `O(h)` for the call stack, which is O(n) in the worst case.

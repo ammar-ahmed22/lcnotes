@@ -1,3 +1,11 @@
-- **Intuition**: Recursively generate by going down the different possible paths to make a well-formed parentheses set. Open and closed must both equal n for it to be well-formed
-- **Implementation**: Recursive function that takes open, closed, n, stack and result. Base case `open == close == n`, form the string from the stack and add to result. Otherwise, check if `open < n`, add open to stack, recurse with new count, pop from stack after to go down other path. Check if `closed < open` (other path), add close to stack, recurse with new count, pop from stack.
-- **Complexity**: Time is complex, something to do with the n-th Catalan number: `O(1 / (n + 1) * 2nCn * n)`, Space `O(n)` (call stack)
+## Intuition
+Generate all valid combinations by building strings character by character, only adding characters that keep the string valid. We can add an open parenthesis if we haven't used all n, and a close parenthesis only if it doesn't exceed the number of opens.
+
+## Implementation
+Use backtracking with a recursive function tracking the count of open and close parentheses used. Base case: when both counts equal n, add the current string to results. Otherwise, try adding '(' if opens < n, then backtrack. Try adding ')' if closes < opens, then backtrack.
+
+## Edge-cases
+No special edge cases since the constraints ensure valid input (n >= 1).
+
+## Complexity
+Time is related to the n-th Catalan number: `O(4^n / sqrt(n))`. Space `O(n)` for the recursion depth and current string being built.

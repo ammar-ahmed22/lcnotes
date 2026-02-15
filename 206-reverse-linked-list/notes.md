@@ -1,4 +1,11 @@
-- **Intuition**: Iterate through reversing the links.
-- **Implementation**: `curr` pointer (initialized to `head`) and `prev` pointer (initialized to `None`). Iterate while `curr` is not `None`. Save `curr.next` into a temporary var because it will be needed. Set `curr.next` to `prev`. Set `prev` to `curr` and set `curr` to `temp`.
-- **Edge-cases**: Go through the ordering of how everything is set conceptually.
-- **Complexity**: Time `O(n)`, Space `O(1)`
+## Intuition
+To reverse a linked list in place, we need to reverse each node's next pointer to point to its previous node instead of its next node.
+
+## Implementation
+Maintain two pointers: `curr` (starting at head) and `prev` (starting at None). For each node, save its next pointer, reverse it to point to prev, then advance both pointers. When curr becomes None, prev points to the new head.
+
+## Edge-cases
+The order of operations matters: save next before overwriting it, then update the link, then move pointers. An empty list (head is None) works correctly since the loop never executes.
+
+## Complexity
+Time `O(n)` for a single pass through the list. Space `O(1)` using only pointers.

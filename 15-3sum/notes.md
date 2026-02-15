@@ -1,4 +1,11 @@
-- **Intuition**: Use a similar approach to [Two Sum II - Input Array Sorted](../167-two-sum-ii-input-array-is-sorted/solution.py), sort the input, look for when left and right of the right side of the array add up to the current number
-- **Implementation**: Sort the input `O(n log n)`, for each number, binary search on the right side of the array, if `l + r = curr`, triplet found, add to result, move right if `l + r` is too big, otherwise move left
-- **Edge-cases**: Ensure that we keep going even after finding a triplet because there could be more with the same `curr`. Also ensure that we move past duplicates for `curr` because it will be the same result, i.e. if we have [-1, -1, -1, 0, 1], we want to start processing at the last -1. Same thing when we find an answer, we want to move left and right until they are at the next non-duplicate
-- **Complexity**: Time `O(n^2 log n)` (sorting, nested loop), Space `O(1)`
+## Intuition
+This extends the Two Sum II pattern. Sort the array first, then for each element, use two pointers to find pairs in the remaining array that sum to the negative of that element (making the total zero).
+
+## Implementation
+Sort the array. For each index i, set left pointer to i+1 and right pointer to the end. If the sum of all three equals zero, record the triplet. If the sum is too large, move right pointer left; if too small, move left pointer right.
+
+## Edge-cases
+To avoid duplicate triplets, skip over consecutive identical values for the outer loop index. Similarly, after finding a valid triplet, skip over duplicates for both left and right pointers before continuing the search.
+
+## Complexity
+Time `O(n^2)` for sorting plus the nested two-pointer search. Space `O(1)` excluding the output array.

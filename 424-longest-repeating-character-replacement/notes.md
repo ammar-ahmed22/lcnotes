@@ -1,4 +1,11 @@
-- **Intuition**: Only 26 characters possible. In each window, the number of operations to make them all the same is the max frequency of the window minus the window length. Reduce the window until this condition is satisfied.
-- **Implementation**: Create a frequency array (26 value array). Iterate with `r` pointer. Increment the character at `r` in the frequency array. Update the max frequency with the frequency value of the value at `r` (new value added). If the number of operations (`windowLen - maxFreq`) is greater than `k`, increment l (reduce window size) and decrement the frequency value.
-- **Edge-cases**: Window size is calculated with `r - l + 1`.
-- **Complexity**: Time `O(n)`, Space `O(1)` (freq is 26 values, const.)
+## Intuition
+In any window, the number of characters we need to replace equals the window length minus the count of the most frequent character. If this exceeds k, the window is invalid and must shrink.
+
+## Implementation
+Use a frequency array (26 elements) and track the maximum frequency seen. Expand the window right, updating frequencies. If `windowLength - maxFreq > k`, the window needs too many replacements—shrink from the left. Track the maximum valid window length.
+
+## Edge-cases
+Window size is `r - l + 1`. The maxFreq doesn't need to decrease when shrinking because we only care about finding larger valid windows, not maintaining exact counts.
+
+## Complexity
+Time `O(n)` for a single pass. Space `O(1)` since the frequency array is fixed at 26 elements.

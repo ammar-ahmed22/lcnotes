@@ -1,4 +1,11 @@
-- **Intuition**: Frequency map created with chars of `t`, substring will be valid if when substracting frequencies from the same map are all less than or equal to zero.
-- **Implementation**: Create a frequency map of all characters in `t`. The minimum window size will be of length `t`, start `r` there. Process the first window first by iteration from `0` to `r` and subtracting from the map if the character exists. Iterate while `r` is less than `s`. Check if the current substring is valid by checking if the map has all `<= 0`. If it is valid, update the minimum string if needed. Always reduce the window when valid by incrementing `l` and updating the map. Only increment `r` when it's invalid or the length of the window has reached the minimum length (`len(t)`).
-- **Edge-cases**: When incrementing `r`, the frequency map should be updated AFTER. When incrementing `l`, frequency map should be updated BEFORE. Aeeswer is initialized to `""` so check for that as well (see solution).
-- **Complexity**: Time `O(m)` (sliding window across `s`), Space `O(n)` (hashmap for `t`), where `m` is the length of `s` and `n` is the length of `t`.
+## Intuition
+Expand the window until it contains all characters from t, then contract from the left to find the minimum valid window. Track required character frequencies and decrement as we include them in the window.
+
+## Implementation
+Build a frequency map of characters needed from t. Expand right, decrementing frequencies for matched characters. When all frequencies are <= 0 (all requirements met), the window is valid—record it if it's the smallest. Then shrink from the left, incrementing frequencies for removed characters, until the window becomes invalid again.
+
+## Edge-cases
+When expanding, update the frequency map after moving the pointer. When shrinking, update before moving. Initialize the result to empty string to distinguish "not found" from "found empty."
+
+## Complexity
+Time `O(m + n)` where m is the length of s and n is the length of t. Space `O(n)` for the frequency map.

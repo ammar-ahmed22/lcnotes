@@ -1,3 +1,11 @@
-- **Intuition**: Use two pointers with a write pointer.
-- **Implementation**: Initialize two pointers, `l` and `r` to zero as well as a write pointer, `k` to zero. Iterate while `r` is less than the length of the character array. Inside the iteration, iterate again while `r` is the same as `l` and increment `r`. After this iteration, `r` will be moved to the first non-repeating character so the difference between `r` and `l` is how many repeating characters we saw. Start off by writing the character at `l` to the array using the write pointer `k` (`chars[k] = chars[l]`). Then increment `k`. After this, check if `r - l` is greater than 1, iterate over the characters of the number and write them to the character array, iterating `k` each time. After this, set `l = r` to continue with the next set of characters. At the end, `k` will be at the end of our modified characters so it can be returned.
-- **Complexity**: Time `O(n)`, Space `O(1)`
+## Intuition
+Use three pointers: left marks the start of a character group, right scans for the group's end, and write tracks where to put the compressed output. Compress in-place by overwriting the input array.
+
+## Implementation
+For each group of consecutive identical characters: (1) advance right until the character changes, (2) write the character at the write pointer, (3) if the count > 1, write each digit of the count. Then move left to right's position and repeat.
+
+## Edge-cases
+When count > 9, write each digit separately (e.g., 12 becomes '1' then '2'). Single-character groups don't need a count.
+
+## Complexity
+Time `O(n)` processing each character once. Space `O(1)` modifying the array in place.

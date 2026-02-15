@@ -1,3 +1,11 @@
-- **Intuition**: Both sides should be the same while iterating down together.
-- **Implementation**: Recursive DFS. Base case, `p` and `q` are null, return true. Otherwise, if `p` and `q` are not null and values are the same, return checking if both `p.left` and `q.left` are the same AND `p.right` and `q.right` are the same (recursive call). Otherwise, return false.
-- **Complexity**: Time `O(n)`, Space `O(h)` (recursive)
+## Intuition
+Two trees are the same if their structures are identical and corresponding nodes have equal values. Recursively compare nodes in parallel.
+
+## Implementation
+Base case: if both nodes are None, they're equal. If exactly one is None or their values differ, they're not equal. Otherwise, recursively check that both left subtrees are the same AND both right subtrees are the same.
+
+## Edge-cases
+The comparison handles all combinations: both None (equal), one None (not equal), both present (compare values and recurse).
+
+## Complexity
+Time `O(n)` visiting each node. Space `O(h)` for the recursive call stack, where h is the tree height.

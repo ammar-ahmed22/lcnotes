@@ -1,4 +1,11 @@
-- **Intuition**: Add like on paper with carrying over logic.
-- **Implementation**: Create a dummy node for the result. Intialize two pointers for each list, `p1` and `p2`. Initialize a pointe for the dummy, `curr`. Initialize `carry` value to zero. Iterate while `p1` and `p2` are not`None`. Calculate the total with `p1.val + p2.val + carry`. The new node's value is set to this `tot` and the carry is set to zero. If the total is greater than or equal to 10 (i.e. we have to carry), update the value to `tot % 10` and the `carry` to `tot // 10`. After the main iteration, there may still be residual values in `p1` OR `p2` repeat the same logic for both lists individually. At the end, carry may still have value, if it does create a final node with the carry value. 
-- **Edge-cases**: Rememver to handle the case of the `carry` still have a value at the end of all iterations.
-- **Complexity**: Time `O(n)`, Space `O(1)` (result does not count)
+## Intuition
+Add digits from both lists like pencil-and-paper arithmetic—sum corresponding digits plus any carry, keep the ones digit, carry the tens digit to the next position.
+
+## Implementation
+Use a dummy node for the result. Iterate while either list has nodes or there's a carry. For each position, sum the available values plus carry. The new digit is sum % 10, and the new carry is sum // 10. After both lists are exhausted, if carry remains, add one final node.
+
+## Edge-cases
+Don't forget to handle remaining carry after processing both lists. Lists of different lengths are handled naturally by treating exhausted lists as contributing zero.
+
+## Complexity
+Time `O(max(m, n))` where m and n are list lengths. Space `O(1)` excluding the result list.

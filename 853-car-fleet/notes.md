@@ -1,3 +1,11 @@
-- **Intuition**: The car's ahead will be always be limiting the cars before if there is any limiting
-- **Implementation**: Combine pos and speed and sort them by position in reverse order (descending). Stack to store the time to target for the limiting cars. On each iteration, calculate the time to target, if it's greater than the top of the stack, push. Length of stack is the answer.
-- **Complexity**: Time `O(n log n)` (sorting), Space `O(n)`
+## Intuition
+Cars can only form fleets by catching up to slower cars ahead. Process cars from closest to target backward—if a car behind arrives at the same time or earlier than the car ahead, they form a fleet traveling at the slower car's speed.
+
+## Implementation
+Combine position and speed, then sort by position in descending order (closest to target first). Use a stack to track arrival times of fleet leaders. For each car, calculate its time to reach the target. If this time exceeds the stack's top (meaning it can't catch the fleet ahead), it becomes a new fleet leader—push it onto the stack.
+
+## Edge-cases
+Cars at the same position with different speeds should be handled by the sorting; the faster one would catch up instantly.
+
+## Complexity
+Time `O(n log n)` dominated by sorting. Space `O(n)` for the stack.

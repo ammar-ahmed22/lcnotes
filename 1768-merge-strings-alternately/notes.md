@@ -1,3 +1,11 @@
-- **Intuition**: Add characters alternately from each string, ensuring to add remaining characters at the end.
-- **Implementation**: Initialize pointers for each word (`i, j`) and a counter variable for the resultant string (`k`). Iterate while `i < len(word1)` and `j < len(word2)` so that it will stop when any one of them goes out of bounds . On each iteration, check if `k % 2 == 0`, if it is, add the character from `word1` to the result and increment `i`, otherwise, add the character from `word2` and increment `j`. Always increment `k`. After the initial iteration, iterate while `i < len(word1)` and add the characters and the same thing for j and word2 to add any remaining characters if the strings are unequal length.
-- **Complexity**: Time `O(n + m)` where `n` is the length of `word1` and `m` is the length of `word2`, Space `O(1)`
+## Intuition
+Alternate between the two strings, taking one character at a time from each. When one string is exhausted, append the remainder of the other.
+
+## Implementation
+Use two pointers (i for word1, j for word2) and a counter k. While both strings have characters remaining, add from word1 when k is even, from word2 when k is odd. After one string is exhausted, append any remaining characters from the other.
+
+## Edge-cases
+Strings may have different lengths. The remaining characters from the longer string are simply appended at the end.
+
+## Complexity
+Time `O(n + m)` touching each character once. Space `O(1)` excluding the output string.

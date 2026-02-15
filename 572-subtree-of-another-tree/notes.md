@@ -1,4 +1,11 @@
-- **Intuition**: Check if either left or right subtree is the same as subRoot recursively (DFS).
-- **Implementation**: Use DFS. Implement a function to check a if a two tree roots are the same using DFS (see solution). In the main function, if `subRoot` is None, early return `True`. If `root` is None, early return False. Check if `root` is the same as `subRoot` return True. Recursively call isSubtree on left and subroot OR right and subRoot. 
-- **Edge-cases**: Remember the none checks on root and subRoot
-- **Complexity**: Time `O(n)` (DFS), Space `O(n)` (recursion)
+## Intuition
+Check if subRoot matches the tree rooted at any node of root. Use the "same tree" comparison at each node of root.
+
+## Implementation
+Create a helper function to check if two trees are identical (same structure and values). For the main function: if subRoot is None, it's trivially a subtree. If root is None but subRoot isn't, return False. Check if root matches subRoot using the helper. If not, recursively check the left and right subtrees of root.
+
+## Edge-cases
+A None subRoot is always a subtree. A None root with non-None subRoot is never a match.
+
+## Complexity
+Time `O(m * n)` in the worst case, comparing at each of n nodes with m-node comparison. Space `O(h)` for recursion depth.

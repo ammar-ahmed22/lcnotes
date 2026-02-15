@@ -1,4 +1,11 @@
-- **Intuition**: The number before and after the min will be greater than it.
-- **Implementation**: Binary search, check for number before and after being greater as stop condition. Move towards the smaller value out of right and left.
-- **Edge-cases**: Also check if the mid value is zero and end of array in stop condition check to mitigate out of bound errors.
-- **Complexity**: Time `O(log n)`, Space `O(1)`
+## Intuition
+In a rotated sorted array, the minimum is the only element smaller than both its neighbors (the rotation pivot point). Binary search can find it by always moving toward the unsorted half.
+
+## Implementation
+Compare the middle element with the rightmost element. If mid > right, the minimum must be in the right half (that's where the rotation occurred). Otherwise, it's in the left half including mid. The minimum is found when an element is smaller than both neighbors.
+
+## Edge-cases
+Handle boundary conditions at index 0 and n-1 when checking neighbors. If mid is at these boundaries, only check the valid neighbor.
+
+## Complexity
+Time `O(log n)` for binary search. Space `O(1)` using only pointers.

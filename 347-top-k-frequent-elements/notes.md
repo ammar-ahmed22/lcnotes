@@ -1,4 +1,11 @@
-- **Intuition**: We can use an array that maps index to frequency (i.e. freq[1] = 2 means 2 has a frequency of 1), allowing us to formulate the answer in `O(n)` time
-- **Implementation**: Use a hashmap to count frequencies, iterate over hashmap and create our frequency array (length `n + 1`, 1-based indexing), iterate backwards over frequency array to create result
-- **Edge-cases**: Multiple elements can have the same frequency so frequency array should be an array of arrays, when iterating backwards go into arrays if needed
-- **Complexity**: Time `O(n)`, Space `O(n)` (freq map)
+## Intuition
+Instead of sorting by frequency (which would be O(n log n)), we can use bucket sort. Since the maximum frequency of any element is bounded by the array length n, we can create an array where the index represents the frequency and the value is a list of elements with that frequency.
+
+## Implementation
+First, count frequencies using a hashmap. Then create a bucket array of size n+1, where each index i contains elements that appear exactly i times. Finally, iterate backwards from the highest frequency bucket, collecting elements until we have k items.
+
+## Edge-cases
+Multiple elements can share the same frequency, so each bucket must be a list rather than a single value. When collecting results, iterate through each bucket's contents before moving to the next.
+
+## Complexity
+Time `O(n)` for counting and bucket distribution. Space `O(n)` for the frequency map and bucket array.

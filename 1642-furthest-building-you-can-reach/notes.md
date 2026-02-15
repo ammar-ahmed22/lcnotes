@@ -1,3 +1,11 @@
-- **Intuition**: Use ladders for the largest jumps.
-- **Implementation**: Use a max heap. Iterate over pairs and calculate difference. If difference <= 0, continue. Otherwise, assume we will use bricks and decrement the bricks by the difference. Add the difference to the max heap. If the bricks go below 0, we must use a ladder. If ladders are equal to zero here, return the current index. Otherwise, decrement ladders and add back the max value in the heap to the bricks (effectively switching the largest jump we've seen to ladders instead of bricks). If iteration completes, return the last index.
-- **Complexity**: Time `O(n log n)`, Space `O(n)` (heap)
+## Intuition
+Ladders should be reserved for the largest climbs since they handle any height. Use bricks first, and when bricks run out, retroactively convert the largest brick usage to a ladder.
+
+## Implementation
+Track all climbs in a max heap. For each climb, use bricks and push the climb to the heap. If bricks go negative, use a ladder instead: pop the largest climb from the heap and add those bricks back. If no ladders remain when needed, return the current index.
+
+## Edge-cases
+Downward moves (negative differences) are free—skip them. Return the last index if we successfully traverse the entire array.
+
+## Complexity
+Time `O(n log n)` for heap operations. Space `O(n)` for the heap.

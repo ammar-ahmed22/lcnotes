@@ -1,4 +1,11 @@
-- **Intuition**: Every opening bracket should eventually have a closing bracket that comes after it.
-- **Implementation**: Use a stack and a map that maps opening brackets to closing, when seeing an opening bracket, push the closing bracket to the stack, When seeing a closing bracket, check the top of the stack, if its the same, pop and keep going, otherwise return `False`.
-- **Edge-cases**: At the end, check the stack should be empty (unclosed brackets at the end). Also check if the stack is empty on seeing a closing bracket, return `False` there was no corresponding open.
-- **Complexity**: Time `O(n)`, Space `O(n)` (stack)
+## Intuition
+Brackets must be closed in the reverse order they were opened (LIFO). A stack naturally models this—push opening brackets and pop when we see their matching closing brackets.
+
+## Implementation
+Create a map from opening to closing brackets. When encountering an opening bracket, push its expected closing bracket onto the stack. When encountering a closing bracket, check if it matches the stack's top. If it matches, pop and continue; if not, the string is invalid.
+
+## Edge-cases
+Check for two conditions: if a closing bracket appears when the stack is empty (no matching opener), and if the stack is non-empty after processing (unclosed brackets remain).
+
+## Complexity
+Time `O(n)` for a single pass through the string. Space `O(n)` for the stack in the worst case of all opening brackets.

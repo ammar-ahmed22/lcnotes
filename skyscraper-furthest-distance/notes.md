@@ -1,4 +1,11 @@
-- **Intuition**: We want to save spring use only for the largest jumps.
-- **Implementation**: Use a max heap. Iterate through pairs, calculate the difference, if less than or equal to zero, free move, continue. Otherwise, assume we will use sandbags and decrement the sandbags. Add the difference to the max heap. If the sandbags value goes below zero, we need to use springs instead if we have them, if springs equals zero here, early return the index we are currently at. This handles the case of either springs being already used or not having any springs at all. If springs are not zero, decrement the springs value and add the value at the top of the max heap back to the sandbags. Effectively, this converts the largest jump we've seen to use a spring instead of sandbags.
-- **Edge-cases**: Rememeber Python uses min heap so we just negate the values to make it into a max heap.
-- **Complexity**: Time `O(n log n)` heap push and pop is `O(log n)`, Space `O(n)` (heap)
+## Intuition
+Springs should be used for the largest height differences to maximize distance. Greedily use sandbags first, then retroactively convert the largest sandbag uses to springs when sandbags run out.
+
+## Implementation
+Use a max heap (via negation in Python) to track height differences. For each upward jump, initially use sandbags and push the difference to the heap. When sandbags go negative, convert the largest previous sandbag use to a spring by popping from the heap and restoring those sandbags.
+
+## Edge-cases
+If sandbags go negative and no springs remain, return the current index—we can't proceed further. Python uses min heap, so negate values for max heap behavior.
+
+## Complexity
+Time `O(n log n)` for n heap operations. Space `O(n)` for the heap.

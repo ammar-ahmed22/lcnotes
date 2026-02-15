@@ -1,4 +1,11 @@
-- **Intuition**: The start of a sequence is when there IS a number exactly 1 greater than it in the array and NOT a number exactly 1 less than it. When a sequence start is found, iterate looking for the next values, keeping track of the max length
-- **Implementation**: Use hashmap to store all numbers for `O(1)` lookup, iterate and look for sequence start, iterate building the sequence and keep track of max
-- **Edge-cases**: In case of duplicates, we don't process the same sequence start multiple times. Initialize hashmap with all `False` values, when processing a sequence start, mark it as `True` to signify this sequence start is already processed and don't process that sequence start again
-- **Complexity**: Time `O(n)`, Space `O(n)` (hashmap)
+## Intuition
+To achieve O(n) time, we can't sort. Instead, identify sequence starting points—numbers that have no predecessor (n-1 not in array). From each starting point, count how far the sequence extends.
+
+## Implementation
+Store all numbers in a hashset for O(1) lookups. Iterate through the array and for each number, check if it's a sequence start (n-1 doesn't exist). If it is, count consecutive numbers starting from it by repeatedly checking for n+1, n+2, etc. Track the maximum sequence length found.
+
+## Edge-cases
+Duplicates can cause the same sequence to be processed multiple times. Mark sequence starts as processed after handling them to avoid redundant work.
+
+## Complexity
+Time `O(n)` because each number is visited at most twice (once in the main loop, once when extending a sequence). Space `O(n)` for the hashset.

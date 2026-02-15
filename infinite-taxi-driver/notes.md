@@ -1,3 +1,11 @@
-- **Intuition**: Shortest path problem with BFS.
-- **Implementation**: Use BFS. Create a function to get neighbours of a given a coordinate alongside their string direction. No need to check for bounds because infinite grid. Add start to queue alongside empty string. Keep track of visited set of coordinates as well. Pop from queue, iterate over the neighbours, if in barriers or visited, continue. If neighbour is equal to target, return current string path + the neighbours direction. Add neighbour to visited set and to queue alongside current path + string direction. Should always find the shortest path. Can make more optimal using A* with manhattan heuristic.
-- **Complexity**: Time `O(V)` where `V` is the number of states, Space `O(V)`
+## Intuition
+On an infinite grid with obstacles, BFS finds the shortest path while building a direction string. Each move adds its cardinal direction (N, S, E, W) to the path.
+
+## Implementation
+BFS from start, tracking both the coordinate and the path string. Generate 4 neighbors (N, S, E, W) for each position. Skip barriers and visited cells. When reaching the target, return the accumulated direction string.
+
+## Edge-cases
+No bounds checking needed since the grid is infinite. If start equals target, return an empty string.
+
+## Complexity
+Time and Space `O(d^2)` where d is the distance to target, since BFS explores in expanding circles. Could be optimized with A* using Manhattan distance heuristic.
