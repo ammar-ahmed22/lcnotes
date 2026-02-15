@@ -1,4 +1,12 @@
-- **Intuition**: Minimum in rotated sorted array is the pivot index, use that to determine which "side" of the array to search in.
-- **Implementation**: Binary search on the whole array to find the pivot index using the minimum in rotated sorted array algo (num before and fter mid should be greater for stop condition, move towards smaller out of left and right). Minimum is the pivot index. Check if the target is in between 0 and pivot, binary search from 0 to pivot. Otherwise binary search from pivot to end.
-- **Edge-cases**: Check if target is in between `0` and `pivot - 1` for the final binary search check.
-- **Complexity**: Time `O(log n)` (binary search), Space `O(1)`
+## Intuition
+First find where the array was rotated (the pivot/minimum element), which splits the array into two sorted subarrays. Then determine which subarray contains the target and perform a standard binary search on it.
+
+## Implementation
+First, binary search to find the pivot index using the "minimum in rotated sorted array" approach (where both neighbors are larger, or we're at a boundary). Then check if the target falls in the range from index 0 to pivot-1 (the "left" sorted portion) or from pivot to end (the "right" sorted portion). Binary search the appropriate half.
+
+## Edge-cases
+When determining which half to search, check if target falls within `nums[0]` to `nums[pivot-1]`. Handle the case where pivot is 0 (array wasn't rotated or rotated n times).
+
+## Complexity
+- Time: `O(log n)` — two binary searches
+- Space: `O(1)` — only tracking pointers
