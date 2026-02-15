@@ -1,3 +1,12 @@
-- **Intuition**: Reverse the second half of the list and merge the two together. 
-- **Implementation**: Find the midpoint with slow and fast pointers, fast starting at `head.next`. Reverse the second half by starting at `slow.next`. Break the link in the original list by setting `slow.next` to `None`. Merge the two lists together by creating two pointers, `first` and `second`. Iterate while `second` is not `None`. Save the next values of first and second in temp variables. Set `first.next` to `second`. Set `second.next` to `temp1`, Increment by setting first to `temp1`, second to `temp2`.
-- **Complexity**: Time `O(n)` (3 operations sequentially, all `O(n)`), Space `O(1)`
+## Intuition
+The reordering alternates between nodes from the start and end of the list. By reversing the second half and merging it with the first half, we can achieve this pattern in-place.
+
+## Implementation
+Three steps, each `O(n)`. First, find the midpoint using slow/fast pointers (fast starts at `head.next`). Second, reverse the second half starting at `slow.next` and break the link by setting `slow.next = None`. Third, merge by alternating: save next pointers for both halves, link `first.next` to `second`, link `second.next` to the saved first-next, then advance both pointers.
+
+## Edge-cases
+The algorithm handles odd and even length lists naturally. The midpoint calculation ensures the first half is equal or one longer than the second.
+
+## Complexity
+- Time: `O(n)` — three sequential O(n) passes
+- Space: `O(1)` — all operations done in-place
