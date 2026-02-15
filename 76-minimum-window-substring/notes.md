@@ -1,4 +1,12 @@
-- **Intuition**: Frequency map created with chars of `t`, substring will be valid if when substracting frequencies from the same map are all less than or equal to zero.
-- **Implementation**: Create a frequency map of all characters in `t`. The minimum window size will be of length `t`, start `r` there. Process the first window first by iteration from `0` to `r` and subtracting from the map if the character exists. Iterate while `r` is less than `s`. Check if the current substring is valid by checking if the map has all `<= 0`. If it is valid, update the minimum string if needed. Always reduce the window when valid by incrementing `l` and updating the map. Only increment `r` when it's invalid or the length of the window has reached the minimum length (`len(t)`).
-- **Edge-cases**: When incrementing `r`, the frequency map should be updated AFTER. When incrementing `l`, frequency map should be updated BEFORE. Aeeswer is initialized to `""` so check for that as well (see solution).
-- **Complexity**: Time `O(m)` (sliding window across `s`), Space `O(n)` (hashmap for `t`), where `m` is the length of `s` and `n` is the length of `t`.
+## Intuition
+Track required character frequencies from `t`. A window is valid when all frequencies are satisfied (≤ 0 after decrementing). Expand the window to find valid substrings, then shrink to find the minimum.
+
+## Implementation
+Build a frequency map of characters in `t`. Process the first window of size `len(t)`, decrementing counts. Slide the window: when valid (all counts ≤ 0), update the minimum and shrink from the left. When invalid or at minimum size, expand from the right. Update the frequency map appropriately when characters enter or leave the window.
+
+## Edge-cases
+Update order matters: when expanding right, decrement AFTER moving. When shrinking left, increment BEFORE moving. Handle the case where no valid window exists (return empty string).
+
+## Complexity
+- Time: `O(m)` — sliding window across s
+- Space: `O(n)` — frequency map for characters in t

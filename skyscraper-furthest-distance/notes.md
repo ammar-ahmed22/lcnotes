@@ -1,4 +1,12 @@
-- **Intuition**: We want to save spring use only for the largest jumps.
-- **Implementation**: Use a max heap. Iterate through pairs, calculate the difference, if less than or equal to zero, free move, continue. Otherwise, assume we will use sandbags and decrement the sandbags. Add the difference to the max heap. If the sandbags value goes below zero, we need to use springs instead if we have them, if springs equals zero here, early return the index we are currently at. This handles the case of either springs being already used or not having any springs at all. If springs are not zero, decrement the springs value and add the value at the top of the max heap back to the sandbags. Effectively, this converts the largest jump we've seen to use a spring instead of sandbags.
-- **Edge-cases**: Rememeber Python uses min heap so we just negate the values to make it into a max heap.
-- **Complexity**: Time `O(n log n)` heap push and pop is `O(log n)`, Space `O(n)` (heap)
+## Intuition
+Springs are most valuable for the largest height differences. Use sandbags first, and when you run out, retroactively convert the largest sandbag usage to a spring.
+
+## Implementation
+Use a max heap to track height differences. For each upward jump, subtract from sandbags and add the difference to the heap. If sandbags go negative and no springs remain, return the current index. Otherwise, use a spring by popping the largest jump from the heap and adding those sandbags back. Continue until the end.
+
+## Edge-cases
+Python's `heapq` is a min heap—negate values to simulate max heap behavior. Remember to negate again when popping.
+
+## Complexity
+- Time: `O(n log n)` — heap operations for each building
+- Space: `O(n)` — heap stores jump sizes

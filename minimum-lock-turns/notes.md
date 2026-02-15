@@ -1,4 +1,12 @@
-- **Intuition**: Can be treated like a graph, traverse with BFS to find shortest path.
-- **Implementation**: Write a function to compute all neighbours of given combo (8 possible neighbours, 1 up and 1 down for each number). Create a set for the blocked combos and create a queue that is initialized with the start combo and 0 (number of turns) as a tuple. Also created a visited map initialized with the start combo. Iterate while q is not empty, popleft the current combo and the number of turns. Iterate over all the neighbours of that combo, if the neighbor is already visited or in the blocked combos, continue. If the neighbour is the target, return `turns + 1` as the answer. Otherwise, add the neighbour and `turns + 1` to the queue. If queue finishes, no possible turns can get to the target, return -1.
-- **Edge-cases**: Check before BFS if start is equal to target, return 0. Also check if start is in the blocked combos, return -1 (cannot go anywhere).
-- **Complexity**: Time `O(V)` where `V` is the number of possible states (10^4), Space `O(V)`
+## Intuition
+Each lock combination is a graph node with 8 neighbors (4 wheels × 2 directions). BFS from start to target finds the minimum number of turns, avoiding blocked combinations.
+
+## Implementation
+Generate neighbors by turning each wheel up or down (using mod 10 for wraparound). Start BFS with (start_combo, 0) in the queue and a visited set. For each state, try all neighbors—skip if visited or blocked. If a neighbor is the target, return `turns + 1`. Otherwise, add to queue and visited.
+
+## Edge-cases
+Check if start equals target (return 0) or if start is blocked (return -1) before starting BFS.
+
+## Complexity
+- Time: `O(10⁴)` — at most 10,000 possible states
+- Space: `O(10⁴)` — visited set and queue
