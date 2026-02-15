@@ -1,3 +1,12 @@
-- **Intuition**: Two pointers delayed by `n`.
-- **Implementation**: Move the right pointer `n` spaces. Create a dummy node and set the `next` value to the input list (to handle the case of having nothing in the input or just a single node). Set the left pointer to the dummy node. Iterate while `right` is not none and increment both left and right. When finished, `left` will be at the correct position. Set `left.next` to `left.next.next` (skip over one).
-- **Complexity**: Time `O(n)`, Space `O(1)`
+## Intuition
+By maintaining a gap of `n` nodes between two pointers, when the right pointer reaches the end, the left pointer will be just before the node to remove.
+
+## Implementation
+First, advance the right pointer `n` steps ahead. Create a dummy node pointing to the head to handle edge cases cleanly, and set the left pointer to the dummy. Move both pointers together until right reaches null. Now left is positioned just before the target node—skip over it by setting `left.next = left.next.next`.
+
+## Edge-cases
+The dummy node handles removing the first node (when n equals the list length). Without it, we'd need special case logic for updating the head.
+
+## Complexity
+- Time: `O(n)` — single pass through the list
+- Space: `O(1)` — only using pointers

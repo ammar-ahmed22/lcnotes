@@ -1,3 +1,12 @@
-- **Intuition**: Add characters alternately from each string, ensuring to add remaining characters at the end.
-- **Implementation**: Initialize pointers for each word (`i, j`) and a counter variable for the resultant string (`k`). Iterate while `i < len(word1)` and `j < len(word2)` so that it will stop when any one of them goes out of bounds . On each iteration, check if `k % 2 == 0`, if it is, add the character from `word1` to the result and increment `i`, otherwise, add the character from `word2` and increment `j`. Always increment `k`. After the initial iteration, iterate while `i < len(word1)` and add the characters and the same thing for j and word2 to add any remaining characters if the strings are unequal length.
-- **Complexity**: Time `O(n + m)` where `n` is the length of `word1` and `m` is the length of `word2`, Space `O(1)`
+## Intuition
+The merge pattern alternates between strings: first character from word1, then word2, then word1, and so on. When one string is exhausted, append the remainder of the other.
+
+## Implementation
+Use two pointers (`i`, `j`) for each word and a counter `k` to track whose turn it is. While both pointers are in bounds, add from `word1` when `k` is even, from `word2` when odd, incrementing the respective pointer. After the main loop, append any remaining characters from whichever string isn't exhausted.
+
+## Edge-cases
+Strings of unequal length are handled by the trailing loops that append leftover characters. Empty strings work naturally—the main loop won't execute.
+
+## Complexity
+- Time: `O(n + m)` — each character processed once
+- Space: `O(1)` — excluding the output string

@@ -1,3 +1,12 @@
-- **Intuition**: Iterate the lists together, smaller ones going in first.
-- **Implementation**: Pointers for `list1`, `l1` and `list2`, `l2`. Create a dummy node for the result, set the `curr` pointer to the dummy. Iterate while `l1` and `l2` are not `None`. If `l1` value is less than `l2` val, set `curr.next` to a new node with that value. Update the curr pointer and the `l1` pointer. Else, set `curr.next` to a new node with that value. Update the curr pointer and the `l2` pointer. After the first iteration completes, one of `l1` or `l2` might still be not fully complete. Iterate through both of them the same way as above to finish it off. Return `dummy.next`.
-- **Complexity**: Time `O(m + n)` where `m` is length of `list1` and `n` is the length of `list2`, Space `O(1)` 
+## Intuition
+Since both lists are sorted, we can build the merged list by always taking the smaller of the two current nodes. This is similar to the merge step in merge sort.
+
+## Implementation
+Create a dummy node to simplify head handling and a `curr` pointer for building the result. While both lists have nodes, compare their values—append the smaller one to the result and advance that list's pointer. After the main loop, one list may have remaining nodes; append them directly since they're already sorted.
+
+## Edge-cases
+If either list is initially empty, the other list is returned as-is. The dummy node eliminates special case handling for the first element.
+
+## Complexity
+- Time: `O(m + n)` — each node visited once
+- Space: `O(1)` — reusing existing nodes (or `O(m + n)` if creating new nodes)
