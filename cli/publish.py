@@ -45,10 +45,6 @@ def __publish_problem(problems: Problems, id: str):
     if problem.published:
         typer.echo(f"Problem '{id}' is already published.")
         return
-    
-
-    # Extract notes
-    notes = utils.read_file(f"./{problem.directory}/notes.md")
 
     add_tags = utils.confirm("Would you like to add tags to this problem?", default=True)
 
@@ -58,7 +54,8 @@ def __publish_problem(problems: Problems, id: str):
         tags = [tag.strip() for tag in tags_text.split(",") if tag.strip()]
 
     problem.tags = tags
-    problem.notes = notes
+    # Notes are now linked via notes.md file path in README template
+    # No need to store full notes content in problems.json
     problem.publish()
     problems.set_problem(problem)
 
