@@ -93,7 +93,7 @@ lcnotes is a personal CLI that helps me manage LeetCode problems locally. It can
 
 ### How it works (high level)
 - Scraping: Uses Playwright to fetch title, difficulty, statement HTML, and Python starter code from LeetCode.
-- Storage: problems.json tracks id, title, directory, difficulty, tags, notes, published.
+- Storage: problems.json tracks id, title, directory, difficulty, tags, published. Notes are stored in per-problem notes.md files.
 - Templating: Jinja2 templates render docs and the top-level README.
 - UX: Interactive fuzzy prompts for selecting problems; spinners for progress; consistent error handling.
 
@@ -160,16 +160,16 @@ lc publish <slug>
 # or publish all unpublished
 lc publish --all
 ```
-- Sets published=true, attaches notes and tags, updates README and problems.json
+- Sets published=true, attaches tags, updates README and problems.json
 
 ### unpublish
-Unpublish a problem (clears notes and tags, removes from README listing).
+Unpublish a problem (clears tags, removes from README listing).
 
 Usage:
 ```bash path=null start=null
 lc unpublish <slug>
 ```
-- Sets published=false, clears notes/tags, updates README and problems.json
+- Sets published=false, clears tags, updates README and problems.json
 
 ### generate-readme
 Regenerate the top-level README from current published problems.
@@ -183,4 +183,4 @@ lc generate-readme
 - The README shows only published problems and sorts them by difficulty.
 - Fuzzy selection uses InquirerPy; spinners use yaspin.
 - The scraper opens LeetCode in headless Chromium and extracts the Python3 starter.
-- Tags and notes are stored in problems.json and rendered into the README when published.
+- Tags are stored in problems.json; notes are stored in per-problem notes.md files and linked in the README when published.
