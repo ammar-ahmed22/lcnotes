@@ -3,7 +3,7 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/17-easy-green" />
-      <img src="https://img.shields.io/badge/33-medium-yellow" />
+      <img src="https://img.shields.io/badge/34-medium-yellow" />
       <img src="https://img.shields.io/badge/6-hard-red" />
     </p>
 </div>
@@ -65,6 +65,7 @@
 | [Infinite Taxi Driver](https://leetcode.com/problems/infinite-taxi-driver) | [notes](./infinite-taxi-driver/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./infinite-taxi-driver/solution.py)
 | [334. Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence) | [notes](./334-increasing-triplet-subsequence/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./334-increasing-triplet-subsequence/solution.py)
 | [443. String Compression](https://leetcode.com/problems/string-compression) | [notes](./443-string-compression/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./443-string-compression/solution.py)
+| [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer) | [notes](./138-copy-list-with-random-pointer/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./138-copy-list-with-random-pointer/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)
@@ -93,7 +94,7 @@ lcnotes is a personal CLI that helps me manage LeetCode problems locally. It can
 
 ### How it works (high level)
 - Scraping: Uses Playwright to fetch title, difficulty, statement HTML, and Python starter code from LeetCode.
-- Storage: problems.json tracks id, title, directory, difficulty, tags, published. Notes are stored in per-problem notes.md files.
+- Storage: problems.json tracks id, title, directory, difficulty, tags, notes, published.
 - Templating: Jinja2 templates render docs and the top-level README.
 - UX: Interactive fuzzy prompts for selecting problems; spinners for progress; consistent error handling.
 
@@ -160,16 +161,16 @@ lc publish <slug>
 # or publish all unpublished
 lc publish --all
 ```
-- Sets published=true, attaches tags, updates README and problems.json
+- Sets published=true, attaches notes and tags, updates README and problems.json
 
 ### unpublish
-Unpublish a problem (clears tags, removes from README listing).
+Unpublish a problem (clears notes and tags, removes from README listing).
 
 Usage:
 ```bash path=null start=null
 lc unpublish <slug>
 ```
-- Sets published=false, clears tags, updates README and problems.json
+- Sets published=false, clears notes/tags, updates README and problems.json
 
 ### generate-readme
 Regenerate the top-level README from current published problems.
@@ -183,4 +184,4 @@ lc generate-readme
 - The README shows only published problems and sorts them by difficulty.
 - Fuzzy selection uses InquirerPy; spinners use yaspin.
 - The scraper opens LeetCode in headless Chromium and extracts the Python3 starter.
-- Tags are stored in problems.json; notes are stored in per-problem notes.md files and linked in the README when published.
+- Tags and notes are stored in problems.json and rendered into the README when published.
