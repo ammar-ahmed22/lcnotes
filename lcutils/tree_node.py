@@ -42,6 +42,18 @@ class TreeNode:
 
         return result
 
+    def _stringify(self, node: Optional["TreeNode"], depth: int, lines: List[str]):
+        if not node:
+            return
+        self._stringify(node.right, depth + 1, lines)
+        lines.append((" " * depth * 4) + str(node.val))
+        self._stringify(node.left, depth + 1, lines)
+
+    def __str__(self) -> str:
+        lines = []
+        self._stringify(self, 0, lines)
+        return "\n".join(lines)
+    
 
     def __init__(self, val=0, left: Optional["TreeNode"]=None, right: Optional["TreeNode"]=None):
         self.val = val
