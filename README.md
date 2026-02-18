@@ -3,7 +3,7 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/17-easy-green" />
-      <img src="https://img.shields.io/badge/34-medium-yellow" />
+      <img src="https://img.shields.io/badge/35-medium-yellow" />
       <img src="https://img.shields.io/badge/6-hard-red" />
     </p>
 </div>
@@ -66,6 +66,7 @@
 | [334. Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence) | [notes](./334-increasing-triplet-subsequence/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./334-increasing-triplet-subsequence/solution.py)
 | [443. String Compression](https://leetcode.com/problems/string-compression) | [notes](./443-string-compression/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./443-string-compression/solution.py)
 | [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer) | [notes](./138-copy-list-with-random-pointer/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./138-copy-list-with-random-pointer/solution.py)
+| [146. LRU Cache](https://leetcode.com/problems/lru-cache) | [notes](./146-lru-cache/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./146-lru-cache/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)

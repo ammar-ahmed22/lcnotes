@@ -657,5 +657,17 @@
         ],
         "published": true,
         "datetime": "2026-02-17T16:29:44Z"
+    },
+    "lru-cache": {
+        "id": "lru-cache",
+        "title": "146. LRU Cache",
+        "directory": "146-lru-cache",
+        "difficulty": "Medium",
+        "tags": [
+            "hashmap",
+            "linked-list"
+        ],
+        "published": true,
+        "datetime": "2026-02-18T09:19:35Z"
     }
 }
