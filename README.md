@@ -4,7 +4,7 @@
     <p>
       <img src="https://img.shields.io/badge/17-easy-green" />
       <img src="https://img.shields.io/badge/35-medium-yellow" />
-      <img src="https://img.shields.io/badge/6-hard-red" />
+      <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
 </div>
 
@@ -32,6 +32,7 @@
 | [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum) | [notes](./239-sliding-window-maximum/notes.md) | ![Static Badge](https://img.shields.io/badge/Hard-red?style=flat) | [solution](./239-sliding-window-maximum/solution.py)
 | [Max Level Party Invites](https://leetcode.com/problems/max-level-party-invites) | [notes](./max-level-party-invites/notes.md) | ![Static Badge](https://img.shields.io/badge/Hard-red?style=flat) | [solution](./max-level-party-invites/solution.py)
 | [Rummy Card Game](https://leetcode.com/problems/rummy-card-game) | [notes](./rummy-card-game/notes.md) | ![Static Badge](https://img.shields.io/badge/Hard-red?style=flat) | [solution](./rummy-card-game/solution.py)
+| [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists) | [notes](./23-merge-k-sorted-lists/notes.md) | ![Static Badge](https://img.shields.io/badge/Hard-red?style=flat) | [solution](./23-merge-k-sorted-lists/solution.py)
 | [49. Group Anagrams](https://leetcode.com/problems/group-anagrams) | [notes](./49-group-anagrams/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./49-group-anagrams/solution.py)
 | [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements) | [notes](./347-top-k-frequent-elements/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./347-top-k-frequent-elements/solution.py)
 | [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self) | [notes](./238-product-of-array-except-self/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./238-product-of-array-except-self/solution.py)

@@ -669,5 +669,17 @@
         ],
         "published": true,
         "datetime": "2026-02-18T09:19:35Z"
+    },
+    "merge-k-sorted-lists": {
+        "id": "merge-k-sorted-lists",
+        "title": "23. Merge k Sorted Lists",
+        "directory": "23-merge-k-sorted-lists",
+        "difficulty": "Hard",
+        "tags": [
+            "linked-list",
+            "heap"
+        ],
+        "published": true,
+        "datetime": "2026-02-18T10:03:07Z"
     }
 }
