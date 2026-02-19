@@ -693,5 +693,17 @@
         ],
         "published": true,
         "datetime": "2026-02-18T21:21:09Z"
+    },
+    "house-robber-iii": {
+        "id": "house-robber-iii",
+        "title": "337. House Robber III",
+        "directory": "337-house-robber-iii",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-tree",
+            "dp"
+        ],
+        "published": true,
+        "datetime": "2026-02-19T19:15:40Z"
     }
 }
