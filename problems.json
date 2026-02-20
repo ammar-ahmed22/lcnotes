@@ -705,5 +705,17 @@
         ],
         "published": true,
         "datetime": "2026-02-19T19:15:40Z"
+    },
+    "binary-tree-right-side-view": {
+        "id": "binary-tree-right-side-view",
+        "title": "199. Binary Tree Right Side View",
+        "directory": "199-binary-tree-right-side-view",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-tree",
+            "queue"
+        ],
+        "published": true,
+        "datetime": "2026-02-20T05:23:48Z"
     }
 }
