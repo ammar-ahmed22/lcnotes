@@ -717,5 +717,17 @@
         ],
         "published": true,
         "datetime": "2026-02-20T05:23:48Z"
+    },
+    "count-good-nodes-in-binary-tree": {
+        "id": "count-good-nodes-in-binary-tree",
+        "title": "1448. Count Good Nodes in Binary Tree",
+        "directory": "1448-count-good-nodes-in-binary-tree",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "published": true,
+        "datetime": "2026-02-20T22:48:38Z"
     }
 }
