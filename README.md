@@ -3,7 +3,7 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/17-easy-green" />
-      <img src="https://img.shields.io/badge/40-medium-yellow" />
+      <img src="https://img.shields.io/badge/41-medium-yellow" />
       <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
 </div>
@@ -73,6 +73,7 @@
 | [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view) | [notes](./199-binary-tree-right-side-view/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./199-binary-tree-right-side-view/solution.py)
 | [1448. Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree) | [notes](./1448-count-good-nodes-in-binary-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./1448-count-good-nodes-in-binary-tree/solution.py)
 | [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree) | [notes](./98-validate-binary-search-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./98-validate-binary-search-tree/solution.py)
+| [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst) | [notes](./230-kth-smallest-element-in-a-bst/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./230-kth-smallest-element-in-a-bst/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)

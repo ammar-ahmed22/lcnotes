@@ -741,5 +741,17 @@
         ],
         "published": true,
         "datetime": "2026-03-26T09:23:03Z"
+    },
+    "kth-smallest-element-in-a-bst": {
+        "id": "kth-smallest-element-in-a-bst",
+        "title": "230. Kth Smallest Element in a BST",
+        "directory": "230-kth-smallest-element-in-a-bst",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "published": true,
+        "datetime": "2026-03-26T20:40:59Z"
     }
 }
