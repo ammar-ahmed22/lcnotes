@@ -5,7 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lcnotes"
 version = "0.1.0"
-dependencies = ["typer", "pytest"]
+dependencies = [
+    "typer",
+    "pytest",
+    "playwright",
+    "InquirerPy",
+    "yaspin",
+    "jinja2",
+    "markdownify",
+]
 
 [project.scripts]
 lc = "lc.__main__:main"
