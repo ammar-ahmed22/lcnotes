@@ -10,6 +10,7 @@
 
 ## Table of Contents
 - [Problems Solved](#problems-solved)
+- [Setup](#setup)
 - [Overview](#overview)
   * [How It Works](#how-it-works)
   * [Per-problem layout](#per-problem-layout)
@@ -90,6 +91,19 @@
 | [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree) | [notes](./572-subtree-of-another-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./572-subtree-of-another-tree/solution.py)
 | [1768. Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately) | [notes](./1768-merge-strings-alternately/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1768-merge-strings-alternately/solution.py)
 ---
+
+## Setup
+Requires [uv](https://docs.astral.sh/uv/).
+
+Install the CLI (makes `lc` available globally):
+```bash
+uv tool install --editable .
+```
+
+Verify:
+```bash
+lc --help
+```
 
 ## Overview
 lcnotes is a personal CLI that helps me manage LeetCode problems locally. It can:
