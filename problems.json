@@ -729,5 +729,17 @@
         ],
         "published": true,
         "datetime": "2026-02-20T22:48:38Z"
+    },
+    "validate-binary-search-tree": {
+        "id": "validate-binary-search-tree",
+        "title": "98. Validate Binary Search Tree",
+        "directory": "98-validate-binary-search-tree",
+        "difficulty": "Medium",
+        "tags": [
+            "binary-tree",
+            "dfs"
+        ],
+        "published": true,
+        "datetime": "2026-03-26T09:23:03Z"
     }
 }

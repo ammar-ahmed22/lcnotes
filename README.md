@@ -3,14 +3,13 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/17-easy-green" />
-      <img src="https://img.shields.io/badge/39-medium-yellow" />
+      <img src="https://img.shields.io/badge/40-medium-yellow" />
       <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
 </div>
 
 ## Table of Contents
 - [Problems Solved](#problems-solved)
-- [Setup](#setup)
 - [Overview](#overview)
   * [How It Works](#how-it-works)
   * [Per-problem layout](#per-problem-layout)
@@ -73,6 +72,7 @@
 | [337. House Robber III](https://leetcode.com/problems/house-robber-iii) | [notes](./337-house-robber-iii/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./337-house-robber-iii/solution.py)
 | [199. Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view) | [notes](./199-binary-tree-right-side-view/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./199-binary-tree-right-side-view/solution.py)
 | [1448. Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree) | [notes](./1448-count-good-nodes-in-binary-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./1448-count-good-nodes-in-binary-tree/solution.py)
+| [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree) | [notes](./98-validate-binary-search-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./98-validate-binary-search-tree/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)
@@ -91,19 +91,6 @@
 | [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree) | [notes](./572-subtree-of-another-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./572-subtree-of-another-tree/solution.py)
 | [1768. Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately) | [notes](./1768-merge-strings-alternately/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1768-merge-strings-alternately/solution.py)
 ---
-
-## Setup
-Requires [uv](https://docs.astral.sh/uv/).
-
-Install the CLI (makes `lc` available globally):
-```bash
-uv tool install --editable .
-```
-
-Verify:
-```bash
-lc --help
-```
 
 ## Overview
 lcnotes is a personal CLI that helps me manage LeetCode problems locally. It can:
