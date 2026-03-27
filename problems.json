@@ -776,5 +776,17 @@
         ],
         "published": true,
         "datetime": "2026-03-27T00:35:41Z"
+    },
+    "k-closest-points-to-origin": {
+        "id": "k-closest-points-to-origin",
+        "title": "973. K Closest Points to Origin",
+        "directory": "973-k-closest-points-to-origin",
+        "difficulty": "Medium",
+        "tags": [
+            "heap",
+            "math"
+        ],
+        "published": true,
+        "datetime": "2026-03-27T04:48:23Z"
     }
 }
