@@ -788,5 +788,16 @@
         ],
         "published": true,
         "datetime": "2026-03-27T04:48:23Z"
+    },
+    "kth-largest-element-in-an-array": {
+        "id": "kth-largest-element-in-an-array",
+        "title": "215. Kth Largest Element in an Array",
+        "directory": "215-kth-largest-element-in-an-array",
+        "difficulty": "Medium",
+        "tags": [
+            "heap"
+        ],
+        "published": true,
+        "datetime": "2026-03-27T04:59:59Z"
     }
 }
