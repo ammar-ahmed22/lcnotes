@@ -765,5 +765,16 @@
         ],
         "published": true,
         "datetime": "2026-03-26T23:39:59Z"
+    },
+    "last-stone-weight": {
+        "id": "last-stone-weight",
+        "title": "1046. Last Stone Weight",
+        "directory": "1046-last-stone-weight",
+        "difficulty": "Easy",
+        "tags": [
+            "heap"
+        ],
+        "published": true,
+        "datetime": "2026-03-27T00:35:41Z"
     }
 }

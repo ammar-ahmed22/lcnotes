@@ -2,7 +2,7 @@
     <h1>lcnotes</h1>
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
-      <img src="https://img.shields.io/badge/17-easy-green" />
+      <img src="https://img.shields.io/badge/18-easy-green" />
       <img src="https://img.shields.io/badge/42-medium-yellow" />
       <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
@@ -92,6 +92,7 @@
 | [100. Same Tree](https://leetcode.com/problems/same-tree) | [notes](./100-same-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./100-same-tree/solution.py)
 | [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree) | [notes](./572-subtree-of-another-tree/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./572-subtree-of-another-tree/solution.py)
 | [1768. Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately) | [notes](./1768-merge-strings-alternately/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1768-merge-strings-alternately/solution.py)
+| [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight) | [notes](./1046-last-stone-weight/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1046-last-stone-weight/solution.py)
 ---
 
 ## Overview
