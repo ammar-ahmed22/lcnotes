@@ -799,5 +799,18 @@
         ],
         "published": true,
         "datetime": "2026-03-27T04:59:59Z"
+    },
+    "task-scheduler": {
+        "id": "task-scheduler",
+        "title": "621. Task Scheduler",
+        "directory": "621-task-scheduler",
+        "difficulty": "Medium",
+        "tags": [
+            "heap",
+            "queue",
+            "greedy"
+        ],
+        "published": true,
+        "datetime": "2026-03-27T06:46:43Z"
     }
 }

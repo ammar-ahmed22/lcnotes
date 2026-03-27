@@ -3,7 +3,7 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/18-easy-green" />
-      <img src="https://img.shields.io/badge/44-medium-yellow" />
+      <img src="https://img.shields.io/badge/45-medium-yellow" />
       <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
 </div>
@@ -77,6 +77,7 @@
 | [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal) | [notes](./105-construct-binary-tree-from-preorder-and-inorder-traversal/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./105-construct-binary-tree-from-preorder-and-inorder-traversal/solution.py)
 | [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin) | [notes](./973-k-closest-points-to-origin/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./973-k-closest-points-to-origin/solution.py)
 | [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array) | [notes](./215-kth-largest-element-in-an-array/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./215-kth-largest-element-in-an-array/solution.py)
+| [621. Task Scheduler](https://leetcode.com/problems/task-scheduler) | [notes](./621-task-scheduler/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./621-task-scheduler/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)
