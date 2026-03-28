@@ -824,5 +824,17 @@
         ],
         "published": true,
         "datetime": "2026-03-28T05:47:54Z"
+    },
+    "combination-sum": {
+        "id": "combination-sum",
+        "title": "39. Combination Sum",
+        "directory": "39-combination-sum",
+        "difficulty": "Medium",
+        "tags": [
+            "backtracking",
+            "recursion"
+        ],
+        "published": true,
+        "datetime": "2026-03-28T07:12:44Z"
     }
 }
