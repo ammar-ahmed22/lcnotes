@@ -812,5 +812,17 @@
         ],
         "published": true,
         "datetime": "2026-03-27T06:46:43Z"
+    },
+    "subsets": {
+        "id": "subsets",
+        "title": "78. Subsets",
+        "directory": "78-subsets",
+        "difficulty": "Medium",
+        "tags": [
+            "backtracking",
+            "recursion"
+        ],
+        "published": true,
+        "datetime": "2026-03-28T05:47:54Z"
     }
 }
