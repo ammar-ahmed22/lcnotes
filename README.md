@@ -3,7 +3,7 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/18-easy-green" />
-      <img src="https://img.shields.io/badge/47-medium-yellow" />
+      <img src="https://img.shields.io/badge/48-medium-yellow" />
       <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
 </div>
@@ -80,6 +80,7 @@
 | [621. Task Scheduler](https://leetcode.com/problems/task-scheduler) | [notes](./621-task-scheduler/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./621-task-scheduler/solution.py)
 | [78. Subsets](https://leetcode.com/problems/subsets) | [notes](./78-subsets/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./78-subsets/solution.py)
 | [39. Combination Sum](https://leetcode.com/problems/combination-sum) | [notes](./39-combination-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./39-combination-sum/solution.py)
+| [40. Combination Sum II](https://leetcode.com/problems/combination-sum-ii) | [notes](./40-combination-sum-ii/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./40-combination-sum-ii/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)

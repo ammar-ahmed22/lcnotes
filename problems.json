@@ -836,5 +836,17 @@
         ],
         "published": true,
         "datetime": "2026-03-28T07:12:44Z"
+    },
+    "combination-sum-ii": {
+        "id": "combination-sum-ii",
+        "title": "40. Combination Sum II",
+        "directory": "40-combination-sum-ii",
+        "difficulty": "Medium",
+        "tags": [
+            "backtracking",
+            "recursion"
+        ],
+        "published": true,
+        "datetime": "2026-03-29T09:07:45Z"
     }
 }
