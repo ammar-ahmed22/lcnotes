@@ -848,5 +848,17 @@
         ],
         "published": true,
         "datetime": "2026-03-29T09:07:45Z"
+    },
+    "number-of-islands": {
+        "id": "number-of-islands",
+        "title": "200. Number of Islands",
+        "directory": "200-number-of-islands",
+        "difficulty": "Medium",
+        "tags": [
+            "graph",
+            "dfs"
+        ],
+        "published": true,
+        "datetime": "2026-03-30T19:11:57Z"
     }
 }
