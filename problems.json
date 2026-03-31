@@ -860,5 +860,17 @@
         ],
         "published": true,
         "datetime": "2026-03-30T19:11:57Z"
+    },
+    "max-area-of-island": {
+        "id": "max-area-of-island",
+        "title": "695. Max Area of Island",
+        "directory": "695-max-area-of-island",
+        "difficulty": "Medium",
+        "tags": [
+            "graph",
+            "dfs"
+        ],
+        "published": true,
+        "datetime": "2026-03-31T02:49:11Z"
     }
 }

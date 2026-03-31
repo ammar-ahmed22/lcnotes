@@ -3,7 +3,7 @@
     <p>CLI to create dedicated Python environments and run/test Leetcode problems with documentation</p>
     <p>
       <img src="https://img.shields.io/badge/18-easy-green" />
-      <img src="https://img.shields.io/badge/49-medium-yellow" />
+      <img src="https://img.shields.io/badge/50-medium-yellow" />
       <img src="https://img.shields.io/badge/7-hard-red" />
     </p>
 </div>
@@ -82,6 +82,7 @@
 | [39. Combination Sum](https://leetcode.com/problems/combination-sum) | [notes](./39-combination-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./39-combination-sum/solution.py)
 | [40. Combination Sum II](https://leetcode.com/problems/combination-sum-ii) | [notes](./40-combination-sum-ii/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./40-combination-sum-ii/solution.py)
 | [200. Number of Islands](https://leetcode.com/problems/number-of-islands) | [notes](./200-number-of-islands/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./200-number-of-islands/solution.py)
+| [695. Max Area of Island](https://leetcode.com/problems/max-area-of-island) | [notes](./695-max-area-of-island/notes.md) | ![Static Badge](https://img.shields.io/badge/Medium-orange?style=flat) | [solution](./695-max-area-of-island/solution.py)
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | [notes](./1-two-sum/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./1-two-sum/solution.py)
 | [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate) | [notes](./217-contains-duplicate/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./217-contains-duplicate/solution.py)
 | [242. Valid Anagram](https://leetcode.com/problems/valid-anagram) | [notes](./242-valid-anagram/notes.md) | ![Static Badge](https://img.shields.io/badge/Easy-green?style=flat) | [solution](./242-valid-anagram/solution.py)
